@@ -54,6 +54,7 @@ function ResultPage() {
           >
             {scanResults.map((scanResult, index) => (
               <button
+                key={index}
                 onClick={() => handleClick(`result-${index}`)}
                 className="flex items-center justify-between p-2 gap-2
                     rounded-lg border bg-white"
@@ -95,7 +96,10 @@ function ResultPage() {
                       <h3 className="font-bold text-xl">{scanResult.url}</h3>
                       <p className="font-light">
                         This URL is considered
-                        <span className="font-bold"> {scanResult.verdict}.</span>
+                        <span className="font-bold">
+                          {" "}
+                          {scanResult.verdict}.
+                        </span>
                       </p>
                     </div>
                   </div>
@@ -136,10 +140,11 @@ function ResultPage() {
                     Nulla fringilla metus ut purus blandit accumsan.
                   </p>
                   <div className="flex flex-col p-2 gap-2 border rounded-lg bg-gray-50">
-                    {scanResult.relatedUrl.map((relatedUrl) => (
+                    {scanResult.relatedUrl.map((relatedUrl, index) => (
                       <div
+                        key={index}
                         className="flex items-center justify-between p-2 gap-2
-                    rounded-lg border bg-white"
+                                  rounded-lg border bg-white"
                       >
                         <p className="truncate">{relatedUrl}</p>
                       </div>

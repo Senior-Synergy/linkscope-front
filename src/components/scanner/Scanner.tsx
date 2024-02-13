@@ -70,14 +70,14 @@ function Scanner() {
       <div
         className="flex flex-col gap-4
                   w-full p-4
-                  rounded-xl border bg-primary bg-opacity-10"
+                  rounded-xl border bg-white shadow-lg"
       >
         {/* Title */}
         <p>Step 1: Input text</p>
 
         {/* Text input area */}
         <textarea
-          className="min-h-40 w-full p-4
+          className="min-h-20 w-full p-2
                     border rounded focus:outline-none focus:ring-1 focus:ring-primary-light 
                     bg-white"
           name="text"
@@ -91,9 +91,9 @@ function Scanner() {
 
         {/* Identified link list */}
         <div
-          className="flex flex-col p-4 gap-4
-                      w-full min-h-40
-                      rounded-lg bg-white border"
+          className="flex flex-col p-2 gap-4
+                      w-full h-40 overflow-y-auto
+                      rounded-lg bg-gray-100 border"
         >
           {/* Title */}
           {/* <p className="text-md">
@@ -103,13 +103,13 @@ function Scanner() {
 
           {/* Url list */}
           {urlList.length > 0 ? (
-            <ul className="flex flex-col gap-4 w-full">
+            <ul className="flex flex-col gap-2 w-full">
               {urlList.map((urlItem, index) => (
                 <button
                   key={index}
                   onClick={() => handleUpdateUrlList(index)}
                   className={`flex items-center justify-between 
-                            w-full space-x-2 p-2 
+                            w-full gap-2 p-2 
                             rounded-lg 
                             transition-colors ${
                               urlItem.isSelected
@@ -123,7 +123,7 @@ function Scanner() {
                   <div
                     className="flex flex-shrink-0 items-center justify-center 
                                 w-8 h-8 rounded-full
-                                bg-gray-300
+                                bg-white
                                 font-bold
                                 transition-all"
                   ></div>

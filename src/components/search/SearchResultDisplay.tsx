@@ -12,8 +12,9 @@ function SearchResultDisplay({ searchResults }: SearchResultDisplayProps) {
                 w-full p-4
                 rounded-xl border bg-white"
     >
-      {searchResults.map((result) => (
+      {searchResults.map((result, index) => (
         <div
+          key={index}
           className="flex items-center justify-between p-2 gap-2
                     rounded-lg border bg-white"
         >

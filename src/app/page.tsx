@@ -47,7 +47,7 @@ function Home() {
     <>
       <main className="flex flex-col space-y-8 p-4 md:p-8 self-center w-full max-w-6xl">
         <header>
-          <h1 className="text-5xl font-black mb-4 text-primary">
+          <h1 className="text-5xl font-black mb-4">
             Welcome to LinkScope
           </h1>
           <p className="text-gray-600">

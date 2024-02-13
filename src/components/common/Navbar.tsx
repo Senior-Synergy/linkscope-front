@@ -28,8 +28,8 @@ function Navbar() {
         className="sticky top-0 
                 flex justify-between items-center 
                 px-4 md:px-8 h-14 z-10
-                shadow
-                bg-white bg-opacity-75 backdrop-blur-sm
+                shadow-lg
+                bg-white
                 "
       >
         {/* Title */}
