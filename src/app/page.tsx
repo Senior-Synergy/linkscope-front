@@ -53,9 +53,7 @@ function Home() {
               width={128}
               height={32}
             /> */}
-            <h1 className="text-5xl font-bold text-white">
-              LinkScope URL Scanner
-            </h1>
+            <h1 className="text-5xl font-bold text-white">LinkScope URL Scanner</h1>
             <p className="text-white font-light">
               LinkScope is your go-to destination for comprehensive URL scanning
               and analysis. Safeguard yourself against phishing attempts by
@@ -71,11 +69,12 @@ function Home() {
             <Scanner />
           </div>
         </div>
+      </div>
 
-        <div className="flex flex-col flex-auto gap-8 p-8 self-center w-full max-w-6xl bg-white">
-          {/* URL Scanner */}
+      <div className="flex flex-col flex-auto gap-8 p-8 self-center w-full max-w-6xl bg-white">
+        {/* URL Scanner */}
 
-          {/* <div>
+        {/* <div>
           <h2 className="text-xl font-semibold mb-2">How to Use:</h2>
           <ol className="list-decimal pl-6">
             <li>{`Enter your text in the input area.`}</li>
@@ -84,17 +83,17 @@ function Home() {
           </ol>
         </div> */}
 
-          <div>
-            <h2 className="text-xl font-bold mb-4">What is LinkScope?</h2>
-            <p>
-              LinkScope is a cutting-edge URL Scanner to identify phishing
-              links. Our tool utlize machine learning to analyze URLs, providing
-              you with instant insights into potential risks. Simply input text
-              and it will automatically identify URLs within it.
-            </p>
-          </div>
+        <div>
+          <h2 className="text-xl font-bold mb-4">What is LinkScope?</h2>
+          <p>
+            LinkScope is a cutting-edge URL Scanner to identify phishing links.
+            Our tool utlize machine learning to analyze URLs, providing you with
+            instant insights into potential risks. Simply input text and it will
+            automatically identify URLs within it.
+          </p>
+        </div>
 
-          {/* <div>
+        {/* <div>
           <h2 className="text-xl font-semibold mb-4">Quick Start</h2>
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex w-full md:w-1/2 min-h-28 justify-between items-center gap-4 bg-primary p-4 rounded-lg shadow text-white">
@@ -130,12 +129,12 @@ function Home() {
           </div>
         </div> */}
 
-          <div>
-            <h2 className="text-xl font-bold mb-4">Recently Scanned URLs</h2>
-            <SearchResultDisplay searchResults={dummySearchResults} />
-          </div>
+        <div>
+          <h2 className="text-xl font-bold mb-4">Recently Scanned URLs</h2>
+          <SearchResultDisplay searchResults={dummySearchResults} />
+        </div>
 
-          {/* <div className="bg-primary p-4 rounded-lg shadow text-white">
+        {/* <div className="bg-primary p-4 rounded-lg shadow text-white">
           <h2 className="text-xl font-semibold mb-2">Getting Started:</h2>
           <ol className="list-disc pl-6">
             <li>Item 1</li>
@@ -144,10 +143,9 @@ function Home() {
           </ol>
           </div> */}
 
-          <footer className="mt-8 text-gray-500 text-sm">
-            <p>LinkScope | Senior Synergy</p>
-          </footer>
-        </div>
+        <footer className="mt-8 text-gray-500 text-sm">
+          <p>LinkScope | Senior Synergy</p>
+        </footer>
       </div>
     </>
   );
