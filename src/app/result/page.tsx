@@ -2,6 +2,7 @@
 
 import SearchResultDisplay from "@/components/search/SearchResultDisplay";
 import { Verdict } from "@/types/searchTypes";
+import Link from "next/link";
 import React from "react";
 
 interface UrlInfo {
@@ -16,7 +17,13 @@ function ResultPage() {
     const element = document.getElementById(id);
 
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const offsetPosition =
+        element.getBoundingClientRect().top + window.scrollY - 70;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
     }
   };
 
@@ -38,9 +45,9 @@ function ResultPage() {
 
   return (
     <>
-      <main className="flex flex-col gap-y-4 p-4 md:p-8 self-center w-full max-w-6xl">
+      <main className="flex flex-col flex-auto gap-4 p-4 md:p-8 self-center w-full max-w-6xl bg-white">
         <header>
-          <h1 className="text-5xl font-black text-primary">Results</h1>
+          <h1 className="text-3xl font-bold mb-4">Results</h1>
           {/* <p className="text-gray-600">
             Explanation about the what this page offers.
           </p> */}
@@ -49,8 +56,8 @@ function ResultPage() {
         <div>
           <h2 className="text-xl font-bold mb-4">All Scanned URLs</h2>
           <div
-            className="flex flex-col gap-4 p-4 border rounded-xl 
-                      drop-shadow bg-white"
+            className="flex flex-col gap-2 p-2 border rounded-xl 
+                      bg-gray-100"
           >
             {scanResults.map((scanResult, index) => (
               <button
@@ -82,7 +89,7 @@ function ResultPage() {
                 id={`result-${index}`}
                 key={index}
                 className="flex flex-col gap-4 p-4 border rounded-xl 
-                          drop-shadow bg-white"
+                          bg-white"
               >
                 <div
                   className={`flex w-full min-h-28 justify-between items-center gap-4S p-4 rounded-lg shadow text-white ${
@@ -118,14 +125,12 @@ function ResultPage() {
                   <p className="font-bold mb-1">Suspected Features</p>
                   <div className="flex justify-center gap-2">
                     <div className="flex items-center gap-4 bg-white border p-4 rounded-lg w-1/2">
-                      <div className="bg-gray-300 rounded-full h-16 w-16" />
                       <div>
                         <p className="font-medium">Feature name</p>
                         <p className="font-light">Secondary factor</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-4 bg-white border p-4 rounded-lg w-1/2">
-                      <div className="bg-gray-300 rounded-full h-16 w-16" />
                       <div>
                         <p className="font-medium">Feature name</p>
                         <p className="font-light">Secondary factor</p>
@@ -154,7 +159,9 @@ function ResultPage() {
 
                 {/* Buttons */}
                 <div className="flex items-center justify-end w-full space-x-4">
-                  <button
+                  <Link
+                    target="_blank"
+                    href={"https://www.google.com"}
                     className={`flex items-center justify-center 
                         w-1/2 h-12 rounded-lg 
                         border
@@ -165,7 +172,7 @@ function ResultPage() {
                         }`}
                   >
                     Visit site
-                  </button>
+                  </Link>
 
                   <button
                     className={`flex items-center justify-center 

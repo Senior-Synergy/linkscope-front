@@ -2,7 +2,7 @@ import React from "react";
 
 function DevelopPage() {
   return (
-    <main className="p-8 self-center w-full max-w-5xl">
+    <main className="flex flex-col flex-auto gap-4 p-4 md:p-8 self-center w-full max-w-6xl bg-white">
       <header>
         <h1 className="text-3xl font-bold mb-4">Develop Page</h1>
         <p className="text-gray-600">
@@ -84,6 +84,10 @@ function DevelopPage() {
           </div>
         </div>
       </div>
+
+      <footer className="mt-8 text-gray-500 text-sm">
+        <p>LinkScope | Senior Synergy</p>
+      </footer>
     </main>
   );
 }
