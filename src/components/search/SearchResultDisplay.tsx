@@ -8,9 +8,9 @@ interface SearchResultDisplayProps {
 function SearchResultDisplay({ searchResults }: SearchResultDisplayProps) {
   return (
     <div
-      className="flex flex-col gap-4
-                w-full p-4
-                rounded-xl border bg-white"
+      className="flex flex-col gap-2
+                w-full p-2
+                rounded-xl border bg-gray-100"
     >
       {searchResults.map((result, index) => (
         <div
