@@ -10,13 +10,13 @@ const config: Config = {
     extend: {
       colors: {
         primary: "#525FE1",
-        "primary-light": "#718fdb",
-        "primary-dark": "#24438e",
-        "primary-faded": "#c2cfef",
+        "primary-light": "#bfc3f4",
+        "primary-dark": "#1b2699",
+        "primary-faded": "#f5f6fd",
 
         accent: "#F86F03",
-        "accent-light": "#FFA41B",
-        "accent-dark": "#8e7024",
+        "accent-light": "#fdb67d",
+        "accent-dark": "#7a3701",
 
         link: "#6144CF",
         alert: "#CF446C",
