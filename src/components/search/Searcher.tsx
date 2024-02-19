@@ -2,17 +2,17 @@
 
 import React, { useState } from "react";
 import SearchBar from "./SearchBar";
-import SearchResultDisplay from "./SearchResultDisplay";
-import { SearchResult, Verdict } from "@/types/searchTypes";
+import UrlListDisplay from "./UrlList";
+import { UrlInfo, Verdict } from "@/types/searchTypes";
 
 function Searcher() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState<SearchResult[] | null>(
+  const [searchResults, setSearchResults] = useState<UrlInfo[] | null>(
     null
   );
 
   const [recentUrls, setRecentUrls] =
-    useState<SearchResult[]>(dummySearchResults);
+    useState<UrlInfo[]>(dummySearchResults);
 
   return (
     <>
@@ -21,13 +21,13 @@ function Searcher() {
       {searchResults && searchResults.length > 0 && (
         <div>
           <h2 className="text-xl font-bold mb-4">Results</h2>
-          <SearchResultDisplay searchResults={searchResults} />
+          <UrlListDisplay urlList={searchResults} />
         </div>
       )}
 
       <div>
         <h2 className="text-xl font-bold mb-4">Recent URLs</h2>
-        <SearchResultDisplay searchResults={recentUrls} />
+        <UrlListDisplay urlList={recentUrls} />
       </div>
     </>
   );
@@ -35,7 +35,7 @@ function Searcher() {
 
 export default Searcher;
 
-const dummySearchResults: SearchResult[] = [
+const dummySearchResults: UrlInfo[] = [
   {
     url: "https://example.com/page1",
     verdict: Verdict.SAFE,
