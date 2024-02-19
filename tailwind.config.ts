@@ -9,13 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "#446CCF",
+        primary: "#525FE1",
         "primary-light": "#718fdb",
         "primary-dark": "#24438e",
         "primary-faded": "#c2cfef",
 
-        accent: "#CFA744",
-        "accent-light": "#e5cf9a",
+        accent: "#F86F03",
+        "accent-light": "#FFA41B",
         "accent-dark": "#8e7024",
 
         link: "#6144CF",
@@ -23,7 +23,7 @@ const config: Config = {
         success: "#66BB6A",
         deactive: "#D2D2D2",
 
-        background: "#EBECED",
+        background: "#FFF6F4",
         text: "#515151",
       },
       keyframes: {
