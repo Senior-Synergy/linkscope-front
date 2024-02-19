@@ -68,18 +68,9 @@ function Scanner() {
   return (
     <>
       <div
-        className="flex gap-4
-                  w-full p-4
-                  rounded-t-xl bg-primary-dark 
-                  text-white text-lg font-bold 
-                  shadow-lg"
-      >
-        URL Scanner
-      </div>
-      <div
         className="flex flex-col gap-4
                   w-full p-4
-                  rounded-b-xl border bg-white shadow-lg"
+                  rounded-xl border bg-white shadow-lg"
       >
         {/* Title */}
         <p>Step 1: Input text</p>
