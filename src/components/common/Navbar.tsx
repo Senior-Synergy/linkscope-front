@@ -36,7 +36,7 @@ function Navbar() {
         {/* Title */}
         <div className="flex items-center md:pl-2">
           <div className="flex flex-col flex-shrink-0">
-            <Image src={logo} alt="logo" width={200} height={32} />
+            <Image src={logo} alt="logo" />
           </div>
         </div>
 
