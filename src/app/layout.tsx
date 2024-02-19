@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Kanit, Montserrat } from "next/font/google";
 import "./globals.css";
+
+const kanit = Kanit({ weight: "400", subsets: ["latin"] });
+const montserrat = Montserrat({ subsets: ["latin"] });
 
 import Navbar from "@/components/common/Navbar";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
-  title: "LinkScope",
+  title: "Senior Synergy",
   description: "AI Powered Phishing Link Detector",
 };
 
@@ -18,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={montserrat.className}>
         <div className="flex flex-col min-h-screen">
           <Navbar />
           {children}

@@ -3,7 +3,7 @@ export enum Verdict {
   "UNSAFE" = "unsafe",
 }
 
-export interface SearchResult {
+export interface UrlInfo {
   url: string;
   verdict: Verdict;
   date: Date;

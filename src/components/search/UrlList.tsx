@@ -1,11 +1,11 @@
-import { SearchResult, Verdict } from "@/types/searchTypes";
+import { UrlInfo, Verdict } from "@/types/searchTypes";
 import React from "react";
 
-interface SearchResultDisplayProps {
-  searchResults: SearchResult[];
+interface UrlListDisplayProps {
+  urlList: UrlInfo[];
 }
 
-function SearchResultDisplay({ searchResults }: SearchResultDisplayProps) {
+function UrlListDisplay({ urlList: searchResults }: UrlListDisplayProps) {
   return (
     <div
       className="flex flex-col gap-2
@@ -38,4 +38,4 @@ function SearchResultDisplay({ searchResults }: SearchResultDisplayProps) {
   );
 }
 
-export default SearchResultDisplay;
+export default UrlListDisplay;
