@@ -1,3 +1,5 @@
+import { featureInformation } from "@/constants/feature";
+
 const DocumentationPage = () => {
   return (
     <div className="flex flex-col flex-auto gap-8 p-8 self-center w-full max-w-6xl bg-white">
@@ -31,6 +33,50 @@ const DocumentationPage = () => {
         <p>Explanation about the importance of features in the model.</p>
         {/* Add more detailed explanation here if needed */}
       </div>
+
+      {/* Section: Extracted Features */}
+      <section className="flex flex-col gap-6">
+        <div>
+          <h2 className="text-2xl font-bold mb-2">Extracted Features</h2>
+          <p>
+            Extracted features provide valuable insights into the
+            characteristics and behavior of URLs, allowing machine learning
+            models to distinguish between legitimate and phishing URLs with
+            greater accuracy. By analyzing these features, ML algorithms can
+            identify patterns and anomalies associated with phishing activities.
+          </p>
+        </div>
+
+        <div className="overflow-x-auto rounded-xl border">
+          <table>
+            <thead>
+              <tr className="bg-primary text-white">
+                <th className="px-4 py-2">Feature</th>
+                <th className="px-4 py-2">Type</th>
+                <th className="px-4 py-2">Value</th>
+                <th className="px-4 py-2">Explanation</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y">
+              {/* Feature rows */}
+              {Object.values(featureInformation).map((feature, index) => (
+                <tr key={index}>
+                  <td className="px-4 py-2 font-medium bg-gray-100">
+                    {feature.featureName}
+                  </td>
+                  <td className="px-4 py-2 font-medium bg-gray-white text-center">
+                    {feature.dataType}
+                  </td>
+                  <td className="px-4 py-2 font-medium bg-gray-50 text-center">
+                    {feature.sampleValue}
+                  </td>
+                  <td className="px-4 py-2 bg-white">{feature.explanation}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
 
       <div>
         <h2 className="text-2xl font-bold mb-2">Performance Metrics</h2>

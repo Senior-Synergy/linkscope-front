@@ -1,4 +1,5 @@
 import Scanner from "@/components/scanner/Scanner";
+import Searcher from "@/components/search/Searcher";
 import UrlListDisplay from "@/components/search/UrlList";
 import { UrlInfo, Verdict } from "@/types/searchTypes";
 import Image from "next/image";
@@ -46,10 +47,19 @@ function Home() {
   return (
     <>
       <div className="flex flex-col flex-auto gap-8 p-8 self-center w-full max-w-6xl bg-white">
+        <div>
+          <h1 className="text-3xl font-bold mb-4">LinkScope</h1>
+          <p className="text-gray-600">
+            {`LinkScope is a cutting-edge URL Scanner to identify phishing links.
+            Our tool utlize machine learning to analyze URLs, providing you with
+            instant insights into potential risks. Simply input text and it will
+            automatically identify URLs within it.`}
+          </p>
+        </div>
+
         {/* URL Scanner */}
-        <div className="flex flex-col md:flex-row items-center w-full max-w-6xl gap-8 p-8 bg-gradient-to-br from-primary to-primary-dark rounded-2xl">
+        <div className="flex flex-col md:flex-row items-center w-full max-w-6xl gap-8 p-8 bg-gradient-to-br from-primary to-accent rounded-2xl">
           <header className="w-full md:w-1/3 space-y-4 text-white">
-            <h1 className="text-5xl font-bold">LinkScope URL Scanner</h1>
             <div>
               <h2 className="text-xl font-semibold mb-2">How to Use:</h2>
               <ol className="list-decimal pl-6 font-light">
@@ -67,17 +77,15 @@ function Home() {
         </div>
 
         <div>
-          <h2 className="text-xl font-bold mb-4">What is LinkScope?</h2>
-          <p>
-            LinkScope is a cutting-edge URL Scanner to identify phishing links.
-            Our tool utlize machine learning to analyze URLs, providing you with
-            instant insights into potential risks. Simply input text and it will
-            automatically identify URLs within it.
-          </p>
-        </div>
-
-        <div>
           <h2 className="text-xl font-bold mb-4">Recently Scanned URLs</h2>
+          <p className="text-gray-600 mb-6">
+            "Suspendisse dolor nisl, rhoncus eu arcu non, suscipit convallis
+            nulla. Vivamus laoreet nunc libero, sed hendrerit magna tincidunt
+            vitae. Etiam eget euismod enim. Vivamus vitae nibh vel sem facilisis
+            convallis. Cras eget dignissim orci. Proin massa erat, ornare non
+            massa eget, porttitor interdum risus. Vestibulum vel ex fermentum,
+            rutrum nisl eget, cursus tellus. Nunc nec tempus nisl."
+          </p>
           <UrlListDisplay urlList={dummySearchResults} />
         </div>
 
@@ -90,7 +98,7 @@ function Home() {
           </ol>
           </div> */}
 
-        <div>
+        {/* <div>
           <h2 className="text-xl font-bold mb-4">
             You Might Be Interested In:
           </h2>
@@ -130,7 +138,7 @@ function Home() {
           <footer className="mt-8 text-gray-500 text-sm">
             <p>LinkScope | Senior Synergy</p>
           </footer>
-        </div>
+        </div> */}
       </div>
     </>
   );
