@@ -79,12 +79,12 @@ function Home() {
         <div>
           <h2 className="text-xl font-bold mb-4">Recently Scanned URLs</h2>
           <p className="text-gray-600 mb-6">
-            "Suspendisse dolor nisl, rhoncus eu arcu non, suscipit convallis
+            Suspendisse dolor nisl, rhoncus eu arcu non, suscipit convallis
             nulla. Vivamus laoreet nunc libero, sed hendrerit magna tincidunt
             vitae. Etiam eget euismod enim. Vivamus vitae nibh vel sem facilisis
             convallis. Cras eget dignissim orci. Proin massa erat, ornare non
             massa eget, porttitor interdum risus. Vestibulum vel ex fermentum,
-            rutrum nisl eget, cursus tellus. Nunc nec tempus nisl."
+            rutrum nisl eget, cursus tellus. Nunc nec tempus nisl.
           </p>
           <UrlListDisplay urlList={dummySearchResults} />
         </div>
