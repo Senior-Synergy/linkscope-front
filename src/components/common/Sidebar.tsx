@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
+import logo from "../../../public/logo/logo-with-icon-black.svg";
+
 interface SidebarProps {
   navItems: {
     name: string;
@@ -46,12 +48,7 @@ function Sidebar({ navItems }: SidebarProps) {
               transition={{ type: "spring", damping: 50, stiffness: 500 }}
             >
               <div className="flex items-center justify-center space-x-4 h-14 w-full">
-                <Image
-                  src={"/logo/logo-black.svg"}
-                  alt="logo"
-                  width={128}
-                  height={32}
-                />
+                <Image src={logo} alt="logo" width={128} height={32} />
               </div>
 
               <div className="flex flex-col w-full divide-y divide-background border-y border-background">
@@ -61,7 +58,7 @@ function Sidebar({ navItems }: SidebarProps) {
                       className="flex items-center justify-center
                                 w-full h-14
                                 font-semibold text-sm
-                                border-r-4 border-transparent hover:border-primary hover:bg-background
+                               hover:bg-primary hover:text-white
                                 transition-all"
                     >
                       {item.name}
