@@ -90,55 +90,51 @@ function Home() {
           ))}
         </div>
       </div> */}
-
-      <div className="flex flex-col flex-auto items-center gap-4 md:gap-8 p-4 md:p-8">
-        <div className="flex flex-col flex-auto gap-8 p-8 self-center w-full max-w-6xl bg-white rounded-2xl">
-          <div>
-            <h2 className="text-xl font-bold mb-4">
-              You Might Be Interested In:
-            </h2>
-            <div className="flex flex-col md:flex-row gap-4">
-              <div className="flex w-full md:w-1/2 min-h-28 justify-between items-center gap-4 bg-primary p-4 rounded-xl text-white">
-                <div className="flex gap-4">
-                  <Image
-                    src={"/logo/logo-white.svg"}
-                    alt="logo"
-                    width={64}
-                    height={64}
-                  />
-                  <div>
-                    <h3 className="font-bold text-xl">URL Scanner</h3>
-                    <p className="font-light">Detect phishing links</p>
-                  </div>
+      <div className="flex flex-col flex-auto gap-8 p-8 self-center w-full max-w-6xl bg-white">
+        <div>
+          <h2 className="text-xl font-bold mb-4">
+            You Might Be Interested In:
+          </h2>
+          <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex w-full md:w-1/2 min-h-28 justify-between items-center gap-4 bg-primary p-4 rounded-xl text-white">
+              <div className="flex gap-4">
+                <Image
+                  src={"/logo/logo-white.svg"}
+                  alt="logo"
+                  width={64}
+                  height={64}
+                />
+                <div>
+                  <h3 className="font-bold text-xl">URL Scanner</h3>
+                  <p className="font-light">Detect phishing links</p>
                 </div>
-                <div className="shrink-0 h-6 w-6 rounded-full bg-white" />
               </div>
-              <div className="flex w-full md:w-1/2 min-h-28 justify-between items-center gap-4 bg-primary p-4 rounded-xl text-white">
-                <div className="flex gap-4">
-                  <Image
-                    src={"/logo/logo-white.svg"}
-                    alt="logo"
-                    width={64}
-                    height={64}
-                  />
-                  <div>
-                    <h3 className="font-bold text-xl">Search URLs</h3>
-                    <p className="font-light">
-                      Explore previously scanned URLs
-                    </p>
-                  </div>
+              <div className="shrink-0 h-6 w-6 rounded-full bg-white" />
+            </div>
+            <div className="flex w-full md:w-1/2 min-h-28 justify-between items-center gap-4 bg-primary p-4 rounded-xl text-white">
+              <div className="flex gap-4">
+                <Image
+                  src={"/logo/logo-white.svg"}
+                  alt="logo"
+                  width={64}
+                  height={64}
+                />
+                <div>
+                  <h3 className="font-bold text-xl">Search URLs</h3>
+                  <p className="font-light">Explore previously scanned URLs</p>
                 </div>
-                <div className="shrink-0 h-6 w-6 rounded-full bg-white" />
               </div>
+              <div className="shrink-0 h-6 w-6 rounded-full bg-white" />
             </div>
           </div>
+        </div>
 
-          <div>
-            <h2 className="text-xl font-bold mb-4">Recently Scanned URLs</h2>
-            <UrlListDisplay urlList={dummyUrlList} />
-          </div>
+        <div>
+          <h2 className="text-xl font-bold mb-4">Recently Scanned URLs</h2>
+          <UrlListDisplay urlList={dummyUrlList} />
+        </div>
 
-          {/* <div className="bg-primary p-4 rounded-lg shadow text-white">
+        {/* <div className="bg-primary p-4 rounded-lg shadow text-white">
           <h2 className="text-xl font-semibold mb-2">Getting Started:</h2>
           <ol className="list-disc pl-6">
             <li>Item 1</li>
@@ -146,8 +142,6 @@ function Home() {
             <li>Item 3</li>
           </ol>
           </div> */}
-        </div>
-
         <footer className="mt-8 text-gray-500 text-sm">
           <p>LinkScope | Senior Synergy</p>
         </footer>

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import logo from "../../../public/logo/logo-with-icon-black.svg";
+import Sidebar from "./Sidebar";
 
 function Navbar() {
   const NavbarItem = [
@@ -16,6 +17,10 @@ function Navbar() {
     {
       name: "Search",
       route: "/search",
+    },
+    {
+      name: "Docs",
+      route: "/docs",
     },
     {
       name: "Develop",
@@ -36,7 +41,7 @@ function Navbar() {
         {/* Title */}
         <div className="flex items-center md:pl-2">
           <div className="flex flex-col flex-shrink-0">
-            <Image src={logo} alt="logo" width={200} height={32} />
+            <Image src={logo} alt="logo" />
           </div>
         </div>
 
@@ -57,25 +62,9 @@ function Navbar() {
             </Link>
           ))}
         </div>
-
-        {/* <div className="flex w-full justify-center bg-white divide-x-2 border-y-4">
-          {NavbarItem.map((item, index) => (
-            <Link key={index} href={item.route}>
-              <div
-                className="flex items-center justify-center 
-                        w-28 h-8
-                        font-bold text-gray-900
-                        border-y-4 border-transparent hover:bg-primary hover:text-white
-                        transition-all"
-              >
-                {item.name}
-              </div>
-            </Link>
-          ))}
-        </div> */}
       </nav>
 
-      {/* <Sidebar navItems={NavbarItem} /> */}
+      <Sidebar navItems={NavbarItem} />
     </>
   );
 }

@@ -1,6 +1,5 @@
 "use client";
 
-import UrlListDisplay from "@/components/search/UrlList";
 import { Verdict } from "@/types/searchTypes";
 import Link from "next/link";
 import React from "react";

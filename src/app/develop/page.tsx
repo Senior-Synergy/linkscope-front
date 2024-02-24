@@ -1,6 +1,17 @@
+"use client";
+
+import axios from "axios";
 import React from "react";
 
 function DevelopPage() {
+  async function handleTestAPI() {
+    const res = await axios.get(
+      `http://localhost:8000/scan?url=${"example.com"}`
+    );
+
+    console.log(res.data);
+  }
+
   return (
     <main className="flex flex-col flex-auto gap-4 p-4 md:p-8 self-center w-full max-w-6xl bg-white">
       <header>
@@ -31,6 +42,8 @@ function DevelopPage() {
           <li>List item</li>
         </ol>
       </div>
+
+      <button onClick={handleTestAPI}>test API</button>
 
       <div className="flex flex-col gap-4 mt-8 w-full">
         <h2 className="text-xl font-semibold mb-2">Color demo</h2>
