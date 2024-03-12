@@ -9,22 +9,49 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "#525FE1",
-        "primary-light": "#bfc3f4",
-        "primary-dark": "#1b2699",
-        "primary-faded": "#f5f6fd",
+        // primary
+        'primary': {
+          DEFAULT: '#446CCF',
+          50: '#D6DFF5',
+          100: '#C6D2F0',
+          200: '#A5B9E8',
+          300: '#859FE0',
+          400: '#6486D7',
+          500: '#446CCF',
+          600: '#2D52AE',
+          700: '#213D82',
+          800: '#162855',
+          900: '#0A1328',
+          950: '#050812'
+        },
 
-        accent: "#F86F03",
-        "accent-light": "#fdb67d",
-        "accent-dark": "#7a3701",
+        // secondary
+        secondary: "#FF9130",
+        "secondary-light": "#FF9130",
+        "secondary-dark": "#FF9130",
 
-        link: "#6144CF",
-        alert: "#CF446C",
-        success: "#66BB6A",
+        // grayscale
+        "gray-normal": "#909090",
+        "gray-light": "#D4D4D4",
+        "gray-dark": "#494848",
+        "gray-semilight": "#B4B4B4",
+        "gray-semidark": "#636363",
+
+        // status
+        "status-success": "#24A148",
+        "status-caution": "#f1c21b",
+        "status-warning": "#ff832b",
+        "status-passive": "#0043ce",
+        "status-failure": "#da1e28",
+
+        // other
         deactive: "#D2D2D2",
-
+        link: "#6144CF",
         background: "#FFF6F4",
         text: "#515151",
+      },
+      boxShadow: {
+        'light': "2px 4px 12px rgba(0,0,0,.08)"
       },
       keyframes: {
         wiggle: {

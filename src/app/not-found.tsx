@@ -1,23 +1,25 @@
 import Link from "next/link";
 import Image from "next/image";
 
-export default function NotFound() {
+const NotFoundPage = () => {
   return (
-    <main className="flex flex-col flex-auto items-center justify-center p-8">
+    <div className="flex flex-col flex-auto justify-center items-center gap-2 p-4">
       <Image
         src="/icons/triangle-exclamation.svg"
         alt="404 Error"
-        width={150}
-        height={150}
+        width={100}
+        height={100}
       />
-      <h2 className="text-4xl font-bold mt-4">Oops! Page not found</h2>
-      <p className="text-gray-600 mt-2">
+      <h2 className="text-4xl font-bold text-center">Oops! Page not found</h2>
+      <p className="text-gray-600 max-w-lg  text-center">
         The page you are looking for might have been removed or is temporarily
         unavailable.
       </p>
-      <Link href="/" className="text-blue-500 hover:underline mt-4">
+      <Link href="/" className="text-link text-center hover:underline">
         Go back to the homepage
       </Link>
-    </main>
+    </div>
   );
-}
+};
+
+export default NotFoundPage;

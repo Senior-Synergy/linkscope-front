@@ -8,15 +8,13 @@ interface SearchBarProps {
 function SearchBar({ textInput, onTextInputChange }: SearchBarProps) {
   return (
     <div
-      className="flex gap-2
-              w-full p-2
-              rounded-lg border bg-gray-100"
+      className="flex gap-2 w-full"
     >
       <label className="grow">
         <input
           className={`w-full p-2 rounded-lg
                     border focus:outline-none focus:ring-1 focus:ring-primary-light 
-                    bg-white`}
+                    bg-gray-200`}
           name="search-query"
           placeholder="Enter search terms..."
           value={textInput}
@@ -32,9 +30,9 @@ function SearchBar({ textInput, onTextInputChange }: SearchBarProps) {
       >
         Search
       </button>
-      <button
+      {/* <button
         className={`h-10 w-10 transition-all border rounded-lg text-white`}
-      ></button>
+      /> */}
     </div>
   );
 }

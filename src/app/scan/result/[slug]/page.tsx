@@ -1,7 +1,10 @@
-import { featureInformation } from "@/constants/feature";
-import React from "react";
+import ResultChart from "@/components/result/ResultChart";
+import ScanReportDisplay from "@/components/result/ScanReportDisplay";
+import SummarizedReport from "@/components/result/SummarizedReport";
 
-const URLScanResultPage = () => {
+const ScanResultPage = ({ params }: { params: { slug: string } }) => {
+  const scanId = params.slug;
+
   const data = {
     modelResults: {
       verdict: 1,
@@ -43,12 +46,31 @@ const URLScanResultPage = () => {
     },
   };
 
+  const results = [data, data, data];
+
   return (
-    <div className="flex flex-col flex-auto gap-4 p-8 self-center w-full max-w-6xl bg-white">
-      <h1 className="text-3xl font-bold mb-4">URL Scan Result Report</h1>
+    <div
+      className="flex flex-col flex-auto self-center
+                gap-8 p-4
+                w-full max-w-6xl"
+    >
+      <header>
+        <h1 className="text-3xl font-bold mb-4">URL Scan Result Report</h1>
+        <p className="text-gray-600">Description to be added.</p>
+        <p className="text-gray-600">Test Scan ID: {scanId}</p>
+      </header>
+
+      <div>
+        <h2 className="text-xl font-bold mb-4">Summarized Report</h2>
+        <SummarizedReport results={results} />
+      </div>
+
+      <div>
+        <ScanReportDisplay results={results} />
+      </div>
 
       {/* Section: Model Results */}
-      <section className="flex flex-col gap-4 border rounded-xl bg-gray-50 p-4">
+      {/* <section className="flex flex-col gap-4 border rounded-xl bg-gray-50 p-4">
         <div
           className={`text-white p-4 border rounded-lg ${
             data.modelResults.verdict === 1 ? " bg-red-500" : " bg-green-500"
@@ -87,51 +109,9 @@ const URLScanResultPage = () => {
             The URL submitted for scanning.
           </p>
         </div>
-      </section>
-
-      {/* Section: Extracted Features */}
-      <section className="flex flex-col gap-6">
-        <div>
-          <h2 className="text-2xl font-bold mb-2">Extracted Features</h2>
-          <p>
-            Extracted features provide valuable insights into the
-            characteristics and behavior of URLs, allowing machine learning
-            models to distinguish between legitimate and phishing URLs with
-            greater accuracy. By analyzing these features, ML algorithms can
-            identify patterns and anomalies associated with phishing activities.
-          </p>
-        </div>
-
-        <div className="overflow-x-auto rounded-xl border">
-          <table>
-            <thead>
-              <tr className="bg-primary text-white">
-                <th className="px-4 py-2">Feature</th>
-                <th className="px-4 py-2">Value</th>
-                <th className="px-4 py-2">Explanation</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y">
-              {/* Feature rows */}
-              {Object.entries(data.extractedFeatures).map((feature, index) => (
-                <tr key={index}>
-                  <td className="px-4 py-2 font-medium bg-gray-100">
-                    {featureInformation[feature[0]].featureName}
-                  </td>
-                  <td className="px-4 py-2 font-medium bg-gray-50 text-center">
-                    {feature[1].toString()}
-                  </td>
-                  <td className="px-4 py-2 bg-white">
-                    {featureInformation[feature[0]].explanation}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
+      </section> */}
     </div>
   );
 };
 
-export default URLScanResultPage;
+export default ScanResultPage;

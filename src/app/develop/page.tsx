@@ -1,9 +1,8 @@
 "use client";
 
 import axios from "axios";
-import React from "react";
 
-function DevelopPage() {
+const DevelopPage = () => {
   async function handleTestAPI() {
     const res = await axios.get(
       `http://localhost:8000/scan?url=${"example.com"}`
@@ -103,6 +102,6 @@ function DevelopPage() {
       </footer>
     </main>
   );
-}
+};
 
 export default DevelopPage;

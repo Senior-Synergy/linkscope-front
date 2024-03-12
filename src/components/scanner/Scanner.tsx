@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ReusableModal from "../common/ReusableModal";
+import ModalWrapper from "../common/ModalWrapper";
 import { UrlItem } from "@/types/scanTypes";
 import { useRouter } from "next/navigation";
 
@@ -34,7 +34,7 @@ function Scanner() {
         desc: "sample",
       }));
 
-    router.push("/result");
+    router.push("/scan/result/1");
   }
 
   function handleClearInput() {
@@ -57,7 +57,7 @@ function Scanner() {
       // Add new entries for urls in textInput that don't exist in urlList
       currentUrls.forEach((url) => {
         if (!prevUrlList.some((entry) => entry.url === url)) {
-          updatedList.push({ url, isSelected: false });
+          updatedList.push({ url, isSelected: true });
         }
       });
 
@@ -68,17 +68,17 @@ function Scanner() {
   return (
     <>
       <div
-        className="flex flex-col gap-4
-                  w-full p-4
-                  rounded-xl border bg-white shadow-lg"
+        className="flex flex-col gap-4 p-4
+                  w-full
+                  rounded-xl bg-white border shadow-lg"
       >
         {/* Title */}
-        <p>Step 1: Input text</p>
+        <p className="font-medium">Input text</p>
 
         {/* Text input area */}
         <textarea
-          className="min-h-20 w-full p-2
-                    border rounded focus:outline-none focus:ring-1 focus:ring-primary-light 
+          className="min-h-32 w-full p-2
+                    border rounded focus:outline-none focus:ring-1 focus:ring-primary-300 
                     bg-white"
           name="text"
           placeholder="Enter text here..."
@@ -87,20 +87,14 @@ function Scanner() {
         />
 
         {/* Title */}
-        <p>Step 2: Select URL(s)</p>
+        <p className="font-medium">Identified URL(s)</p>
 
         {/* Identified link list */}
         <div
           className="flex flex-col p-2 gap-4
-                      w-full h-40 overflow-y-auto
-                      rounded-lg bg-gray-100 border"
+                      w-full h-64 overflow-y-auto
+                      rounded-lg bg-gray-100"
         >
-          {/* Title */}
-          {/* <p className="text-md">
-            Indentified Links (
-            {urlList.filter((urlItem) => urlItem.isSelected).length} selected)
-          </p> */}
-
           {/* Url list */}
           {urlList.length > 0 ? (
             <ul className="flex flex-col gap-2 w-full">
@@ -110,11 +104,11 @@ function Scanner() {
                   onClick={() => handleUpdateUrlList(index)}
                   className={`flex items-center justify-between 
                             w-full gap-2 p-2 
-                            rounded-lg 
+                            rounded-lg border
                             transition-colors ${
                               urlItem.isSelected
-                                ? "border bg-primary-faded border-primary"
-                                : "border border-deactive bg-gray-50"
+                                ? "bg-white hover:bg-gray-200"
+                                : "bg-gray-300 line-through "
                             }`}
                 >
                   <div className={`${!urlItem.isSelected && ""} truncate pl-2`}>
@@ -146,7 +140,7 @@ function Scanner() {
                         border
                         transition-all ${
                           textInput
-                            ? "border-primary text-primary hover:bg-primary-dark hover:border-primary-dark hover:text-white"
+                            ? "border-primary text-primary hover:bg-primary-300 hover:border-transparent hover:text-white"
                             : "pointer-events-none text-deactive border-deactive"
                         }`}
           >
@@ -155,20 +149,20 @@ function Scanner() {
           <button
             onClick={processUrl}
             className={`flex items-center justify-center 
-                        w-1/2 h-12 rounded-lg 
-                        text-white 
-                        transition-all ${
-                          urlList.some((urlItem) => urlItem.isSelected)
-                            ? "bg-primary hover:bg-primary-dark"
-                            : "pointer-events-none bg-deactive"
-                        }`}
+                      w-1/2 h-12 rounded-lg 
+                      text-white 
+                      transition-all ${
+                        urlList.some((urlItem) => urlItem.isSelected)
+                          ? "bg-primary hover:bg-primary-dark"
+                          : "pointer-events-none bg-deactive"
+                      }`}
           >
             Submit
           </button>
         </div>
       </div>
 
-      <ReusableModal
+      <ModalWrapper
         isOpen={isConfirmingReset}
         onClose={() => setIsConfirmingReset(false)}
       >
@@ -195,7 +189,7 @@ function Scanner() {
             Confirm
           </button>
         </div>
-      </ReusableModal>
+      </ModalWrapper>
     </>
   );
 }

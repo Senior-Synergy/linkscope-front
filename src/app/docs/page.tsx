@@ -1,92 +1,64 @@
+import FeatureTable from "@/components/docs/FeatureTable";
 import { featureInformation } from "@/constants/feature";
 
 const DocumentationPage = () => {
+  const docsItems = [
+    {
+      title: "Model Information",
+      descriptions:
+        "Explanation about the model used, its accuracy, and other relevant metrics.",
+      content: null,
+    },
+    {
+      title: "Phish URL Metrics",
+      descriptions: "Explanation about the metrics related to phishing URLs.",
+      content: null,
+    },
+    {
+      title: "Safe URL Metrics",
+      descriptions: "Explanation about the metrics related to safe URLs.",
+      content: null,
+    },
+    {
+      title: "Feature Importance",
+      descriptions:
+        "Explanation about the importance of features in the model.",
+      content: null,
+    },
+    {
+      title: "Extracted Features",
+      descriptions:
+        "Extracted features provide valuable insights into the characteristics and behavior of URLs, allowing machine learning models to distinguish between legitimate and phishing URLs with greater accuracy. By analyzing these features, ML algorithms can identify patterns and anomalies associated with phishing activities.",
+      content: <FeatureTable />,
+    },
+    {
+      title: "Performance Metrics",
+      descriptions:
+        "Explanation about the performance metrics such as fitting time and scoring time.",
+      content: null,
+    },
+  ];
+
   return (
-    <div className="flex flex-col flex-auto gap-8 p-8 self-center w-full max-w-6xl bg-white">
-      <div>
+    <main className="flex flex-col p-4 gap-4">
+      <div className="p-4">
         <h1 className="text-3xl font-bold mb-4">Documentation</h1>
+        <p>To be updated</p>
       </div>
 
-      <div>
-        <h2 className="text-2xl font-bold mb-2">Model Information</h2>
-        <p>
-          Explanation about the model used, its accuracy, and other relevant
-          metrics.
-        </p>
-        {/* Add more detailed explanation here if needed */}
-      </div>
+      {docsItems.map((item, index) => (
+        <div key={index}>
+          <h2 className="px-4 text-2xl font-bold mb-2">{item.title}</h2>
 
-      <div>
-        <h2 className="text-2xl font-bold mb-2">Phish URL Metrics</h2>
-        <p>Explanation about the metrics related to phishing URLs.</p>
-        {/* Add more detailed explanation here if needed */}
-      </div>
+          <div className="p-4 border bg-white rounded-xl shadow-lg mb-4">
+            <p>{item.descriptions}</p>
+            {item.content && <div className="mt-4">{item.content}</div>}
+          </div>
 
-      <div>
-        <h2 className="text-2xl font-bold mb-2">Safe URL Metrics</h2>
-        <p>Explanation about the metrics related to safe URLs.</p>
-        {/* Add more detailed explanation here if needed */}
-      </div>
-
-      <div>
-        <h2 className="text-2xl font-bold mb-2">Feature Importance</h2>
-        <p>Explanation about the importance of features in the model.</p>
-        {/* Add more detailed explanation here if needed */}
-      </div>
-
-      {/* Section: Extracted Features */}
-      <section className="flex flex-col gap-6">
-        <div>
-          <h2 className="text-2xl font-bold mb-2">Extracted Features</h2>
-          <p>
-            Extracted features provide valuable insights into the
-            characteristics and behavior of URLs, allowing machine learning
-            models to distinguish between legitimate and phishing URLs with
-            greater accuracy. By analyzing these features, ML algorithms can
-            identify patterns and anomalies associated with phishing activities.
-          </p>
+          {/* Add more detailed explanation here if needed */}
         </div>
-
-        <div className="overflow-x-auto rounded-xl border">
-          <table>
-            <thead>
-              <tr className="bg-primary text-white">
-                <th className="px-4 py-2">Feature</th>
-                <th className="px-4 py-2">Type</th>
-                <th className="px-4 py-2">Value</th>
-                <th className="px-4 py-2">Explanation</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y">
-              {/* Feature rows */}
-              {Object.values(featureInformation).map((feature, index) => (
-                <tr key={index}>
-                  <td className="px-4 py-2 font-medium bg-gray-100">
-                    {feature.featureName}
-                  </td>
-                  <td className="px-4 py-2 font-medium bg-gray-white text-center">
-                    {feature.dataType}
-                  </td>
-                  <td className="px-4 py-2 font-medium bg-gray-50 text-center">
-                    {feature.sampleValue}
-                  </td>
-                  <td className="px-4 py-2 bg-white">{feature.explanation}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <div>
-        <h2 className="text-2xl font-bold mb-2">Performance Metrics</h2>
-        <p>
-          Explanation about the performance metrics such as fitting time and
-          scoring time.
-        </p>
-        {/* Add more detailed explanation here if needed */}
-      </div>
-    </div>
+      ))}
+    </main>
   );
 };
 

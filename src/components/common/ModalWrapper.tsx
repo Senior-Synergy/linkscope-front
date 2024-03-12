@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import Portal from "./Portal";
 
 interface ReusableModalProps {
@@ -9,11 +9,7 @@ interface ReusableModalProps {
   children: React.ReactNode;
 }
 
-const ReusableModal: React.FC<ReusableModalProps> = ({
-  isOpen,
-  onClose,
-  children,
-}) => {
+function ModalWrapper({ isOpen, onClose, children }: ReusableModalProps) {
   if (!isOpen) return null;
 
   return (
@@ -31,6 +27,6 @@ const ReusableModal: React.FC<ReusableModalProps> = ({
       </div>
     </Portal>
   );
-};
+}
 
-export default ReusableModal;
+export default ModalWrapper;

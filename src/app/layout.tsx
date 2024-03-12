@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
-import { Inter, Kanit, Montserrat } from "next/font/google";
+import { Kanit, Montserrat } from "next/font/google";
 import "./globals.css";
 
 const kanit = Kanit({ weight: "400", subsets: ["latin"] });
 const montserrat = Montserrat({ subsets: ["latin"] });
 
+import backgroundImage from "../../public/images/background/double-bubble-outline.png";
+
 import Navbar from "@/components/common/Navbar";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Senior Synergy",
@@ -21,10 +24,28 @@ export default function RootLayout({
     <html lang="en">
       <body className={montserrat.className}>
         <div className="flex flex-col min-h-screen">
+          {/* Background Image */}
+          <div className="fixed -z-10 inset-0">
+            <Image
+              alt="patterns"
+              src={backgroundImage}
+              placeholder="blur"
+              quality={100}
+              fill
+              sizes="100vw"
+              className="object-cover opacity-25"
+            />
+          </div>
+
+          {/* Navbar */}
           <Navbar />
-          {children}
+
+          {/* Main */}
+          <div className="flex flex-col flex-auto md:ml-64">{children}</div>
+
+          {/* Modal Portal */}
+          <div id="portal-root" />
         </div>
-        <div id="portal-root" />
       </body>
     </html>
   );
