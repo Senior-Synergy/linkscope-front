@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { Kanit, Montserrat } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 
-const kanit = Kanit({ weight: "400", subsets: ["latin"] });
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 import backgroundImage from "../../public/images/background/double-bubble-outline.png";
@@ -33,7 +32,7 @@ export default function RootLayout({
               quality={100}
               fill
               sizes="100vw"
-              className="object-cover opacity-25"
+              className="object-cover opacity-20"
             />
           </div>
 
