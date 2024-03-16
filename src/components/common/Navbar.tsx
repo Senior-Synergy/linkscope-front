@@ -1,47 +1,45 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { useState } from "react";
+import {
+  FaClipboardList,
+  FaCrosshairs,
+  FaHouse,
+  FaInbox,
+  FaMagnifyingGlass,
+} from "react-icons/fa6";
+
+import NavbarItem from "./NavbarItem";
 
 import LinkScopeIcon from "../../../public/logo/logo-icon-black.svg";
 
-import HomeIcon from "../../../public/icons/house-chimney-blank.svg";
-import AboutIcon from "../../../public/icons/circle-information.svg";
-import ScanIcon from "../../../public/icons/shield-check.svg";
-import SearchIcon from "../../../public/icons/search.svg";
-import ContactIcon from "../../../public/icons/square-list.svg";
-
-import { usePathname } from "next/navigation";
-import { useState } from "react";
-
 function Navbar() {
-  const pathname = extractFirstDirectory(usePathname());
-
-  const MainNavItems = [
+  const NavBarItems = [
     {
       name: "Home",
       route: "/",
-      icon: HomeIcon,
+      icon: <FaHouse />,
     },
     {
       name: "Scan",
       route: "/scan",
-      icon: ScanIcon,
+      icon: <FaCrosshairs />,
     },
     {
       name: "Search",
       route: "/search",
-      icon: SearchIcon,
+      icon: <FaMagnifyingGlass />,
     },
     {
       name: "Docs",
       route: "/docs",
-      icon: AboutIcon,
+      icon: <FaClipboardList />,
     },
     {
       name: "About",
       route: "/about",
-      icon: ContactIcon,
+      icon: <FaInbox />,
     },
   ];
 
@@ -51,18 +49,13 @@ function Navbar() {
     setIsSidebarOpen(!isSidebarOpen);
   }
 
-  function extractFirstDirectory(route: string): string {
-    const parts = route.replace(/^\/|\/$/g, "").split("/");
-    return "/" + parts[0];
-  }
-
   return (
     <>
       <div
         className="sticky top-0 
                   md:hidden flex justify-between items-center 
                   p-4 h-14
-                  bg-white border-b shadow-lg
+                  bg-white border-b
                   "
       >
         <div className="flex items-center gap-2">
@@ -87,7 +80,6 @@ function Navbar() {
           className={`fixed md:flex flex-col items-center gap-4
                       w-64 min-h-full p-4 overflow-auto
                       bg-white border-r
-                      shadow-lg
                       ${isSidebarOpen ? "inset-0" : "hidden"}`}
         >
           <div className="flex justify-center items-center gap-2 py-4">
@@ -98,19 +90,13 @@ function Navbar() {
           </div>
 
           <div className="flex flex-col w-full">
-            {MainNavItems.map((item, index) => (
-              <Link key={index} href={item.route}>
-                <div
-                  className={`
-                  w-full px-6 py-4 rounded-xl transition-all duration-300
-                  ${pathname === item.route && "bg-primary-500"}`}
-                >
-                  <div className="flex items-center gap-4 hover:opacity-100">
-                    <Image className="h-6 w-auto" src={item.icon} alt="icon" />
-                    <p className="font-bold text-lg">{item.name}</p>
-                  </div>
-                </div>
-              </Link>
+            {NavBarItems.map((item, index) => (
+              <NavbarItem
+                key={index}
+                name={item.name}
+                route={item.route}
+                icon={item.icon}
+              />
             ))}
           </div>
         </div>

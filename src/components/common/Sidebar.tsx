@@ -23,12 +23,30 @@ function Sidebar({ navItems }: SidebarProps) {
 
   return (
     <>
-      <button
+      {/* <button
         onClick={toggleSidebar}
         className="md:hidden fixed top-0 right-0 h-14 w-14 z-20"
       >
         <Image src={"/icons/menu.svg"} alt="logo" width={30} height={30} />
-      </button>
+      </button> */}
+
+<div
+        className="sticky top-0 
+                  md:hidden flex justify-between items-center 
+                  p-4 h-14
+                  bg-white border-b shadow-lg
+                  "
+      >
+        <div className="flex items-center gap-2">
+          {/* <Image src={LinkScopeIcon} alt="logo" className="h-6 w-auto" /> */}
+          <p className="font-extrabold text-xl">SENIOR SYNERGY</p>
+        </div>
+
+        <button onClick={toggleSidebar}>
+          <Image src={"/icons/menu.svg"} alt="logo" width={30} height={30} />
+        </button>
+      </div>
+
 
       <AnimatePresence>
         {isSidebarOpen && (
