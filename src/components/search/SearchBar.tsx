@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../common/Button";
 
 interface SearchBarProps {
   textInput: string;
@@ -6,33 +7,38 @@ interface SearchBarProps {
 }
 
 function SearchBar({ textInput, onTextInputChange }: SearchBarProps) {
+  function searchUrl() {
+    // add logic for searching urls
+  }
+
   return (
     <div
-      className="flex gap-2 w-full"
+      className="flex gap-2 
+                w-full p-2 
+                bg-white border rounded-xl"
     >
-      <label className="grow">
-        <input
-          className={`w-full p-2 rounded-lg
+      <div className="grow">
+        <label>
+          <input
+            className={`w-full p-2 rounded-lg
                     border focus:outline-none focus:ring-1 focus:ring-primary-light 
-                    bg-gray-200`}
-          name="search-query"
-          placeholder="Enter search terms..."
-          value={textInput}
-          onChange={(e) => onTextInputChange(e.target.value)}
+                    bg-gray-100`}
+            name="search-query"
+            placeholder="Enter search terms..."
+            value={textInput}
+            onChange={(e) => onTextInputChange(e.target.value)}
+          />
+        </label>
+      </div>
+
+      <div className="w-32">
+        <Button
+          title="Search"
+          onClick={searchUrl}
+          disabled={textInput.length < 1}
+          primary
         />
-      </label>
-      <button
-        className={`w-32 transition-all border rounded-lg text-white ${
-          textInput
-            ? "bg-primary hover:bg-primary-dark"
-            : "pointer-events-none bg-deactive"
-        }`}
-      >
-        Search
-      </button>
-      {/* <button
-        className={`h-10 w-10 transition-all border rounded-lg text-white`}
-      /> */}
+      </div>
     </div>
   );
 }

@@ -1,15 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import ModalWrapper from "../common/ModalWrapper";
-import { UrlItem } from "@/types/scanTypes";
+import { useEffect, useRef, useState } from "react";
+import { UrlItem } from "@/types/urlTypes";
 import { useRouter } from "next/navigation";
+
+import ModalWrapper from "../common/ModalWrapper";
+import Button from "../common/Button";
+import IdentifiedUrlList from "./IdentifiedUrlList";
 
 function Scanner() {
   const router = useRouter();
 
   const [textInput, setTextInput] = useState("");
   const [urlList, setUrlList] = useState<UrlItem[]>([]);
+
+  const firstInputRef = useRef(true);
 
   const [isConfirmingReset, setIsConfirmingReset] = useState(false);
 
@@ -18,12 +23,6 @@ function Scanner() {
       /((?:(http|https|Http|Https|rtsp|Rtsp):\/\/(?:(?:[a-zA-Z0-9\$\-\_\.\+\!\*\'\(\)\,\;\?\&\=]|(?:\%[a-fA-F0-9]{2})){1,64}(?:\:(?:[a-zA-Z0-9\$\-\_\.\+\!\*\'\(\)\,\;\?\&\=]|(?:\%[a-fA-F0-9]{2})){1,25})?\@)?)?((?:(?:[a-zA-Z0-9][a-zA-Z0-9\-]{0,64}\.)+(?:(?:aero|arpa|asia|a[cdefgilmnoqrstuwxz])|(?:biz|b[abdefghijmnorstvwyz])|(?:cat|com|coop|c[acdfghiklmnoruvxyz])|d[ejkmoz]|(?:edu|e[cegrstu])|f[ijkmor]|(?:gov|g[abdefghilmnpqrstuwy])|h[kmnrtu]|(?:info|int|i[delmnoqrst])|(?:jobs|j[emop])|k[eghimnrwyz]|l[abcikrstuvy]|(?:mil|mobi|museum|m[acdghklmnopqrstuvwxyz])|(?:name|net|n[acefgilopruz])|(?:org|om)|(?:pro|p[aefghklmnrstwy])|qa|r[eouw]|s[abcdeghijklmnortuvyz]|(?:tel|travel|t[cdfghjklmnoprtvwz])|u[agkmsyz]|v[aceginu]|w[fs]|y[etu]|z[amw]))|(?:(?:25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[1-9])\.(?:25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[1-9]|0)\.(?:25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[1-9]|0)\.(?:25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[0-9])))(?:\:\d{1,5})?)(\/(?:(?:[a-zA-Z0-9\;\/\?\:\@\&\=\#\~\-\.\+\!\*\'\(\)\,\_])|(?:\%[a-fA-F0-9]{2}))*)?(?:\b|$)/gi;
 
     return text.match(urlRegex) || [];
-  }
-
-  function handleUpdateUrlList(index: number) {
-    const updatedList = [...urlList];
-    updatedList[index].isSelected = !updatedList[index].isSelected;
-    setUrlList(updatedList);
   }
 
   function processUrl() {
@@ -44,6 +43,9 @@ function Scanner() {
   }
 
   useEffect(() => {
+    if (firstInputRef.current) {
+      firstInputRef.current = false;
+    }
     // Create a set of current URLs from textInput
     const currentUrls = new Set(urlify(textInput));
 
@@ -67,10 +69,16 @@ function Scanner() {
 
   return (
     <>
+      {firstInputRef.current && (
+        <div className="p-4 rounded-xl bg-primary border">
+          <p className="text-white">Enter some text to get started...</p>
+        </div>
+      )}
+
       <div
         className="flex flex-col gap-4 p-4
                   w-full
-                  rounded-xl bg-white border shadow-lg"
+                  rounded-xl bg-white border"
       >
         {/* Title */}
         <p className="font-medium">Input text</p>
@@ -90,75 +98,27 @@ function Scanner() {
         <p className="font-medium">Identified URL(s)</p>
 
         {/* Identified link list */}
-        <div
-          className="flex flex-col p-2 gap-4
-                      w-full h-64 overflow-y-auto
-                      rounded-lg bg-gray-100"
-        >
-          {/* Url list */}
-          {urlList.length > 0 ? (
-            <ul className="flex flex-col gap-2 w-full">
-              {urlList.map((urlItem, index) => (
-                <button
-                  key={index}
-                  onClick={() => handleUpdateUrlList(index)}
-                  className={`flex items-center justify-between 
-                            w-full gap-2 p-2 
-                            rounded-lg border
-                            transition-colors ${
-                              urlItem.isSelected
-                                ? "bg-white hover:bg-gray-200"
-                                : "bg-gray-300 line-through "
-                            }`}
-                >
-                  <div className={`${!urlItem.isSelected && ""} truncate pl-2`}>
-                    {urlItem.url}
-                  </div>
-                  <div
-                    className="flex flex-shrink-0 items-center justify-center 
-                                w-8 h-8 rounded-full
-                                bg-white
-                                font-bold
-                                transition-all"
-                  ></div>
-                </button>
-              ))}
-            </ul>
-          ) : (
-            <div className="flex flex-col flex-auto items-center justify-center text-gray-400">
-              No URL detected
-            </div>
-          )}
-        </div>
+        <IdentifiedUrlList
+          urlList={urlList}
+          onUpdateUrlList={setUrlList}
+        />
 
         {/* Buttons */}
-        <div className="flex items-center justify-end w-full space-x-4">
-          <button
-            onClick={() => setIsConfirmingReset(true)}
-            className={`flex items-center justify-center 
-                        w-1/2 h-12 rounded-lg 
-                        border
-                        transition-all ${
-                          textInput
-                            ? "border-primary text-primary hover:bg-primary-300 hover:border-transparent hover:text-white"
-                            : "pointer-events-none text-deactive border-deactive"
-                        }`}
-          >
-            Reset
-          </button>
-          <button
-            onClick={processUrl}
-            className={`flex items-center justify-center 
-                      w-1/2 h-12 rounded-lg 
-                      text-white 
-                      transition-all ${
-                        urlList.some((urlItem) => urlItem.isSelected)
-                          ? "bg-primary hover:bg-primary-dark"
-                          : "pointer-events-none bg-deactive"
-                      }`}
-          >
-            Submit
-          </button>
+        <div className="flex w-full h-12 gap-4">
+          <div className="w-1/2">
+            <Button
+              title="Reset"
+              onClick={() => setIsConfirmingReset(true)}
+              disabled={textInput.length < 1}
+            />
+          </div>
+          <div className="w-1/2">
+            <Button
+              title="Submit"
+              onClick={processUrl}
+              disabled={!urlList.some((urlItem) => urlItem.isSelected)}
+            />
+          </div>
         </div>
       </div>
 

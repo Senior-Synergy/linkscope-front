@@ -11,7 +11,7 @@ function UrlList({ urlList: searchResults }: UrlListProps) {
     <div
       className="flex flex-col
                 w-full 
-                rounded-xl bg-white border shadow-lg
+                rounded-xl bg-white border
                 divide-y divide
                 overflow-hidden"
     >
