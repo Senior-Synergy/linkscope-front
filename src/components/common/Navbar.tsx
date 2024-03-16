@@ -77,10 +77,10 @@ function Navbar() {
 
       <nav>
         <div
-          className={`fixed md:flex flex-col items-center gap-4
+          className={`fixed flex flex-col items-center gap-4
                       w-64 min-h-full p-4 overflow-auto
                       bg-white border-r
-                      ${isSidebarOpen ? "inset-0" : "hidden"}`}
+                      ${isSidebarOpen ? "inset-0" : "hidden md:flex"}`}
         >
           <div className="flex justify-center items-center gap-2 py-4">
             <Image src={LinkScopeIcon} alt="logo" className="h-12 w-auto" />
