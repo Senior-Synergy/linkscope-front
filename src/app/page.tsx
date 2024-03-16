@@ -1,8 +1,10 @@
+import { UrlInfo, Verdict } from "@/types/searchTypes";
+
 import Link from "next/link";
 
 import UrlList from "@/components/search/UrlList";
-
-import { UrlInfo, Verdict } from "@/types/searchTypes";
+import Button from "@/components/common/Button";
+import Footer from "@/components/common/Footer";
 
 const HomePage = () => {
   const dummyUrlList: UrlInfo[] = [
@@ -34,19 +36,13 @@ const HomePage = () => {
     // Add more dummy data as needed
   ];
 
-  // const stats = [
-  //   { value: "#1", description: "Stat-1" },
-  //   { value: "95%", description: "Stat-2" },
-  //   { value: ">600k", description: "Stat-3" },
-  // ];
-
   return (
     <main className="flex flex-col p-4 gap-4">
       <header>
         <h1 className="text-3xl font-bold p-4 mb-2">
           Welcome To Senior Synergy
         </h1>
-        <div className="flex flex-col w-full gap-4 p-4 rounded-xl border bg-white shadow-lg">
+        <div className="flex flex-col w-full gap-4 p-4 rounded-xl border bg-white">
           <h2 className="text-2xl font-bold">
             Introducing,<span className="text-primary"> LinkScope</span>
           </h2>
@@ -58,19 +54,17 @@ const HomePage = () => {
             will automatically identify URLs within it.
           </p>
 
-          <div className="flex w-full gap-4">
-            <Link
-              href="/docs"
-              className="flex items-center justify-center w-1/2 h-12 rounded-lg bg-white text-primary border border-primary-light hover:bg-primary-light hover:border-transparent hover:text-white transition-all"
-            >
-              Learn more
-            </Link>
-            <Link
-              href="/scan"
-              className="flex items-center justify-center w-1/2 h-12 rounded-lg bg-primary text-white hover:bg-primary-dark hover:text-white transition-all"
-            >
-              Start now
-            </Link>
+          <div className="flex w-full h-12 gap-4">
+            <div className="w-1/2">
+              <Link href="/docs">
+                <Button title="Learn more" />
+              </Link>
+            </div>
+            <div className="w-1/2">
+              <Link href="/scan">
+                <Button title="Start now" primary />
+              </Link>
+            </div>
           </div>
         </div>
         {/* <p className="bg-white border p-4 rounded-xl">
@@ -83,8 +77,8 @@ const HomePage = () => {
       <div>
         <h2 className="text-xl font-bold p-4">Quick Access</h2>
 
-        <div className="flex flex-col w-full gap-4 p-4 rounded-xl bg-white border shadow-lg">
-          To be updated
+        <div className="flex flex-col w-full gap-4 p-4 rounded-xl bg-white border">
+          Coming soon...
         </div>
       </div>
 
@@ -131,9 +125,7 @@ const HomePage = () => {
         <UrlList urlList={dummyUrlList} />
       </div>
 
-      <footer className="p-4 text-gray-500 text-sm">
-        <p>LinkScope | Senior Synergy</p>
-      </footer>
+      <Footer />
     </main>
   );
 };

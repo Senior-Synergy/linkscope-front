@@ -1,5 +1,4 @@
 import FeatureTable from "@/components/docs/FeatureTable";
-import { featureInformation } from "@/constants/feature";
 
 const DocumentationPage = () => {
   const docsItems = [
@@ -50,7 +49,7 @@ const DocumentationPage = () => {
         <div key={index}>
           <h2 className="px-4 text-2xl font-bold mb-2">{item.title}</h2>
 
-          <div className="p-4 border bg-white rounded-xl shadow-lg mb-4">
+          <div className="p-4 border bg-white rounded-xl mb-4">
             <p>{item.descriptions}</p>
             {item.content && <div className="mt-4">{item.content}</div>}
           </div>

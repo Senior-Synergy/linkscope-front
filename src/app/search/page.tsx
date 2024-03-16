@@ -1,3 +1,4 @@
+import Footer from "@/components/common/Footer";
 import RecentUrls from "@/components/common/RecentUrls";
 import Searcher from "@/components/search/Searcher";
 
@@ -8,9 +9,8 @@ function SearchPage() {
         <div className="p-4">
           <h1 className="text-3xl font-bold mb-4">Search URLs</h1>
           <p>
-            {`Explore a vast database of previously scanned URLs using our Search
-          feature. Navigate and retrieve valuable information by investigating a
-          specific link with LinkScope's Search functionality.`}
+            {`Explore our database of previously scanned URLs using our Search
+          feature.`}
           </p>
         </div>
       </header>
@@ -19,9 +19,7 @@ function SearchPage() {
 
       <RecentUrls />
 
-      <footer className="mt-8 text-gray-500 text-sm">
-        <p>LinkScope | Senior Synergy</p>
-      </footer>
+      <Footer />
     </main>
   );
 }

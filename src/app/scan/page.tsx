@@ -1,3 +1,4 @@
+import Footer from "@/components/common/Footer";
 import Scanner from "@/components/scanner/Scanner";
 
 const ScanPage = () => {
@@ -26,9 +27,7 @@ const ScanPage = () => {
         </ol>
       </div>
 
-      <footer className="px-4 text-gray-500 text-sm">
-        <p>LinkScope | Senior Synergy</p>
-      </footer>
+      <Footer />
     </main>
   );
 };

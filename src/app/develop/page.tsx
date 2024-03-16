@@ -1,5 +1,7 @@
 "use client";
 
+import Button from "@/components/common/Button";
+import Footer from "@/components/common/Footer";
 import axios from "axios";
 
 const DevelopPage = () => {
@@ -97,9 +99,13 @@ const DevelopPage = () => {
         </div>
       </div>
 
-      <footer className="mt-8 text-gray-500 text-sm">
-        <p>LinkScope | Senior Synergy</p>
-      </footer>
+      <Button title="test" primary />
+      <Button title="test" />
+
+      <Button title="test" primary disabled />
+      <Button title="test" disabled />
+
+      <Footer />
     </main>
   );
 };
