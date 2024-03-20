@@ -42,6 +42,7 @@ const HomePage = () => {
         <h1 className="text-3xl font-bold p-4 mb-2">
           Welcome To Senior Synergy
         </h1>
+        
         <div className="flex flex-col w-full gap-4 p-4 rounded-xl border bg-white">
           <h2 className="text-2xl font-bold">
             Introducing,<span className="text-primary"> LinkScope</span>

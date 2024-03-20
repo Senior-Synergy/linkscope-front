@@ -1,4 +1,6 @@
 import React from "react";
+import { FaPlusCircle } from "react-icons/fa";
+import { FaEye, FaMinus, FaPlus, FaRegEye } from "react-icons/fa6";
 
 interface IdentifiedUrlListItemProps {
   onClick: () => void;
@@ -12,26 +14,26 @@ function IdentifiedUrlListItem({
   onClick,
 }: IdentifiedUrlListItemProps) {
   return (
-    <button
-      onClick={onClick}
+    <div
       className={`flex items-center justify-between 
             w-full gap-2 p-2 
             rounded-lg border
             transition-colors ${
-              isSelected
-                ? "bg-white hover:bg-gray-200"
-                : "bg-gray-300 line-through "
+              isSelected ? "bg-white" : "bg-gray-300 line-through"
             }`}
     >
       <div className={`${!isSelected && ""} truncate pl-2`}>{url}</div>
-      <div
-        className="flex flex-shrink-0 items-center justify-center 
-              w-8 h-8 rounded-full
-              bg-white
-              font-bold
-              transition-all"
-      ></div>
-    </button>
+      <button
+        onClick={onClick}
+        className="rounded-full p-1 hover:bg-gray-200"
+      >
+        {isSelected ? (
+          <FaMinus className="w-4 h-4" />
+        ) : (
+          <FaPlus className="w-4 h-4" />
+        )}
+      </button>
+    </div>
   );
 }
 

@@ -5,49 +5,6 @@ import SummarizedReport from "@/components/result/SummarizedReport";
 const ScanResultPage = ({ params }: { params: { slug: string } }) => {
   const scanId = params.slug;
 
-  const data = {
-    modelResults: {
-      verdict: 1,
-      probabilityOfPhishUrl: 98.21,
-    },
-    urlDetails: {
-      actualUrl: "https://www.example.com",
-    },
-    extractedFeatures: {
-      domainLength: 12.0,
-      hasWwwSubdomain: false,
-      hasMultipleSubdomains: false,
-      usesHttps: true,
-      usesHttp: false,
-      isShortUrl: false,
-      containsIpAddress: false,
-      atCount: 2,
-      hyphenCount: 1,
-      equalCount: 0,
-      dotCount: 2,
-      underscoreCount: 0,
-      slashCount: 1,
-      digitCount: 3,
-      containsLogWord: false,
-      containsPayWord: true,
-      containsWebWord: true,
-      containsCmdWord: false,
-      containsAccountWord: false,
-      percentageEmptyLinks: 10.5,
-      percentageExternalLinks: 25.0,
-      percentageExternalResourcesUrl: 30.0,
-      hasZeroLink: false,
-      hasDifferentFaviconDomain: true,
-      hasSubmitToEmail: false,
-      isSfh: true,
-      hasRedirection: true,
-      isDomainAgeLessThan6Months: false,
-      isDomainEndLessThanOrEqual1Year: true,
-    },
-  };
-
-  const results = [data, data, data];
-
   return (
     <div
       className="flex flex-col flex-auto self-center
@@ -61,12 +18,7 @@ const ScanResultPage = ({ params }: { params: { slug: string } }) => {
       </header>
 
       <div>
-        <h2 className="text-xl font-bold mb-4">Summarized Report</h2>
-        <SummarizedReport results={results} />
-      </div>
-
-      <div>
-        <ScanReportDisplay results={results} />
+        {/* <ScanReportDisplay results={results} /> */}
       </div>
 
       {/* Section: Model Results */}

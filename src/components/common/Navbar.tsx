@@ -54,7 +54,7 @@ function Navbar() {
       <div
         className="sticky top-0 
                   md:hidden flex justify-between items-center 
-                  p-4 h-14
+                  p-4 h-14 z-10
                   bg-white border-b
                   "
       >
@@ -71,36 +71,34 @@ function Navbar() {
       {isSidebarOpen && (
         <div
           onClick={toggleSidebar}
-          className="fixed md:hidden inset-0 bg-gray-300 bg-opacity-30"
+          className="fixed md:hidden inset-0 bg-gray-300 bg-opacity-30 z-10"
         />
       )}
 
-      <nav>
-        <div
-          className={`fixed flex flex-col items-center gap-4
+      <div
+        className={`fixed flex flex-col items-center gap-4 z-10
                       w-64 min-h-full p-4 overflow-auto
                       bg-white border-r
                       ${isSidebarOpen ? "inset-0" : "hidden md:flex"}`}
-        >
-          <div className="flex justify-center items-center gap-2 py-4">
-            <Image src={LinkScopeIcon} alt="logo" className="h-12 w-auto" />
-            <p className="font-extrabold text-lg">
-              SENIOR <br /> SYNERGY
-            </p>
-          </div>
-
-          <div className="flex flex-col w-full">
-            {NavBarItems.map((item, index) => (
-              <NavbarItem
-                key={index}
-                name={item.name}
-                route={item.route}
-                icon={item.icon}
-              />
-            ))}
-          </div>
+      >
+        <div className="flex justify-center items-center gap-2 py-4">
+          <Image src={LinkScopeIcon} alt="logo" className="h-12 w-auto" />
+          <p className="font-extrabold text-lg">
+            SENIOR <br /> SYNERGY
+          </p>
         </div>
-      </nav>
+
+        <div className="flex flex-col w-full">
+          {NavBarItems.map((item, index) => (
+            <NavbarItem
+              key={index}
+              name={item.name}
+              route={item.route}
+              icon={item.icon}
+            />
+          ))}
+        </div>
+      </div>
     </>
   );
 }

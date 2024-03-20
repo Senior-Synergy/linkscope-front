@@ -2,6 +2,7 @@ import React from "react";
 
 interface ButtonProps {
   title: string;
+  type?: "button" | "submit" | "reset" | undefined;
   primary?: boolean;
   disabled?: boolean;
   onClick?: () => void;
@@ -9,12 +10,14 @@ interface ButtonProps {
 
 function Button({
   title,
+  type = "button",
   primary = false,
   disabled = false,
   onClick,
 }: ButtonProps) {
   return (
     <button
+      type={type}
       disabled={disabled}
       onClick={onClick}
       className={`flex items-center justify-center 
