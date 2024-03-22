@@ -3,7 +3,7 @@ import Scanner from "@/components/scanner/Scanner";
 
 const ScanPage = () => {
   return (
-    <main className="flex flex-col p-8 gap-4">
+    <main className="flex flex-col p-8 gap-8">
       <header>
         <h1 className="text-3xl font-bold mb-4">LinkScope URL Scanner</h1>
         <p>
