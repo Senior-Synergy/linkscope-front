@@ -1,5 +1,4 @@
 import Footer from "@/components/common/Footer";
-import RecentUrls from "@/components/common/RecentUrls";
 import Searcher from "@/components/search/Searcher";
 import UrlList from "@/components/search/UrlList";
 import { UrlInfo, Verdict } from "@/types/searchTypes";
