@@ -39,7 +39,7 @@ const DocumentationPage = () => {
   ];
 
   return (
-    <main className="flex flex-col p-8 gap-4">
+    <main className="flex flex-col p-4 md:p-8 gap-8">
       <div className="">
         <h1 className="text-3xl font-bold mb-4">Documentation</h1>
         <p>To be updated</p>
