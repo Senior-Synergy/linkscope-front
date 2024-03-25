@@ -31,7 +31,7 @@ function TabSelectorItem({ title, isSelected, onClick }: TabSelectorItemProps) {
   return (
     <button
       onClick={onClick}
-      className={`relative flex-auto text-center p-2 ${
+      className={`relative flex-auto text-center p-2 transition-all ${
         isSelected
           ? "bg-primary hover:bg-primary-600 text-white"
           : "bg-white hover:bg-gray-200 text-black"

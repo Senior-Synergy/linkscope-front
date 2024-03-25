@@ -45,7 +45,7 @@ const DocumentationPage = () => {
         <p>To be updated</p>
       </div>
 
-      {docsItems.map((item, index) => (
+      {/* {docsItems.map((item, index) => (
         <div key={index}>
           <h2 className="text-2xl font-bold mb-2">{item.title}</h2>
 
@@ -53,10 +53,8 @@ const DocumentationPage = () => {
             <p>{item.descriptions}</p>
             {item.content && <div className="mt-4">{item.content}</div>}
           </div>
-
-          {/* Add more detailed explanation here if needed */}
         </div>
-      ))}
+      ))} */}
     </main>
   );
 };

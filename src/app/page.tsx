@@ -40,19 +40,10 @@ const HomePage = () => {
 
   return (
     <main className="flex flex-col p-8 gap-8">
-      <header>
-        <h1 className="text-3xl font-bold">Welcome To Senior Synergy</h1>
-        {/* <p className="bg-white border p-4 rounded-xl">
-            Suspendisse dolor nisl, rhoncus eu arcu non, suscipit convallis
-            nulla. Vivamus laoreet nunc libero, sed hendrerit magna tincidunt
-            vitae. Etiam eget euismod enim.
-          </p> */}
-      </header>
-
-      <div className="flex flex-col w-full gap-4 p-4 rounded-xl border border-primary bg-primary-50">
-        <h2 className="text-2xl font-bold">
-          Introducing,<span className="text-primary"> LinkScope</span>
-        </h2>
+      <div className="flex flex-col w-full gap-4">
+        <h1 className="text-3xl font-bold">
+          Introducing,<span className="text-primary"> LINKSCOPE</span>
+        </h1>
 
         <p>
           LinkScope is a cutting-edge URL Scanner to identify phishing links.
@@ -76,7 +67,10 @@ const HomePage = () => {
       </div>
 
       <div>
-        <h2 className="text-xl font-bold mb-4">Quick Access</h2>
+        <h2 className="text-xl font-bold mb-4">Quick Start</h2>
+        <p className="mb-4">
+          Copy and paste text that contain URLs and start analyzing it now!
+        </p>
         <div className="flex flex-col w-full gap-4 p-4 rounded-xl bg-white border">
           Coming soon...
         </div>

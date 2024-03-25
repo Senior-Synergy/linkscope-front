@@ -43,12 +43,12 @@ function Navbar() {
     },
   ];
 
-  const [collapsed, setCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const [isNarrow, setIsNarrow] = useState(false);
   const navbarRef = useRef<HTMLDivElement>(null);
 
   const toggleCollapse = () => {
-    setCollapsed(!collapsed);
+    setIsCollapsed(!isCollapsed);
   };
 
   useEffect(() => {
@@ -56,24 +56,10 @@ function Navbar() {
       // Expand the navbar if window width is greater than a certain threshold
       if (window.innerWidth > 768) {
         setIsNarrow(false);
-        setCollapsed(false);
-
-        document.removeEventListener("mousedown", handleOutsideClick);
+        setIsCollapsed(false);
       } else {
         setIsNarrow(true);
-        setCollapsed(true);
-
-        document.addEventListener("mousedown", handleOutsideClick);
-      }
-    };
-
-    const handleOutsideClick = (event: MouseEvent) => {
-      if (
-        navbarRef.current &&
-        !navbarRef.current.contains(event.target as Node) &&
-        !collapsed
-      ) {
-        setCollapsed(true);
+        setIsCollapsed(true);
       }
     };
 
@@ -83,9 +69,8 @@ function Navbar() {
     // Remove event listener on component unmount
     return () => {
       window.removeEventListener("resize", handleResize);
-      document.removeEventListener("mousedown", handleOutsideClick);
     };
-  }, []);
+  });
 
   return (
     <>
@@ -97,7 +82,7 @@ function Navbar() {
       >
         <div className="flex items-center gap-2">
           <Image src={LinkScopeIcon} alt="logo" className="h-6 w-auto" />
-          <p className="font-extrabold text-xl">SENIOR SYNERGY</p>
+          <p className="font-extrabold text-xl">LINKSCOPE</p>
         </div>
 
         <button onClick={toggleCollapse}>
@@ -106,10 +91,11 @@ function Navbar() {
       </div>
 
       <div
+        onClick={toggleCollapse}
         className={`fixed inset-0 z-10
                   bg-black
                   ${
-                    !isNarrow || collapsed
+                    !isNarrow || isCollapsed
                       ? "opacity-0 pointer-events-none"
                       : "opacity-10"
                   }
@@ -122,7 +108,7 @@ function Navbar() {
         className={`fixed z-10 h-full w-64 overflow-auto
                   bg-white border-r
                   ${
-                    collapsed
+                    isCollapsed
                       ? "-translate-x-full opacity-0"
                       : "translate-x-0 opacity-100"
                   }
@@ -132,9 +118,10 @@ function Navbar() {
         <div className="flex flex-col h-full items-center gap-8 p-8">
           <div className="flex justify-center items-center gap-2">
             <Image src={LinkScopeIcon} alt="logo" className="h-12 w-auto" />
-            <p className="font-extrabold text-lg">
-              SENIOR <br /> SYNERGY
-            </p>
+            <div>
+              <p className="font-extrabold text-3xl h-7">LINK</p>
+              <p className="font-extrabold text-xl">SCOPE</p>
+            </div>
           </div>
 
           <div className="flex flex-col w-full">
