@@ -43,8 +43,7 @@ function Navbar() {
     },
   ];
 
-  const [isCollapsed, setIsCollapsed] = useState(false);
-  const [isNarrow, setIsNarrow] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
   const navbarRef = useRef<HTMLDivElement>(null);
 
   const toggleCollapse = () => {
@@ -53,20 +52,13 @@ function Navbar() {
 
   useEffect(() => {
     const handleResize = () => {
-      // Expand the navbar if window width is greater than a certain threshold
       if (window.innerWidth > 768) {
-        setIsNarrow(false);
         setIsCollapsed(false);
       } else {
-        setIsNarrow(true);
         setIsCollapsed(true);
       }
     };
-
-    // Add event listener
     window.addEventListener("resize", handleResize);
-
-    // Remove event listener on component unmount
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -92,13 +84,12 @@ function Navbar() {
 
       <div
         onClick={toggleCollapse}
-        className={`fixed inset-0 z-10
+        className={`fixed inset-0 z-10 md:hidden
                   bg-black
                   ${
-                    !isNarrow || isCollapsed
-                      ? "opacity-0 pointer-events-none"
-                      : "opacity-10"
+                    isCollapsed ? "opacity-0 pointer-events-none" : "opacity-10"
                   }
+                  md:opacity-0 md:pointer-events-none
                   transform duration-500 ease-in-out
                   transition-all`}
       />
@@ -112,6 +103,7 @@ function Navbar() {
                       ? "-translate-x-full opacity-0"
                       : "translate-x-0 opacity-100"
                   }
+                  md:translate-x-0 md:opacity-100
                   transform duration-500 ease-in-out
                   transition-all`}
       >
