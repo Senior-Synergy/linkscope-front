@@ -1,11 +1,11 @@
-import { UrlItem } from "@/types/urlTypes";
+import { UrlSelectorItem } from "@/types/urlTypes";
 
 import React from "react";
 import IdentifiedUrlListItem from "./IdentifiedUrlListItem";
 
 interface IdentifiedUrlListProps {
-  urlList: UrlItem[];
-  onUpdateUrlList: (updatedUrlList: UrlItem[]) => void;
+  urlList: UrlSelectorItem[];
+  onUpdateUrlList: (updatedUrlList: UrlSelectorItem[]) => void;
 }
 
 function IdentifiedUrlList({

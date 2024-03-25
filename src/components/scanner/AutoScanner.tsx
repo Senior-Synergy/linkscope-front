@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { UrlItem } from "@/types/urlTypes";
+import { UrlSelectorItem } from "@/types/urlTypes";
 import { useRouter } from "next/navigation";
 
 import ModalWrapper from "../common/ModalWrapper";
@@ -11,7 +11,7 @@ import IdentifiedUrlList from "./IdentifiedUrlList";
 function AutoScanner() {
   const router = useRouter();
   const [textareaInput, setTextareaInput] = useState("");
-  const [urlList, setUrlList] = useState<UrlItem[]>([]);
+  const [urlList, setUrlList] = useState<UrlSelectorItem[]>([]);
 
   const [isConfirmingReset, setIsConfirmingReset] = useState(false);
 
@@ -22,7 +22,7 @@ function AutoScanner() {
     return text.match(urlRegex) || [];
   }
 
-  function handleSubmitTextarea() {
+  function handleSubmitURLs() {
     const processedUrls = urlList
       .filter((urlItem) => urlItem.isSelected)
       .map((urlItem) => urlItem.url);
@@ -96,14 +96,14 @@ function AutoScanner() {
           <div className="w-1/2">
             <Button
               title="Submit"
-              onClick={handleSubmitTextarea}
+              onClick={handleSubmitURLs}
               disabled={!urlList.some((urlItem) => urlItem.isSelected)}
               primary
             />
           </div>
         </div>
       </div>
-      
+
       <ModalWrapper
         isOpen={isConfirmingReset}
         onClose={() => setIsConfirmingReset(false)}
