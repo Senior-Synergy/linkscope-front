@@ -16,11 +16,11 @@ function IdentifiedUrlListItem({
     <button
       onClick={onClick}
       className={`flex items-center justify-between 
-            w-full gap-2 p-2 
+            w-full h-12 gap-2 p-4
             rounded-lg border
             ${isSelected ? "bg-primary-50 border-primary" : "bg-white"}`}
     >
-      <div className={`${!isSelected && ""} truncate pl-2`}>{url}</div>
+      <div className={`${!isSelected && ""} truncate`}>{url}</div>
       <div
         className={`flex items-center justify-center rounded w-5 h-5 border ${
           isSelected ? "border-primary bg-primary" : "bg-white"
