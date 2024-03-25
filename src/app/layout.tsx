@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className={montserrat.className}>
         <div className="flex flex-col min-h-screen">
           {/* Background Image */}
-          <div className="fixed -z-10 inset-0">
+          {/* <div className="fixed -z-10 inset-0">
             <Image
               alt="patterns"
               src={backgroundImage}
@@ -34,7 +34,7 @@ export default function RootLayout({
               sizes="100vw"
               className="object-cover opacity-20"
             />
-          </div>
+          </div> */}
 
           {/* Navbar */}
           <Navbar />

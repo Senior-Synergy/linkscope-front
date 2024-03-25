@@ -1,7 +1,10 @@
 function Footer() {
   return (
-    <footer className="p-4 text-gray-500 text-sm">
-      <p>LinkScope | Senior Synergy</p>
+    <footer className="text-gray-500 text-sm">
+      <p>
+        <span className="font-semibold">LINKSCOPE</span> | Developed by
+        <span className="font-semibold"> Senior Synergy</span>
+      </p>
     </footer>
   );
 }

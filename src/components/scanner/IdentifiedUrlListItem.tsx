@@ -1,4 +1,5 @@
 import React from "react";
+import { FaCheck } from "react-icons/fa6";
 
 interface IdentifiedUrlListItemProps {
   onClick: () => void;
@@ -15,22 +16,18 @@ function IdentifiedUrlListItem({
     <button
       onClick={onClick}
       className={`flex items-center justify-between 
-            w-full gap-2 p-2 
+            w-full h-12 gap-2 p-4
             rounded-lg border
-            transition-colors ${
-              isSelected
-                ? "bg-white hover:bg-gray-200"
-                : "bg-gray-300 line-through "
-            }`}
+            ${isSelected ? "bg-primary-50 border-primary" : "bg-white"}`}
     >
-      <div className={`${!isSelected && ""} truncate pl-2`}>{url}</div>
+      <div className={`${!isSelected && ""} truncate`}>{url}</div>
       <div
-        className="flex flex-shrink-0 items-center justify-center 
-              w-8 h-8 rounded-full
-              bg-white
-              font-bold
-              transition-all"
-      ></div>
+        className={`flex items-center justify-center rounded w-5 h-5 border ${
+          isSelected ? "border-primary bg-primary" : "bg-white"
+        }`}
+      >
+        {isSelected && <FaCheck className="w-3 h-3 fill-white" />}
+      </div>
     </button>
   );
 }

@@ -39,24 +39,22 @@ const DocumentationPage = () => {
   ];
 
   return (
-    <main className="flex flex-col p-4 gap-4">
-      <div className="p-4">
+    <main className="flex flex-col p-4 md:p-8 gap-8">
+      <div className="">
         <h1 className="text-3xl font-bold mb-4">Documentation</h1>
         <p>To be updated</p>
       </div>
 
-      {docsItems.map((item, index) => (
+      {/* {docsItems.map((item, index) => (
         <div key={index}>
-          <h2 className="px-4 text-2xl font-bold mb-2">{item.title}</h2>
+          <h2 className="text-2xl font-bold mb-2">{item.title}</h2>
 
-          <div className="p-4 border bg-white rounded-xl mb-4">
+          <div>
             <p>{item.descriptions}</p>
             {item.content && <div className="mt-4">{item.content}</div>}
           </div>
-
-          {/* Add more detailed explanation here if needed */}
         </div>
-      ))}
+      ))} */}
     </main>
   );
 };

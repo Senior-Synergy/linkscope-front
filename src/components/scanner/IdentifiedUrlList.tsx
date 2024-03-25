@@ -1,11 +1,11 @@
-import { UrlItem } from "@/types/urlTypes";
+import { UrlSelectorItem } from "@/types/urlTypes";
 
 import React from "react";
 import IdentifiedUrlListItem from "./IdentifiedUrlListItem";
 
 interface IdentifiedUrlListProps {
-  urlList: UrlItem[];
-  onUpdateUrlList: (updatedUrlList: UrlItem[]) => void;
+  urlList: UrlSelectorItem[];
+  onUpdateUrlList: (updatedUrlList: UrlSelectorItem[]) => void;
 }
 
 function IdentifiedUrlList({
@@ -22,7 +22,7 @@ function IdentifiedUrlList({
     <div
       className="flex flex-col p-2 gap-4
                 w-full h-64 overflow-y-auto
-                rounded-lg bg-gray-100"
+                rounded-lg bg-white border"
     >
       {/* Url list */}
       {urlList.length > 0 ? (
