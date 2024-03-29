@@ -60,18 +60,31 @@ function AutoScanner() {
   return (
     <>
       <div
-        className="flex flex-col gap-4 p-4
-          w-full
-          rounded-xl bg-white border"
+        className="flex flex-col gap-4 w-full"
       >
         {/* Title */}
-        <p className="font-medium">Input text</p>
+        <div>
+          <h3 className="text-xl font-bold mb-2">
+            Automatic Mode
+            <span className="text-orange-500 font-light"> (experimental)</span>
+          </h3>
+          <p className="mb-2">
+            Simply Input a text body that contains suspecious URLs.
+            <span className="font-bold text-primary"> LINKSCOPE</span> will
+            automatically extract those URLs from the text body for you.
+          </p>
+          <p className="text-gray-500">
+            <span className="font-semibold">Note: </span>
+            Some unique URLs may not be recognized.
+          </p>
+        </div>
 
         {/* Text input area */}
         <textarea
           className="min-h-32 w-full p-2
-            border rounded focus:outline-none focus:ring-1 focus:ring-primary-300 
-            bg-gray-100"
+            border rounded-lg
+            focus:outline-none focus:ring-1 focus:ring-primary-300 
+            bg-white"
           name="text"
           placeholder="Enter text here..."
           value={textareaInput}

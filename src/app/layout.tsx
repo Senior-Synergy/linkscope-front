@@ -4,10 +4,9 @@ import "./globals.css";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
-import backgroundImage from "../../public/images/background/double-bubble-outline.png";
-
 import Navbar from "@/components/common/Navbar";
-import Image from "next/image";
+import { ThemeProvider } from "next-themes";
+import { useEffect } from "react";
 
 export const metadata: Metadata = {
   title: "Senior Synergy",
@@ -23,19 +22,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={montserrat.className}>
         <div className="flex flex-col min-h-screen">
-          {/* Background Image */}
-          {/* <div className="fixed -z-10 inset-0">
-            <Image
-              alt="patterns"
-              src={backgroundImage}
-              placeholder="blur"
-              quality={100}
-              fill
-              sizes="100vw"
-              className="object-cover opacity-20"
-            />
-          </div> */}
-
           {/* Navbar */}
           <Navbar />
 

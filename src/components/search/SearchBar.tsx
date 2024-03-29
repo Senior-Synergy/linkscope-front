@@ -12,17 +12,13 @@ function SearchBar({ textInput, onTextInputChange }: SearchBarProps) {
   }
 
   return (
-    <div
-      className="flex gap-2 
-                w-full p-2 
-                bg-white border rounded-xl"
-    >
+    <div className="flex gap-2 w-full">
       <div className="grow">
         <label>
           <input
             className={`w-full p-2 rounded-lg
                     border focus:outline-none focus:ring-1 focus:ring-primary-light 
-                    bg-gray-100`}
+                    bg-white`}
             name="search-query"
             placeholder="Enter search terms..."
             value={textInput}

@@ -36,7 +36,6 @@ function ManualScanner() {
         "(\\#[-a-z\\d_]*)?$", // fragment locator
       "i"
     );
-    
     return pattern.test(text);
   }
 
@@ -79,11 +78,17 @@ function ManualScanner() {
   return (
     <>
       <div
-        className="flex flex-col gap-4 p-4
-        w-full
-        rounded-xl bg-white border"
+        className="flex flex-col gap-4
+                  w-full rounded-lg"
       >
-        <p className="font-medium">Enter a valid URL</p>
+        <div>
+          <h3 className="text-xl font-bold mb-2">Manual Mode</h3>
+          <p>
+            Manually input individual URLs that you wish to scan.
+            <span className="font-bold text-primary"> LINKSCOPE</span> will
+            validate your URLs before continuing.
+          </p>
+        </div>
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col gap-4">
             <div className="flex gap-2">
@@ -91,7 +96,7 @@ function ManualScanner() {
                 <input
                   className={`w-full h-12 p-2 rounded-lg
                             border focus:outline-none focus:ring-1 focus:ring-primary-light 
-                            bg-gray-100`}
+                            bg-white`}
                   name="url-input"
                   placeholder="Enter a URL..."
                   value={textInput}
@@ -121,22 +126,18 @@ function ManualScanner() {
             )}
 
             <div
-              className="flex flex-col p-2 gap-4
-                w-full h-64 overflow-y-auto
-                rounded-lg bg-white border"
+              className="flex flex-col
+                w-full h-48 overflow-y-auto
+                rounded-lg bg-gray-100 border"
             >
               {/* Url list */}
               {urlList.length > 0 ? (
-                <ul className="flex flex-col gap-2 w-full">
+                <ul className="group flex flex-col w-full">
                   {urlList.map((url, index) => (
                     <div
                       key={index}
                       className={`flex items-center justify-between 
-                         w-full h-12 gap-2 p-2 
-                         rounded-lg border
-                         transition-colors ${
-                           true ? "bg-white" : "bg-gray-300 line-through"
-                         }`}
+                                w-full h-12 gap-2 p-2`}
                     >
                       <div className={`${!true && ""} truncate pl-2`}>
                         {url}
@@ -152,9 +153,7 @@ function ManualScanner() {
                   ))}
                 </ul>
               ) : (
-                <div className="flex flex-col flex-auto items-center justify-center text-gray-400">
-                  No URL detected
-                </div>
+                <div className="flex flex-col flex-auto items-center justify-center text-gray-400"></div>
               )}
             </div>
 
