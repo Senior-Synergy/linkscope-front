@@ -44,16 +44,13 @@ function SearchPage() {
   ];
 
   return (
-    <main className="flex flex-col gap-8 p-8">
+    <main className="flex flex-col gap-6 p-8">
       <header>
-        <h1 className="text-3xl font-bold mb-4">Search URLs</h1>
-        <p>
-          {`Explore our database of previously scanned URLs using our Search
-          feature.`}
-        </p>
+        <h1 className="text-4xl font-bold">Search</h1>
+        <p className="text-gray-500">{`Explore our database of previously scanned URLs using our Searchfeature.`}</p>
       </header>
 
-      <div>
+      <div className="bg-gray-50 border p-4 rounded-xl">
         <h2 className="text-xl font-bold mb-4">Searcher</h2>
         <Searcher />
       </div>

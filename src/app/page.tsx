@@ -37,8 +37,11 @@ const HomePage = () => {
   ];
 
   return (
-    <main className="flex flex-col p-6 md:p-8 gap-8">
-      <div className="flex flex-col w-full gap-4">
+    <main className="flex flex-col p-6 md:p-8 gap-6">
+      <header>
+        <h1 className="text-4xl font-bold">Home</h1>
+      </header>
+      <div className="flex flex-col w-full gap-4 p-4 rounded-xl bg-gray-50 border">
         <h1 className="text-3xl font-bold">
           Introducing,<span className="text-primary"> LINKSCOPE</span>
         </h1>
@@ -69,14 +72,17 @@ const HomePage = () => {
         <p className="mb-4">
           Copy and paste text that contain URLs and start analyzing it now!
         </p>
-        <div className="flex flex-col w-full gap-4 p-4 rounded-xl bg-white border">
+        <div className="flex flex-col w-full gap-4 p-4 rounded-xl bg-gray-50 border">
           Coming soon...
         </div>
       </div>
 
       <div>
         <h2 className="text-xl font-bold mb-4">Recently Scanned URLs</h2>
-        <UrlList urlList={dummyUrlList} />
+
+        <div>
+          <UrlList urlList={dummyUrlList} />
+        </div>
       </div>
 
       <Footer />

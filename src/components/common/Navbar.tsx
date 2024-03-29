@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   FaClipboardList,
   FaCrosshairs,
@@ -11,7 +11,6 @@ import {
 } from "react-icons/fa6";
 
 import NavbarItem from "./NavbarItem";
-
 import LinkScopeIcon from "../../../public/logo/logo-icon-black.svg";
 
 function Navbar() {
@@ -44,7 +43,6 @@ function Navbar() {
   ];
 
   const [isCollapsed, setIsCollapsed] = useState(true);
-  const navbarRef = useRef<HTMLDivElement>(null);
 
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
@@ -70,7 +68,7 @@ function Navbar() {
         className="sticky top-0 
                   md:hidden flex justify-between items-center 
                   p-4 h-14 z-10
-                  bg-white border-b"
+                  bg-gray-50 border-b"
       >
         <div className="flex items-center gap-2">
           <Image src={LinkScopeIcon} alt="logo" className="h-6 w-auto" />
@@ -95,9 +93,8 @@ function Navbar() {
       />
 
       <div
-        ref={navbarRef}
         className={`fixed z-10 h-full w-64 overflow-auto
-                  bg-white border-r
+                  bg-gray-50 border-r
                   ${
                     isCollapsed
                       ? "-translate-x-full opacity-0"
@@ -111,7 +108,7 @@ function Navbar() {
           <div className="flex justify-center items-center gap-2">
             <Image src={LinkScopeIcon} alt="logo" className="h-12 w-auto" />
             <div>
-              <p className="font-extrabold text-3xl h-7">LINK</p>
+              <p className="font-extrabold text-3xl h-8">LINK</p>
               <p className="font-extrabold text-xl">SCOPE</p>
             </div>
           </div>
