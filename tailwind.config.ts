@@ -10,19 +10,19 @@ const config: Config = {
     extend: {
       colors: {
         // primary
-        'primary': {
-          DEFAULT: '#446CCF',
-          50: '#D6DFF5',
-          100: '#C6D2F0',
-          200: '#A5B9E8',
-          300: '#859FE0',
-          400: '#6486D7',
-          500: '#446CCF',
-          600: '#2D52AE',
-          700: '#213D82',
-          800: '#162855',
-          900: '#0A1328',
-          950: '#050812'
+        primary: {
+          DEFAULT: "#446CCF",
+          50: "#D6DFF5",
+          100: "#C6D2F0",
+          200: "#A5B9E8",
+          300: "#859FE0",
+          400: "#6486D7",
+          500: "#446CCF",
+          600: "#2D52AE",
+          700: "#213D82",
+          800: "#162855",
+          900: "#0A1328",
+          950: "#050812",
         },
 
         // secondary
@@ -51,7 +51,7 @@ const config: Config = {
         text: "#515151",
       },
       boxShadow: {
-        'light': "2px 4px 12px rgba(0,0,0,.08)"
+        light: "2px 4px 12px rgba(0,0,0,.08)",
       },
       keyframes: {
         wiggle: {
@@ -85,6 +85,20 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+    },
+    fontSize: {
+      sm: "0.75rem",
+      base: "1rem",
+      lg: "1.125rem",
+      xl: "1.25rem",
+      "2xl": "1.5rem",
+      "3xl": "1.875rem",
+      "4xl": "2.25rem",
+      "5xl": "3rem",
+      "6xl": "3.75rem",
+      "7xl": "4.5rem",
+      "8xl": "6rem",
+      "9xl": "8rem",
     },
   },
   plugins: [],
