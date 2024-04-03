@@ -21,8 +21,8 @@ function IdentifiedUrlList({
   return (
     <div
       className="flex flex-col p-2 gap-4
-              w-full h-64 overflow-y-auto
-                rounded-lg bg-gray-100 border"
+                w-full h-64 overflow-y-auto
+                rounded-lg bg-gray-200"
     >
       {/* Url list */}
       {urlList.length > 0 ? (
@@ -37,7 +37,10 @@ function IdentifiedUrlList({
           ))}
         </ul>
       ) : (
-        <div className="flex flex-col flex-auto items-center justify-center text-gray-400">
+        <div
+          className="flex flex-col flex-auto items-center justify-center 
+                    text-gray-400"
+        >
           No URL detected
         </div>
       )}

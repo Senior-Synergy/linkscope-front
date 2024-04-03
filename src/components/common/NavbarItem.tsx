@@ -22,14 +22,14 @@ function NavbarItem({ name, route, icon }: NavbarItemProps) {
     <Link href={route}>
       <div
         className={`group/button
-                  w-full px-6 py-4 rounded-xl transition-all duration-300
-                  ${isCurrentPath && "bg-primary-500"}`}
+                  w-full px-6 py-4 rounded-xl
+                  ${isCurrentPath ? "bg-primary-500" : ""}`}
       >
-        <div className="flex items-center gap-4 hover:opacity-100">
+        <div className="flex items-center gap-4">
           <IconContext.Provider
             value={{
               className: `${
-                currentPath === route ? "fill-white" : "fill-black"
+                currentPath === route ? "fill-white" : "fill-black group-hover/button:fill-gray-700"
               } h-6 w-auto`,
             }}
           >
@@ -38,7 +38,7 @@ function NavbarItem({ name, route, icon }: NavbarItemProps) {
 
           <p
             className={`font-bold text-lg ${
-              isCurrentPath ? "text-white" : "text-black"
+              isCurrentPath ? "text-white" : "text-black group-hover/button:text-gray-700"
             }`}
           >
             {name}

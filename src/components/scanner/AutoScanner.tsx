@@ -59,14 +59,12 @@ function AutoScanner() {
   }, [textareaInput]);
   return (
     <>
-      <div
-        className="flex flex-col gap-4 w-full"
-      >
+      <div className="flex flex-col gap-4 w-full">
         {/* Title */}
         <div>
           <h3 className="text-xl font-bold mb-2">
             Automatic Mode
-            <span className="text-orange-500 font-light"> (experimental)</span>
+            <span className="text-red-500 font-normal"> (experimental)</span>
           </h3>
           <p className="mb-2">
             Simply Input a text body that contains suspecious URLs.
@@ -82,9 +80,9 @@ function AutoScanner() {
         {/* Text input area */}
         <textarea
           className="min-h-32 w-full p-2
-            border rounded-lg
-            focus:outline-none focus:ring-1 focus:ring-primary-300 
-            bg-white"
+                    border rounded-lg
+                    focus:outline-none focus:ring-1 focus:ring-primary-300 
+                    bg-white"
           name="text"
           placeholder="Enter text here..."
           value={textareaInput}
@@ -131,18 +129,15 @@ function AutoScanner() {
         </p>
         {/* Buttons */}
         <div className="flex items-center justify-end w-full space-x-4 mt-4">
-          <button
-            onClick={() => setIsConfirmingReset(false)}
-            className="flex items-center justify-center w-1/2 h-12 rounded-lg border border-primary bg-white text-primary hover:bg-primary-dark hover:border-transparent hover:text-white transition-all"
-          >
-            Cancel
-          </button>
-          <button
-            onClick={handleClearInput}
-            className="flex items-center justify-center w-1/2 h-12 rounded-lg bg-primary text-white hover:bg-primary-dark hover:text-white transition-all"
-          >
-            Confirm
-          </button>
+          <div className="w-1/2 h-12">
+            <Button
+              title="Cancel"
+              onClick={() => setIsConfirmingReset(false)}
+            />
+          </div>
+          <div className="w-1/2 h-12">
+            <Button title="Confirm" onClick={handleClearInput} primary />
+          </div>
         </div>
       </ModalWrapper>
     </>

@@ -129,7 +129,7 @@ function ManualScanner() {
             <div
               className="flex flex-col
                 w-full h-48 overflow-y-auto
-                rounded-lg bg-gray-100 border"
+                rounded-lg bg-gray-200 border"
             >
               {/* Url list */}
               {urlList.length > 0 ? (

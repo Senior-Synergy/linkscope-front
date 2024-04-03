@@ -17,8 +17,8 @@ function SearchBar({ textInput, onTextInputChange }: SearchBarProps) {
         <label>
           <input
             className={`w-full p-2 rounded-lg
-                    border focus:outline-none focus:ring-1 focus:ring-primary-light 
-                    bg-white`}
+                      border focus:outline-none focus:ring-1 focus:ring-primary-light 
+                      bg-white`}
             name="search-query"
             placeholder="Enter search terms..."
             value={textInput}

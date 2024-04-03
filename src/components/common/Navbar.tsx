@@ -68,7 +68,7 @@ function Navbar() {
         className="sticky top-0 
                   md:hidden flex justify-between items-center 
                   p-4 h-14 z-10
-                  bg-gray-50 border-b"
+                  bg-gray-100"
       >
         <div className="flex items-center gap-2">
           <Image src={LinkScopeIcon} alt="logo" className="h-6 w-auto" />
@@ -83,9 +83,11 @@ function Navbar() {
       <div
         onClick={toggleCollapse}
         className={`fixed inset-0 z-10 md:hidden
-                  bg-black
+                bg-gray-300
                   ${
-                    isCollapsed ? "opacity-0 pointer-events-none" : "opacity-10"
+                    isCollapsed
+                      ? "bg-opacity-0 pointer-events-none"
+                      : "bg-opacity-50 backdrop-blur-sm"
                   }
                   md:opacity-0 md:pointer-events-none
                   transform duration-500 ease-in-out
@@ -94,7 +96,7 @@ function Navbar() {
 
       <div
         className={`fixed z-10 h-full w-64 overflow-auto
-                  bg-gray-50 border-r
+                  bg-gray-100
                   ${
                     isCollapsed
                       ? "-translate-x-full opacity-0"

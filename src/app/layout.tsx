@@ -7,6 +7,7 @@ const montserrat = Montserrat({ subsets: ["latin"] });
 import Navbar from "@/components/common/Navbar";
 import { ThemeProvider } from "next-themes";
 import { useEffect } from "react";
+import NavbarNeo from "@/components/common/NavbarNeo";
 
 export const metadata: Metadata = {
   title: "Senior Synergy",
@@ -20,13 +21,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={montserrat.className}>
+      <body className={`${montserrat.className}`}>
         <div className="flex flex-col min-h-screen">
           {/* Navbar */}
-          <Navbar />
+          <NavbarNeo />
 
           {/* Main */}
-          <div className="flex flex-col flex-auto md:ml-64">{children}</div>
+          <div className="flex flex-col flex-auto w-full max-w-6xl self-center">{children}</div>
 
           {/* Modal Portal */}
           <div id="portal-root" />
