@@ -4,12 +4,11 @@ import React, { useState } from "react";
 
 import SearchBar from "./SearchBar";
 import UrlList from "./UrlList";
-
-import { UrlInfo } from "@/types/searchTypes";
+import { Url } from "@/types/urlTypes";
 
 function Searcher() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState<UrlInfo[] | null>(null);
+  const [searchResults, setSearchResults] = useState<Url[] | null>(null);
 
   return (
     <>
