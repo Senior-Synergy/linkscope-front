@@ -1,53 +1,17 @@
 import Footer from "@/components/common/Footer";
 import Searcher from "@/components/search/Searcher";
 import UrlList from "@/components/search/UrlList";
-import { UrlInfo, Verdict } from "@/types/searchTypes";
+import { Url } from "@/types/urlTypes";
+import { generateUrlInfos } from "@/utils/generator";
 
 function SearchPage() {
-  const recentUrls: UrlInfo[] = [
-    {
-      url: "https://example.com/page1",
-      verdict: Verdict.SAFE,
-      date: new Date("2024-01-29T10:00:00"),
-    },
-    {
-      url: "https://example.net/page2",
-      verdict: Verdict.UNSAFE,
-      date: new Date("2024-01-29T11:30:00"),
-    },
-    {
-      url: "https://example.com/page1",
-      verdict: Verdict.SAFE,
-      date: new Date("2024-01-29T10:00:00"),
-    },
-    {
-      url: "https://example.net/page2",
-      verdict: Verdict.UNSAFE,
-      date: new Date("2024-01-29T11:30:00"),
-    },
-    {
-      url: "https://example.org/page3",
-      verdict: Verdict.SAFE,
-      date: new Date("2024-01-29T14:45:00"),
-    },
-    {
-      url: "https://example.com/page4",
-      verdict: Verdict.UNSAFE,
-      date: new Date("2024-01-29T16:20:00"),
-    },
-    {
-      url: "https://example.net/page5",
-      verdict: Verdict.SAFE,
-      date: new Date("2024-01-29T18:15:00"),
-    },
-    // Add more dummy data as needed
-  ];
+  const recentUrls: Url[] = generateUrlInfos(5);
 
   return (
-    <main className="flex flex-col gap-6 p-8">
+    <main className="flex flex-col p-4 md:p-8 gap-8">
       <header>
         <h1 className="text-4xl font-bold">Search</h1>
-        <p className="text-gray-500">{`Explore our database of previously scanned URLs using our Searchfeature.`}</p>
+        <p className="text-gray-500">{`Explore our database of previously scanned URLs using our Search feature.`}</p>
       </header>
 
       <div className="bg-gray-50 border p-4 rounded-xl">
