@@ -2,6 +2,140 @@ export const featureInformation: Record<
   string,
   {
     featureName: string;
+    featureTypes: string;
+    explanation: string;
+    note: string;
+  }
+> = {
+  domainLength: {
+    featureName: "Domain Length",
+    featureTypes: "Address Bar",
+    explanation: "Count the characters in the hostname string.",
+    note: "",
+  },
+  www: {
+    featureName: "WWW",
+    featureTypes: "Address Bar",
+    explanation:
+      "If the URL has 'www' as the subdomain, then return 0; otherwise, return 1.",
+    note: "",
+  },
+  https: {
+    featureName: "HTTPS",
+    featureTypes: "Address Bar",
+    explanation:
+      "Address Bar based If the URL contains 'https', then return 0; otherwise, return 1.",
+    note: "",
+  },
+  shortUrl: {
+    featureName: "Short URL",
+    featureTypes: "Address Bar",
+    explanation: "If the URL is a short URL, return 1; otherwise, return 0.",
+    note: "",
+  },
+  ip: {
+    featureName: "IP",
+    featureTypes: "Address Bar",
+    explanation:
+      "If the URL contains an 'IP address', return 1; otherwise, return 0.",
+    note: "",
+  },
+  dashCount: {
+    featureName: "Dash Symbol Counts",
+    featureTypes: "Address Bar",
+    explanation: "Count the '-' characters in the URL.",
+    note: "",
+  },
+  equalCount: {
+    featureName: "Equal Symbol Counts",
+    featureTypes: "Address Bar",
+    explanation: "Count the '=' characters in the URL.",
+    note: "",
+  },
+  dotCount: {
+    featureName: "Dot Symbol Counts",
+    featureTypes: "Address Bar",
+    explanation: "Count the '.' characters in the URL's hostname.",
+    note: "",
+  },
+  underscoreCount: {
+    featureName: "Underscore Symbol Counts",
+    featureTypes: "Address Bar",
+    explanation: "Count the '_' characters in the URL.",
+    note: "",
+  },
+  slashCount: {
+    featureName: "Slash Symbol Counts",
+    featureTypes: "Address Bar",
+    explanation: "Count the '/' characters in the URL.",
+    note: "",
+  },
+  digitCount: {
+    featureName: "Digit",
+    featureTypes: "Address Bar",
+    explanation: "Count the digit (0-9) characters in the URL.",
+    note: "",
+  },
+  pcemptylinks: {
+    featureName: "PC Empty Links",
+    featureTypes: "HTML/DOM Structure",
+    explanation: "Percentage of empty links.",
+    note: "An empty link is a hyperlink that does not lead to a different web page. When clicked, it typically results in staying on the current page or displaying a blank page. This can occur when the link's URL is missing or invalid.",
+  },
+  pcextlinks: {
+    featureName: "PC External Links",
+    featureTypes: "HTML/DOM Structure",
+    explanation:
+      "Percentage of external links that direct you to another site with a different domain from the submitted URL.",
+    note: "Note : An external link is a hyperlink that directs users from one website to a different website with a different domain. When clicked, the link takes the user away from the current site and navigates them to a new site.",
+  },
+  pcrequrl: {
+    featureName: "PC External Resources URL",
+    featureTypes: "HTML/DOM Structure",
+    explanation: "Percentage of external resource URLs.",
+    note: "Note: An external resource URL refers to the web address of a resource, such as images, audio files, or embedded content, that is hosted on a different domain from the main or submitted URL.",
+  },
+  zerolink: {
+    featureName: "Zero Link",
+    featureTypes: "HTML/DOM Structure",
+    explanation:
+      "If the favicon URL is from a different domain than the submitted URL, return 1; otherwise, return 0.",
+    note: "",
+  },
+  extFavicon: {
+    featureName: "External Favicon",
+    featureTypes: "HTML/DOM Structure",
+    explanation:
+      "If the favicon URL is from a different domain than the submitted URL, return 1; otherwise, return 0.",
+    note: "",
+  },
+  sfh: {
+    featureName: "SFH",
+    featureTypes: "HTML/DOM Structure",
+    explanation:
+      "SFHs (server-side form handlers) that contain an empty string or lead to different domain sites from the submitted URL should return 1; otherwise, return 0.",
+    note: "Note: SFH stands for server-side form handler, which is the URL specified in the `action` attribute of an HTML form. This URL determines where the form data will be submitted for processing when a user fills out and submits the form.",
+  },
+  redirection: {
+    featureName: "Redirection",
+    featureTypes: "Abnormal",
+    explanation:
+      "If clicking the submitted URL results in a redirection to another URL, return 1; otherwise, return 0. For example, clicking www.eabc1255.com and being redirected to www.eabc5255.com.",
+    note: "",
+  },
+  domainend: {
+    featureName: "Domain End",
+    featureTypes: "Domain",
+    explanation:
+      "Calculate the difference in days between the current date and the expiration date (registration length). If the difference is less than or equal to one year, return 1; otherwise, return 0.",
+    note: "",
+  },
+};
+
+export const featureInformationTable: Record<
+  string,
+  {
+    featureName: string;
     dataType: string;
     sampleValue: string;
     explanation: string;
@@ -163,7 +297,7 @@ export const featureInformation: Record<
       "Indicates whether the HTML page contains email submission patterns (e.g., mailto:).",
   },
   isSfh: {
-    featureName: "Is Sfh",
+    featureName: "Server Form Handler",
     dataType: "Boolean",
     sampleValue: "false, true",
     explanation:
@@ -189,46 +323,5 @@ export const featureInformation: Record<
     sampleValue: "false, true",
     explanation:
       "Indicates whether the difference between today's time and the domain's expiration time (registration length) is less than or equal to 1 year.",
-  },
-};
-
-export const dummyFeatureInformation = {
-  modelResults: {
-    verdict: 1,
-    probabilityOfPhishUrl: 98.21,
-  },
-  urlDetails: {
-    actualUrl: "https://www.example.com",
-  },
-  extractedFeatures: {
-    domainLength: 12.0,
-    hasWwwSubdomain: false,
-    hasMultipleSubdomains: false,
-    usesHttps: true,
-    usesHttp: false,
-    isShortUrl: false,
-    containsIpAddress: false,
-    atCount: 2,
-    hyphenCount: 1,
-    equalCount: 0,
-    dotCount: 2,
-    underscoreCount: 0,
-    slashCount: 1,
-    digitCount: 3,
-    containsLogWord: false,
-    containsPayWord: true,
-    containsWebWord: true,
-    containsCmdWord: false,
-    containsAccountWord: false,
-    percentageEmptyLinks: 10.5,
-    percentageExternalLinks: 25.0,
-    percentageExternalResourcesUrl: 30.0,
-    hasZeroLink: false,
-    hasDifferentFaviconDomain: true,
-    hasSubmitToEmail: false,
-    isSfh: true,
-    hasRedirection: true,
-    isDomainAgeLessThan6Months: false,
-    isDomainEndLessThanOrEqual1Year: true,
   },
 };

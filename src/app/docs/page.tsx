@@ -39,11 +39,11 @@ const DocumentationPage = () => {
   ];
 
   return (
-    <main className="flex flex-col p-4 md:p-8 gap-8">
-      <div className="">
-        <h1 className="text-3xl font-bold mb-4">Documentation</h1>
-        <p>To be updated</p>
-      </div>
+    <>
+      <header>
+        <h1 className="text-4xl font-bold">Documentation</h1>
+        <p className="text-gray-500">To be updated...</p>
+      </header>
 
       {/* {docsItems.map((item, index) => (
         <div key={index}>
@@ -55,7 +55,7 @@ const DocumentationPage = () => {
           </div>
         </div>
       ))} */}
-    </main>
+    </>
   );
 };
 

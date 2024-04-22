@@ -1,31 +1,62 @@
 import Footer from "@/components/common/Footer";
+import MainWrapper from "@/components/common/wrapper/MainWrapper";
 import Searcher from "@/components/search/Searcher";
-import UrlList from "@/components/search/UrlList";
-import { Url } from "@/types/urlTypes";
-import { generateUrlInfos } from "@/utils/generator";
+import ResultList from "@/components/search/ResultList";
 
-function SearchPage() {
-  const recentUrls: Url[] = generateUrlInfos(5);
+import { searchResults } from "@/services/linkscopeApi";
+import { Result } from "@/types/urlTypes";
+import Link from "next/link";
+import { FaQuestionCircle } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight, FaSlash } from "react-icons/fa6";
+
+async function SearchPage({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
+  const pageNumber = parseInt((searchParams["page"] as string) ?? 1);
+  const searchQuery = (searchParams["query"] as string) ?? "";
+  const sortOptions = (searchParams["sort"] as string) ?? "";
+
+  let results: Result[] = [];
+  let totalCount: number = 0;
+
+  const fetchedData = await searchResults(
+    searchQuery,
+    pageNumber,
+    10,
+    sortOptions
+  );
+
+  if (fetchedData) {
+    results = fetchedData.results;
+    totalCount = fetchedData.totalCount;
+  } else {
+    // failed to fetch data...
+  }
 
   return (
-    <main className="flex flex-col p-4 md:p-8 gap-8">
+    <MainWrapper>
       <header>
-        <h1 className="text-4xl font-bold">Search</h1>
-        <p className="text-gray-500">{`Explore our database of previously scanned URLs using our Search feature.`}</p>
+        <h1 className="text-4xl font-semibold mb-1">SEARCH</h1>
+        <p className="text-gray-500 font-extralight">{`Explore our database of previously scanned URLs using our Search feature.`}</p>
       </header>
 
-      <div className="bg-gray-50 border p-4 rounded-xl">
-        <h2 className="text-xl font-bold mb-4">Searcher</h2>
+      <section className="mt-8">
         <Searcher />
-      </div>
+      </section>
 
-      <div>
-        <h2 className="text-xl font-bold mb-4">Recent URLs</h2>
-        <UrlList urlList={recentUrls} />
-      </div>
+      <section className="mt-8">
+        {/* <h2 className="text-xl font-bold mb-4">Recent URLs</h2> */}
 
+        <ResultList
+          currentPage={pageNumber}
+          totalCount={totalCount}
+          results={results}
+        />
+      </section>
       <Footer />
-    </main>
+    </MainWrapper>
   );
 }
 

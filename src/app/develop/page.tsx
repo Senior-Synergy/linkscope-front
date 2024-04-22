@@ -2,6 +2,7 @@
 
 import Button from "@/components/common/Button";
 import Footer from "@/components/common/Footer";
+import MainWrapper from "@/components/common/wrapper/MainWrapper";
 import axios from "axios";
 
 const DevelopPage = () => {
@@ -14,10 +15,10 @@ const DevelopPage = () => {
   }
 
   return (
-    <main className="flex flex-col flex-auto gap-4 p-4 md:p-8 self-center w-full max-w-6xl bg-white">
+    <MainWrapper>
       <header>
-        <h1 className="text-3xl font-bold mb-4">Develop Page</h1>
-        <p className="text-gray-600">
+        <h1 className="text-4xl font-semibold">Develop Page</h1>
+        <p className="text-gray-500">
           This page is a sanbox for testing stuff!
         </p>
       </header>
@@ -36,6 +37,13 @@ const DevelopPage = () => {
       </div>
 
       <div className="mt-8">
+        <h1 className="text-3xl font-bold mb-2">ทดสอบภาษาไทย</h1>
+        <h2 className="text-xl font-semibold mb-2">ทดสอบภาษาไทย</h2>
+        <h3 className="text-lg font-medium mb-2">ทดสอบภาษาไทย</h3>
+        <p>ทดสอบภาษาไทย</p>
+      </div>
+
+      <div className="mt-8">
         <h2 className="text-xl font-semibold mb-2">List demonstration</h2>
         <ol className="list-decimal pl-6">
           <li>List item</li>
@@ -43,8 +51,6 @@ const DevelopPage = () => {
           <li>List item</li>
         </ol>
       </div>
-
-      <button onClick={handleTestAPI}>test API</button>
 
       <div className="flex flex-col gap-4 mt-8 w-full">
         <h2 className="text-xl font-semibold mb-2">Color demo</h2>
@@ -85,28 +91,50 @@ const DevelopPage = () => {
             <p>Link</p>
           </div>
           <div className="flex space-x-2">
-            <div className="w-6 h-6 rounded-full bg-alert" />
-            <p>Alert</p>
-          </div>
-          <div className="flex space-x-2">
-            <div className="w-6 h-6 rounded-full bg-success" />
-            <p>Success</p>
-          </div>
-          <div className="flex space-x-2">
             <div className="w-6 h-6 rounded-full bg-deactive" />
             <p>Deactivate</p>
           </div>
         </div>
+
+        <div className="space-y-2 justify-between w-full">
+          <div className="flex space-x-2">
+            <div className="w-6 h-6 rounded-full bg-status-passive" />
+            <p>Passive</p>
+          </div>
+          <div className="flex space-x-2">
+            <div className="w-6 h-6 rounded-full bg-status-caution" />
+            <p>Caution</p>
+          </div>
+          <div className="flex space-x-2">
+            <div className="w-6 h-6 rounded-full bg-status-warning" />
+            <p>Warning</p>
+          </div>
+          <div className="flex space-x-2">
+            <div className="w-6 h-6 rounded-full bg-status-failure" />
+            <p>Failure</p>
+          </div>
+          <div className="flex space-x-2">
+            <div className="w-6 h-6 rounded-full bg-status-success" />
+            <p>Success</p>
+          </div>
+        </div>
       </div>
 
-      <Button title="test" primary />
-      <Button title="test" />
-
-      <Button title="test" primary disabled />
-      <Button title="test" disabled />
+      <div className="flex flex-col space-y-2 mt-8">
+        <Button className="h-12 w-full" primary>
+          primary
+        </Button>
+        <Button className="h-12 w-full">secondary</Button>
+        <Button className="h-12 w-full" primary disabled>
+          primary disabled
+        </Button>
+        <Button className="h-12 w-full" disabled>
+          secondary disabled
+        </Button>
+      </div>
 
       <Footer />
-    </main>
+    </MainWrapper>
   );
 };
 

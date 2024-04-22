@@ -2,14 +2,16 @@
 
 import { useEffect, useState } from "react";
 import { UrlSelectorItem } from "@/types/urlTypes";
-import { useRouter } from "next/navigation";
 
-import ModalWrapper from "../common/ModalWrapper";
+import ModalWrapper from "../common/wrapper/ModalWrapper";
 import Button from "../common/Button";
 import IdentifiedUrlList from "./IdentifiedUrlList";
 
-function AutoScanner() {
-  const router = useRouter();
+interface AutoScannerProps {
+  submitUrls: (urls: string[]) => void;
+}
+
+function AutoScanner({ submitUrls }: AutoScannerProps) {
   const [textareaInput, setTextareaInput] = useState("");
   const [urlList, setUrlList] = useState<UrlSelectorItem[]>([]);
 
@@ -22,12 +24,12 @@ function AutoScanner() {
     return text.match(urlRegex) || [];
   }
 
-  function handleSubmitURLs() {
+  async function handleSubmitURLs() {
     const processedUrls = urlList
       .filter((urlItem) => urlItem.isSelected)
       .map((urlItem) => urlItem.url);
 
-    router.push("/scan/result/1");
+    submitUrls(processedUrls);
   }
 
   function handleClearInput() {
@@ -57,6 +59,7 @@ function AutoScanner() {
       return updatedList;
     });
   }, [textareaInput]);
+
   return (
     <>
       <div className="flex flex-col gap-4 w-full">
@@ -67,9 +70,8 @@ function AutoScanner() {
             <span className="text-red-500 font-normal"> (experimental)</span>
           </h3>
           <p className="mb-2">
-            Simply Input a text body that contains suspecious URLs.
-            <span className="font-bold text-primary"> LINKSCOPE</span> will
-            automatically extract those URLs from the text body for you.
+            Simply Input a text body that contains suspecious URLs. They will
+            automatically be extracted from the text body for you.
           </p>
           <p className="text-gray-500">
             <span className="font-semibold">Note: </span>
@@ -80,38 +82,46 @@ function AutoScanner() {
         {/* Text input area */}
         <textarea
           className="min-h-32 w-full p-2
-                    border rounded-lg
+                    border dark:border-gray-700 rounded-md
                     focus:outline-none focus:ring-1 focus:ring-primary-300 
-                    bg-white"
+                    bg-white dark:bg-gray-800"
           name="text"
           placeholder="Enter text here..."
           value={textareaInput}
           onChange={(e) => setTextareaInput(e.target.value)}
         />
 
-        {/* Title */}
-        <p className="font-medium">Identified URL(s)</p>
+        <section className="flex flex-col gap-4 w-full">
+          {/* Title */}
+          <p className="font-medium">Identified URL(s)</p>
 
-        {/* Identified link list */}
-        <IdentifiedUrlList urlList={urlList} onUpdateUrlList={setUrlList} />
+          {urlList.filter((url) => url.isSelected).length >= 5 && (
+            <p className="text-sm text-red-500">
+              Maximum of 5 URLs is allowed per submission
+            </p>
+          )}
+
+          {/* Identified link list */}
+          <IdentifiedUrlList urlList={urlList} onUpdateUrlList={setUrlList} />
+        </section>
 
         {/* Buttons */}
         <div className="flex w-full h-12 gap-4">
-          <div className="w-1/2">
-            <Button
-              title="Reset"
-              onClick={() => setIsConfirmingReset(true)}
-              disabled={textareaInput.length < 1}
-            />
-          </div>
-          <div className="w-1/2">
-            <Button
-              title="Submit"
-              onClick={handleSubmitURLs}
-              disabled={!urlList.some((urlItem) => urlItem.isSelected)}
-              primary
-            />
-          </div>
+          <Button
+            className="w-1/2"
+            onClick={() => setIsConfirmingReset(true)}
+            disabled={textareaInput.length < 1}
+          >
+            Reset
+          </Button>
+          <Button
+            className="w-1/2"
+            onClick={handleSubmitURLs}
+            disabled={!urlList.some((urlItem) => urlItem.isSelected)}
+            primary
+          >
+            Submit
+          </Button>
         </div>
       </div>
 
@@ -119,25 +129,26 @@ function AutoScanner() {
         isOpen={isConfirmingReset}
         onClose={() => setIsConfirmingReset(false)}
       >
-        {/* Your modal content goes here */}
-        <h2 className="text-2xl font-bold mb-4">
+        <h2 className="text-2xl font-bold mb-2">
           Are you sure you want to reset?
         </h2>
-        <p>
+
+        <p className="mb-6">
           This will also clear all the identified links and scanned results
           currently being displayed
         </p>
+
         {/* Buttons */}
-        <div className="flex items-center justify-end w-full space-x-4 mt-4">
-          <div className="w-1/2 h-12">
-            <Button
-              title="Cancel"
-              onClick={() => setIsConfirmingReset(false)}
-            />
-          </div>
-          <div className="w-1/2 h-12">
-            <Button title="Confirm" onClick={handleClearInput} primary />
-          </div>
+        <div className="flex items-center justify-end w-full space-x-4">
+          <Button
+            className="w-1/2 h-12"
+            onClick={() => setIsConfirmingReset(false)}
+          >
+            Cancel
+          </Button>
+          <Button className="w-1/2 h-12" onClick={handleClearInput} primary>
+            Confirm
+          </Button>
         </div>
       </ModalWrapper>
     </>

@@ -22,7 +22,7 @@ function IdentifiedUrlList({
     <div
       className="flex flex-col p-2 gap-4
                 w-full h-64 overflow-y-auto
-                rounded-lg bg-gray-200"
+                rounded-md bg-gray-100 dark:bg-gray-900"
     >
       {/* Url list */}
       {urlList.length > 0 ? (
@@ -31,6 +31,7 @@ function IdentifiedUrlList({
             <IdentifiedUrlListItem
               key={index}
               url={item.url}
+              isDisabled={urlList.filter((url) => url.isSelected).length >= 5}
               isSelected={item.isSelected}
               onClick={() => handleUpdateUrlList(index)}
             />

@@ -1,4 +1,4 @@
-import { featureInformation } from "@/constants/feature";
+import { featureInformationTable } from "@/constants/feature";
 
 function FeatureTable() {
   return (
@@ -14,7 +14,7 @@ function FeatureTable() {
         </thead>
         <tbody className="divide-y">
           {/* Feature rows */}
-          {Object.values(featureInformation).map((feature, index) => (
+          {Object.values(featureInformationTable).map((feature, index) => (
             <tr key={index}>
               <td className="px-4 py-2 font-medium bg-gray-100">
                 {feature.featureName}

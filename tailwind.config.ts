@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "selector",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -25,6 +26,20 @@ const config: Config = {
           950: "#050812",
         },
 
+        gray: {
+          "50": "#fafafa",
+          "100": "#f5f5f5",
+          "200": "#e5e5e5",
+          "300": "#d4d4d4",
+          "400": "#a3a3a3",
+          "500": "#737373",
+          "600": "#525252",
+          "700": "#404040",
+          "800": "#262626",
+          "900": "#171717",
+          "950": "#0a0a0a",
+        },
+
         // secondary
         secondary: "#FF9130",
         "secondary-light": "#FF9130",
@@ -38,11 +53,11 @@ const config: Config = {
         "gray-semidark": "#636363",
 
         // status
-        "status-success": "#24A148",
-        "status-caution": "#f1c21b",
-        "status-warning": "#ff832b",
-        "status-passive": "#0043ce",
-        "status-failure": "#da1e28",
+        "status-success": "#84cc16",
+        "status-caution": "#eab308",
+        "status-warning": "#f97316",
+        "status-passive": "#06b6d4",
+        "status-failure": "#ef4444",
 
         // other
         deactive: "#D2D2D2",
@@ -86,21 +101,22 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
     },
-    fontSize: {
-      sm: "0.75rem",
-      base: "1rem",
-      lg: "1.125rem",
-      xl: "1.25rem",
-      "2xl": "1.5rem",
-      "3xl": "1.875rem",
-      "4xl": "2.25rem",
-      "5xl": "3rem",
-      "6xl": "3.75rem",
-      "7xl": "4.5rem",
-      "8xl": "6rem",
-      "9xl": "8rem",
-    },
+    // fontSize: {
+    //   sm: "0.75rem",
+    //   base: "1rem",
+    //   lg: "1.125rem",
+    //   xl: "1.25rem",
+    //   "2xl": "1.5rem",
+    //   "3xl": "1.875rem",
+    //   "4xl": "2.25rem",
+    //   "5xl": "3rem",
+    //   "6xl": "3.75rem",
+    //   "7xl": "4.5rem",
+    //   "8xl": "6rem",
+    //   "9xl": "8rem",
+    // },
   },
   plugins: [],
 };
+
 export default config;

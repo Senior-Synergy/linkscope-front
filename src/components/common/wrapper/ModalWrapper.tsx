@@ -35,7 +35,7 @@ function ModalWrapper({ isOpen, onClose, children }: ReusableModalProps) {
       >
         <div
           ref={modalRef}
-          className="bg-white p-4 rounded-lg max-w-screen-lg w-full overflow-y-auto m-8"
+          className="bg-white p-4 rounded-lg max-w-lg w-full overflow-y-auto m-8"
         >
           {children}
           {/* <button

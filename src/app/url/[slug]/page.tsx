@@ -1,38 +1,62 @@
-import UrlList from "@/components/search/UrlList";
-import { Url } from "@/types/urlTypes";
-import { generateUrl, generateUrlInfos } from "@/utils/generator";
+import MainWrapper from "@/components/common/wrapper/MainWrapper";
+import TextCopyWrapper from "@/components/common/wrapper/TextCopyWrapper";
+import ResultList from "@/components/search/ResultList";
+import UrlInfo from "@/components/url/UrlInfo";
+import { getUrl } from "@/services/linkscopeApi";
+import { Url, UrlExtended } from "@/types/urlTypes";
+import React from "react";
 
-const UrlPage = ({ params }: { params: { slug: string } }) => {
-  const scanId = params.slug;
+async function UrlPage({
+  params,
+  searchParams,
+}: {
+  params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
+  const urlId = parseInt(params.slug);
+  const pageNumber = parseInt((searchParams["page"] as string) ?? 1);
 
-  const url: Url = generateUrl();
+  const url: UrlExtended | null = await getUrl(urlId);
 
-  // const url: Url = undefined;
+  if (!url) throw new Error(`Failed to fetch result for ${params.slug}`);
 
-  const urlInfos: Url[] = generateUrlInfos(5);
+  const itemsPerPage = 10;
+  const startIndex = (pageNumber - 1) * itemsPerPage;
+  const endIndex = pageNumber * itemsPerPage;
+
+  const resultsPerPage = url.results
+    .map((result) => ({ ...result, url: url }))
+    .slice(startIndex, endIndex);
 
   return (
-    <main className="flex flex-col p-6 md:p-8 gap-8">
-      <header className="flex flex-col w-full gap-4">
-        <h1 className="text-3xl font-bold">{url.finalURL}</h1>
-        {/* <p>{`Detailed Information of URLID: ${scanId}`}</p> */}
+    <MainWrapper>
+      <header>
+        <h1 className="text-4xl font-semibold mb-1">URL INFORMATION</h1>
+        <p className="text-gray-500 font-extralight">
+          Details and historical records.
+        </p>
       </header>
 
-      <div>
-        <h2 className="text-xl font-bold mb-4">Information</h2>
+      <section className="mt-6">
+        <UrlInfo url={url} />
+      </section>
 
-        <div className="bg-gray-50 p-4 rounded-xl border">
-          <div className="flex flex-col sm:flex-row gap-4 mb-4"></div>
+      <section className="mt-6">
+        <div className="mb-4">
+          <h2 className="text-xl font-bold mb-2">Scan Results</h2>
+          <p className="">
+            Details and historical records.
+          </p>
         </div>
-      </div>
 
-      <div>
-        <h2 className="text-xl font-bold mb-4">Scans</h2>
-
-        <UrlList urlList={urlInfos} />
-      </div>
-    </main>
+        <ResultList
+          currentPage={pageNumber}
+          totalCount={url.results.length}
+          results={resultsPerPage}
+        />
+      </section>
+    </MainWrapper>
   );
-};
+}
 
 export default UrlPage;

@@ -14,7 +14,7 @@ interface TabSelectorItemProps {
 
 function TabSelector({ itemList, currentItem, onSelect }: TabSelectorProps) {
   return (
-    <div className="flex w-full h-full bg-white rounded-lg divide-x border overflow-hidden">
+    <div className="flex w-full h-full rounded-md divide-x border dark:border-gray-700 dark:divide-gray-700 overflow-hidden">
       {itemList.map((item, index) => (
         <TabSelectorItem
           key={index}
@@ -34,10 +34,12 @@ function TabSelectorItem({ title, isSelected, onClick }: TabSelectorItemProps) {
       className={`relative flex-auto text-center p-2 transition-all ${
         isSelected
           ? "bg-primary hover:bg-primary-600 text-white"
-          : "bg-white hover:bg-gray-200 text-black"
+          : "bg-white dark:bg-black dark:text-white hover:bg-gray-200 text-black"
       }`}
     >
-      <p className="absolute top-1/2 left-1/2 tranform -translate-x-1/2 -translate-y-1/2 text-center">{title}</p>
+      <p className="absolute top-1/2 left-1/2 tranform -translate-x-1/2 -translate-y-1/2 text-center">
+        {title}
+      </p>
     </button>
   );
 }

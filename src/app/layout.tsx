@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Prompt as Krub } from "next/font/google";
 import "./globals.css";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
+const krub = Krub({
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
+  subsets: ["latin", "thai"],
+});
 
 import Navbar from "@/components/common/Navbar";
 import { ThemeProvider } from "next-themes";
-import { useEffect } from "react";
-import NavbarNeo from "@/components/common/NavbarNeo";
+
+import backgroundImage from "../../public/images/background/double-bubble-outline.png";
+import SideNavFixed from "@/components/common/navigation/SideNavFixed";
 
 export const metadata: Metadata = {
   title: "Senior Synergy",
@@ -21,13 +26,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.className}`}>
+      <body className={`${krub.className} font-light`}>
         <div className="flex flex-col min-h-screen">
           {/* Navbar */}
-          <NavbarNeo />
+          <Navbar />
 
           {/* Main */}
-          <div className="flex flex-col flex-auto w-full max-w-6xl self-center">{children}</div>
+          {children}
 
           {/* Modal Portal */}
           <div id="portal-root" />
