@@ -69,9 +69,9 @@ function UrlInfo({ url, hideDetails }: UrlInfoProps) {
 
       <div className="p-4 border rounded-b-lg">
         <div className="flex items-center gap-8">
-          <div className="grow">
-            <h2 className="text-xl font-semibold mb-1">{url.finalUrl}</h2>
-            <p className="text-gray-500">{url.ipAddress}</p>
+          <div className="grow truncate">
+            <h2 className="text-xl font-semibold mb-1 truncate">{url.finalUrl}</h2>
+            <p className="text-gray-500 truncate">{url.ipAddress}</p>
           </div>
 
           {/* <Link href={`/url/${url.urlId}`}>

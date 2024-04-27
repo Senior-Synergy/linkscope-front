@@ -63,11 +63,11 @@ function Scanner() {
         <div
           className={`absolute inset-0 
                     flex items-center justify-center 
-                    bg-transparent backdrop-blur
+                    bg-white backdrop-blur rounded-lg 
                     ${
                       isScanning
-                        ? "opacity-100"
-                        : "opacity-0 pointer-events-none"
+                        ? "opacity-100 bg-opacity-25"
+                        : "opacity-0 bg-opacity-0 pointer-events-none"
                     } transition-opacity`}
         >
           <div className="flex flex-col items-center gap-4 max-w-xs">

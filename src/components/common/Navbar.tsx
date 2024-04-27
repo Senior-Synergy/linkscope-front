@@ -1,11 +1,8 @@
 import Image from "next/image";
 
 import LinkScopeIcon from "../../../public/logo/logo-icon-black.svg";
-import SideNavOverlay from "./navigation/SideNavOverlay";
-import LinkscopeMidNav from "./navigation/LinkscopeMidNav";
 import Link from "next/link";
 import { FaGear } from "react-icons/fa6";
-import DarkmodeSwitch from "./DarkmodeSwitch";
 
 function Navbar() {
   const NavItem = [

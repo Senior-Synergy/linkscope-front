@@ -186,7 +186,7 @@ function mapFeatureBase(feature: FeatureBase): FeatureCommon {
     domainEnd: feature.domainend,
     shorttenUrl: feature.shortten_url,
     ipInUrl: feature.ip_in_url,
-    lenEmptyLinks: feature.len_empty_links,
+    lenEmptyLinks: feature.empty_links_count,
     lenExternalLinks: feature.len_external_links,
     externalLinks: feature.external_links,
     externalImgRequrl: feature.external_img_requrl,

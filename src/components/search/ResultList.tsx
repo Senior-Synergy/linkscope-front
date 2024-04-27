@@ -96,7 +96,7 @@ function ResultList({
             No results found...
           </h2>
           <p className="text-gray-600 max-w-lg  text-center">
-            The page you are looking for might have been removed or is
+            The result you are looking for might have been removed or is
             temporarily unavailable.
           </p>
         </div>

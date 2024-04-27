@@ -54,13 +54,13 @@ export interface FeatureBase {
   domainend: boolean;
   shortten_url: string | null;
   ip_in_url: string | null;
-  len_empty_links: number;
-  len_external_links: number;
+  empty_links_count: number;
   external_links: string[] | null;
   external_img_requrl: string[] | null;
   external_audio_requrl: string[] | null;
   external_embed_requrl: string[] | null;
   external_iframe_requrl: string[] | null;
+  len_external_links: number;
   len_external_img_requrl: number;
   len_external_audio_requrl: number;
   len_external_embed_requrl: number;
