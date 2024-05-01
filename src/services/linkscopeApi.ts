@@ -77,11 +77,11 @@ export async function searchResults(
     });
 }
 
-export async function createSubmission(urls: string[]) {
+export async function createBulkSubmission(urls: string[]) {
   const req: SubmissionCreateRequest = { urls: urls };
 
   return apiInstance
-    .post<SubmissionResponse>("/v3/submission/create", req)
+    .post<SubmissionResponse>("/v3/submission/create-bulk", req)
     .then((res) => {
       return {
         submissionId: res.data.submission_id,

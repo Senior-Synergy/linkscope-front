@@ -5,7 +5,7 @@ import { useState } from "react";
 import TabSelector from "../common/TabSelector";
 import ManualScanner from "./ManualScanner";
 import AutoScanner from "./AutoScanner";
-import { createSubmission } from "@/services/linkscopeApi";
+import { createBulkSubmission } from "@/services/linkscopeApi";
 import { useRouter } from "next/navigation";
 import Portal from "../common/wrapper/Portal";
 import { FaSpinner } from "react-icons/fa6";
@@ -27,7 +27,7 @@ function Scanner() {
 
   async function submitUrls(urls: string[]) {
     setIsScanning(true);
-    const response = await createSubmission(urls);
+    const response = await createBulkSubmission(urls);
 
     if (response) {
       router.push(`/scan/${response.submissionId}`);

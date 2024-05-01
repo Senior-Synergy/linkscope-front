@@ -21,6 +21,20 @@ function ResultList({
 }: ResultListProps) {
   const maxPage = totalCount == 0 ? 1 : Math.ceil(totalCount / 10);
 
+  const verdictMappings: Record<string, { label: string; color: string }> = {
+    UNKNOWN: { label: "Unknown", color: "bg-gray-500" },
+    VERY_LOW: { label: "Safe", color: "bg-lime-500" },
+    LOW: { label: "Safe", color: "bg-lime-500" },
+    MEDIUM: { label: "Moderate", color: "bg-amber-500" },
+    HIGH: { label: "Suspecious", color: "bg-orange-500" },
+    VERY_HIGH: { label: "Malicious", color: "bg-red-500" },
+    //-------------------------------------------------------------------
+    unknown: { label: "Unknown", color: "bg-gray-500" },
+    safe: { label: "Safe", color: "bg-status-success" },
+    suspicious: { label: "Suspicious", color: "bg-status-caution" },
+    malicious: { label: "Malicious", color: "bg-status-warning" },
+  };
+
   return (
     <div>
       {results.length > 0 ? (
@@ -72,14 +86,18 @@ function ResultList({
 
                       <div
                         className={`w-24 py-2 text-center p-1 rounded-full
-                        ${result.verdict == "unknown" && "bg-gray-500"}
-                        ${result.verdict == "safe" && "bg-status-success"}
-                        ${result.verdict == "suspicious" && "bg-status-caution"}
-                        ${result.verdict == "malicious" && "bg-status-warning"}
-                        `}
+                                  ${
+                                    result.verdict &&
+                                    result.verdict in verdictMappings
+                                      ? verdictMappings[result.verdict].color
+                                      : "bg-black"
+                                  }
+                                  `}
                       >
                         <p className="text-white text-sm font-normal">
-                          {result.verdict}
+                          {result.verdict && result.verdict in verdictMappings
+                            ? verdictMappings[result.verdict].label
+                            : result.verdict}
                         </p>
                       </div>
                     </div>

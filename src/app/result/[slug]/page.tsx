@@ -17,6 +17,20 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
 
   const featureItem: Record<string, any> = result.feature;
 
+  const verdictMappings: Record<string, { label: string; color: string }> = {
+    UNKNOWN: { label: "Unknown", color: "bg-gray-500" },
+    VERY_LOW: { label: "Safe", color: "bg-lime-500" },
+    LOW: { label: "Safe", color: "bg-lime-500" },
+    MEDIUM: { label: "Moderate", color: "bg-amber-500" },
+    HIGH: { label: "Suspecious", color: "bg-orange-500" },
+    VERY_HIGH: { label: "Malicious", color: "bg-red-500" },
+    //-------------------------------------------------------------------
+    unknown: { label: "Unknown", color: "bg-gray-500" },
+    safe: { label: "Safe", color: "bg-status-success" },
+    suspicious: { label: "Suspicious", color: "bg-status-caution" },
+    malicious: { label: "Malicious", color: "bg-status-warning" },
+  };
+
   return (
     <MainWrapper>
       <header>
@@ -32,14 +46,17 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
       <div className="flex flex-wrap gap-2 mt-4">
         <div
           className={`px-4 py-2 text-center rounded-full
-                    ${result.verdict == "unknown" && "bg-gray-500"}
-                    ${result.verdict == "safe" && "bg-status-success"}
-                    ${result.verdict == "suspicious" && "bg-status-caution"}
-                    ${result.verdict == "malicious" && "bg-status-warning"}
+                    ${
+                      result.verdict && result.verdict in verdictMappings
+                        ? verdictMappings[result.verdict].color
+                        : "bg-black"
+                    }
                     `}
         >
           <p className="text-white text-sm font-normal">
-            {capitalizeFirstChar(result.verdict ?? "unknown")}
+            {result.verdict && result.verdict in verdictMappings
+              ? verdictMappings[result.verdict].label
+              : result.verdict}
           </p>
         </div>
 
