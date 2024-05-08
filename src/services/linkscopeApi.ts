@@ -4,6 +4,7 @@ import {
   ResultExtendedResponse,
   ResultResponse,
   SubmissionCreateRequest,
+  SubmissionCreateResponse,
   SubmissionResponse,
   UrlBase,
   UrlExtendedResponse,
@@ -34,16 +35,21 @@ export async function searchResults(
       case "A-D":
         sortBy = "submitted_url";
         sortDirection = "desc";
+        break;
       case "A-A":
         sortBy = "submitted_url";
         sortDirection = "asc";
+        break;
       case "D-D":
         sortBy = "datetime_created";
         sortDirection = "desc";
+        break;
       case "D-A":
         sortBy = "datetime_created";
         sortDirection = "asc";
+        break;
       default:
+        break;
     }
   }
 
@@ -81,7 +87,7 @@ export async function createBulkSubmission(urls: string[]) {
   const req: SubmissionCreateRequest = { urls: urls };
 
   return apiInstance
-    .post<SubmissionResponse>("/v3/submission/create-bulk", req)
+    .post("/v3/submission/create/bulk", req)
     .then((res) => {
       return {
         submissionId: res.data.submission_id,
@@ -121,7 +127,7 @@ export function getUrl(urlId: number) {
 
 export function getSubmissionResults(submissionId: number) {
   return apiInstance
-    .get<SubmissionResponse>(`/v3/submission/${submissionId}`)
+    .get<SubmissionResponse>(`/v3/submission/retrieve/${submissionId}`)
     .then((res) => {
       const data = res.data;
       const results = data.results.map((result) => mapResultResponse(result));
