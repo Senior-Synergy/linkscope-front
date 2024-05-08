@@ -43,15 +43,13 @@ async function UrlPage({
 
       <section className="mt-6">
         <div className="mb-4">
-          <h2 className="text-xl font-bold mb-2">Scan Results</h2>
-          <p className="">
+          <h2 className="text-xl font-bold mb-2">Scan Result History</h2>
+          {/* <p className="">
             Details and historical records.
-          </p>
+          </p> */}
         </div>
 
         <ResultList
-          currentPage={pageNumber}
-          totalCount={url.results.length}
           results={resultsPerPage}
         />
       </section>

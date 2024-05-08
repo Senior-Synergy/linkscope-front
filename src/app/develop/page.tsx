@@ -10,8 +10,6 @@ const DevelopPage = () => {
     const res = await axios.get(
       `http://localhost:8000/scan?url=${"example.com"}`
     );
-
-    console.log(res.data);
   }
 
   return (

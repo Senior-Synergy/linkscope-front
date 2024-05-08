@@ -27,6 +27,7 @@ function Scanner() {
 
   async function submitUrls(urls: string[]) {
     setIsScanning(true);
+    
     const response = await createBulkSubmission(urls);
 
     if (response) {

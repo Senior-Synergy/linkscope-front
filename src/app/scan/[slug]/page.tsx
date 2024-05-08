@@ -102,12 +102,7 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
           <h2 className="text-xl font-bold mb-2">Scan Results</h2>
         </div>
 
-        <ResultList
-          currentPage={1}
-          totalCount={results.length}
-          results={results}
-          noPagination
-        />
+        <ResultList results={results} />
       </section>
 
       <Footer />

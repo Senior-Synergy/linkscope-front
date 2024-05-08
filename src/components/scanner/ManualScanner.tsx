@@ -30,8 +30,55 @@ function ManualScanner({ submitUrls }: ManualScannerProps) {
     return pattern.test(text);
   }
 
+  function isValidUrlChat(str: string) {
+    try {
+      new URL(str);
+      return true;
+    } catch (err) {
+      // If the URL doesn't contain a protocol, prepend 'http://' and try again
+      if (!str.includes("://")) {
+        str = "http://" + str;
+        try {
+          var url = new URL(str);
+          // console.log(str, url.hostname)
+          // Optionally, validate the hostname using a regex
+          // This example checks for a valid domain name format
+          return url.hostname &&
+            url.hostname.match(
+              /^([a-z0-9])(([a-z0-9-]{1,61})?[a-z0-9]{1})?(\.[a-z0-9](([a-z0-9-]{1,61})?[a-z0-9]{1})?)?(\.[a-zA-Z]{2,4})+$/
+            )
+            ? true
+            : false;
+        } catch (err) {
+          return false;
+        }
+      }
+      return false;
+    }
+  }
+
+  function isValidUrl(string: string) {
+    // Prepend 'http://' if no protocol is specified
+    if (string && string.length > 1 && string.slice(0, 2) == "//") {
+      string = "http:" + string; // Dummy protocol so that URL works
+    }
+    try {
+      var url = new URL(string);
+      // Optionally, validate the hostname using a regex
+      // This example checks for a valid domain name format
+      return url.hostname &&
+        url.hostname.match(
+          /^([a-z0-9])(([a-z0-9-]{1,61})?[a-z0-9]{1})?(\.[a-z0-9](([a-z0-9-]{1,61})?[a-z0-9]{1})?)?(\.[a-zA-Z]{2,4})+$/
+        )
+        ? true
+        : false;
+    } catch (_) {
+      return false;
+    }
+  }
+
   function addUrlToList(urlInput: string) {
-    if (!validateUrl(textInput)) {
+    if (!isValidUrlChat(textInput)) {
       clearWarning();
       setIsWarningInvalid(true);
       return;

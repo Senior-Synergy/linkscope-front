@@ -3,7 +3,6 @@ import { ResultExtended } from "@/types/urlTypes";
 import { getResult } from "@/services/linkscopeApi";
 import MainWrapper from "@/components/common/wrapper/MainWrapper";
 import { FaCheck, FaChevronRight, FaX } from "react-icons/fa6";
-import { capitalizeFirstChar } from "@/utils/formattor";
 import lookup from "country-code-lookup";
 import { featureInformation } from "@/constants/feature";
 import Link from "next/link";
@@ -34,12 +33,9 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
   return (
     <MainWrapper>
       <header>
-        <h1 className="text-4xl font-semibold mb-1 truncate">
-          {result.submittedUrl}
-        </h1>
-        <p className="text-gray-700 truncate">
-          <strong>Redirected to: </strong>
-          {result.url.finalUrl}
+        <h1 className="text-4xl font-semibold mb-1">Result</h1>
+        <p className="text-gray-500 font-extralight">
+          Scan result of &apos;{result.submittedUrl}&apos;
         </p>
       </header>
 
@@ -81,40 +77,7 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
       </div>
 
       <div className="mt-8">
-        <p>
-          {`The website's domain name is managed by`}
-          <strong>
-            {` ${result.url.registrar}. ` ?? " an unknown registrar. "}
-          </strong>
-          The main IP address is
-          <strong> {result.url.ipAddress ?? "unknown"}</strong>
-          {result.url.country
-            ? `, located in ${lookup.byIso(result.url.country)?.country}.`
-            : `.`}
-          {(result.url.creationDate || result.url.expirationDate) &&
-            ` The website's SSL certificate `}
-          {result.url.creationDate &&
-            `was issued on ${result.url.creationDate.toLocaleString()}`}
-          {result.url.creationDate && result.url.expirationDate && ` and `}
-          {result.url.expirationDate &&
-            `is valid until ${result.url.expirationDate.toLocaleString()}.`}
-        </p>
-        <p className="mt-4">
-          {` Our model has classified this URL as "${result.verdict}," with a trust score of`}
-          <strong> {result.trustScore} out of 5.</strong>
-          {` Additionally, Google Safe Browsing has classified the URL as `}
-          <strong>
-            {result.url.googleSafeBrowsing ? "malicious." : "safe."}
-          </strong>
-        </p>
-      </div>
-
-      <div className="mt-8">
-        <div className="border-t border-x rounded-t-lg px-4 py-2 bg-gray-100">
-          <h2 className="text-gray-700 font-semibold">Model Result</h2>
-        </div>
-
-        <div className="p-4 border rounded-b-lg">
+        <div className="p-4 border rounded-lg">
           <Link href={`/url/${result.url.urlId}`}>
             <div className=" flex items-center gap-8 p-4 border rounded hover:bg-gray-200 transition-colors">
               <div className="grow truncate">
@@ -157,8 +120,56 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
         </div>
       </div>
 
+      {/* <div className="p-4 border rounded-lg">
+        <h2 className="text-3xl font-semibold mb-1 truncate">
+          {result.submittedUrl}
+        </h2>
+        <p className="text-gray-700 truncate">
+          <strong>Redirected to: </strong>
+          {result.url.finalUrl}
+        </p>
+      </div> */}
+
       <div className="mt-8">
-        <div className="border-t border-x rounded-t-lg px-4 py-2 bg-gray-100">
+        <h2 className="text-xl font-semibold">Summary</h2>
+        <p className="mt-4">
+          The website&apos;s domain name is managed by
+          <strong>
+            {` ${result.url.registrar}. ` ?? " an unknown registrar. "}
+          </strong>
+          The main IP address is
+          <strong> {result.url.ipAddress ?? "unknown"}</strong>
+          {result.url.country
+            ? `, located in ${lookup.byIso(result.url.country)?.country}.`
+            : `.`}
+          {(result.url.creationDate || result.url.expirationDate) &&
+            ` The website's SSL certificate `}
+          {result.url.creationDate &&
+            `was issued on ${result.url.creationDate.toLocaleString()}`}
+          {result.url.creationDate && result.url.expirationDate && ` and `}
+          {result.url.expirationDate &&
+            `is valid until ${result.url.expirationDate.toLocaleString()}.`}
+        </p>
+        <p className="mt-4">
+          {` Our model has classified this URL as "${result.verdict}," with a trust score of`}
+          <strong> {result.trustScore} out of 5.</strong>
+          {` Additionally, Google Safe Browsing has classified the URL as `}
+          <strong>
+            {result.url.googleSafeBrowsing ? "malicious." : "safe."}
+          </strong>
+        </p>
+      </div>
+
+      <div className="mt-8">
+        <h2 className="text-xl font-semibold">Extracted Features</h2>
+
+        <p className="mt-4">
+          Specific components or attributes that make up the URL&apos;s structure.
+          Each of these features plays a role in determining the destination and
+          behavior of the URL when accessed by a web browser or other client.{" "}
+        </p>
+
+        <div className="mt-8 border-t border-x rounded-t-lg px-4 py-2 bg-gray-100">
           <h2 className="text-gray-700 font-semibold">Extracted Features</h2>
         </div>
 

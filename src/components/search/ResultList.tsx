@@ -1,26 +1,17 @@
+"use client";
+
 import Link from "next/link";
 import ReactCountryFlag from "react-country-flag";
 
 import { FaQuestionCircle } from "react-icons/fa";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 
 import { Result } from "@/types/urlTypes";
 
 interface ResultListProps {
-  totalCount: number;
-  currentPage: number;
   results: Result[];
-  noPagination?: boolean;
 }
 
-function ResultList({
-  results,
-  totalCount,
-  currentPage,
-  noPagination,
-}: ResultListProps) {
-  const maxPage = totalCount == 0 ? 1 : Math.ceil(totalCount / 10);
-
+function ResultList({ results }: ResultListProps) {
   const verdictMappings: Record<string, { label: string; color: string }> = {
     UNKNOWN: { label: "Unknown", color: "bg-gray-500" },
     VERY_LOW: { label: "Safe", color: "bg-lime-500" },
@@ -55,7 +46,7 @@ function ResultList({
             >
               {results.map((result, index) => (
                 <Link key={index} href={`/result/${result.resultId}`}>
-                  <div className="flex items-center justify-between gap-4 p-4 hover:bg-gray-200">
+                  <div className="flex items-center justify-between gap-4 p-4 hover:bg-gray-200 h-20">
                     <div className="grow truncate">
                       <p className="truncate">{result.submittedUrl}</p>
                       <p className="truncate text-sm text-gray-500 ">
@@ -117,30 +108,6 @@ function ResultList({
             The result you are looking for might have been removed or is
             temporarily unavailable.
           </p>
-        </div>
-      )}
-
-      {!noPagination && (
-        <div className="flex items-center justify-center mt-4 gap-4">
-          <Link
-            className={`${
-              currentPage == 1 && "pointer-events-none text-gray-300"
-            } `}
-            href={{ pathname: "/search", query: { page: currentPage - 1 } }}
-          >
-            <FaChevronLeft />
-          </Link>
-          <div className="px-4 py-2 bg-gray-100 rounded-lg border">
-            {currentPage} / {maxPage}
-          </div>
-          <Link
-            className={`${
-              currentPage == maxPage && "pointer-events-none text-gray-300"
-            } `}
-            href={{ pathname: "/search", query: { page: currentPage + 1 } }}
-          >
-            <FaChevronRight />
-          </Link>
         </div>
       )}
     </div>

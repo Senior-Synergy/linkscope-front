@@ -14,10 +14,10 @@ function Navbar() {
       name: "search",
       route: "/search",
     },
-    // {
-    //   name: "docs",
-    //   route: "/docs",
-    // },
+    {
+      name: "docs",
+      route: "/docs",
+    },
     // {
     //   name: "dev",
     //   route: "/develop",
@@ -29,7 +29,7 @@ function Navbar() {
       <div className="sticky top-0 z-10">
         <div
           className="flex items-center justify-center
-                    bg-transparent bg-opacity-75 backdrop-blur"
+                    bg-gray-100 bg-opacity-75 backdrop-blur border-b"
         >
           <div
             className="flex items-center justify-between
@@ -42,7 +42,7 @@ function Navbar() {
                 className="h-6 w-auto"
                 priority
               />
-              <p className="font-extrabold text-xl text">LINKSCOPE</p>
+              <p className="font-extrabold text-2xl">LINKSCOPE</p>
             </div>
 
             <div className="flex items-center">
