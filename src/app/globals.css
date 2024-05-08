@@ -21,6 +21,18 @@ body {
   background: rgb(var(--background-rgb));
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+article {
+  scroll-margin-top: 125px;
+}
+
+section {
+  scroll-margin-top: 125px;
+}
+
 /* Add custom border and divide colors */
 /* .border {
   border-color: rgb(var(--border-color-rgb));
