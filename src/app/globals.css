@@ -5,20 +5,56 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
+  --text-rgb: 255, 255, 255;
   --border-color-rgb: 224, 224, 224; /* Default border color */
   --divide-color-rgb: 224, 224, 224; /* Default divide color */
 }
 
 .dark:root {
   --foreground-rgb: 255, 255, 255;
-  --background-rgb: 0, 0, 0;
+  --background-rgb: 15, 15, 15;
+  --text-rgb: 0, 0, 0;
   --border-color-rgb: 64, 64, 64; /* Dark mode border color */
   --divide-color-rgb: 48, 48, 48; /* Dark mode divide color */
+}
+
+@layer base {
+  h1 {
+    @apply text-4xl;
+  }
+
+  h2 {
+    @apply text-3xl;
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+
+  /* Can directly apply colors : hard coded values for light and dark */
+  .bg-color {
+    @apply bg-white dark:bg-black;
+  }
+
+  /* Can use custom color defined in the tailwind.config.css file */
+  .bg-text {
+    @apply text-black dark:text-white;
+  }
+
+  /* This is how you apply the border-color for both light and dark mode */
+  .border {
+    @apply border-gray-300 dark:border-gray-700;
+  }
+
+  .divide-y {
+    @apply divide-gray-300 dark:divide-gray-700;
+  }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
+  overflow-y: scroll !important;
 }
 
 html {

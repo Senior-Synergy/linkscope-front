@@ -19,12 +19,12 @@ function Searcher() {
 
   const sortOptions = [
     {
-      name: "Older",
-      value: "D-D",
-    },
-    {
       name: "Newer",
       value: "D-A",
+    },
+    {
+      name: "Older",
+      value: "D-D",
     },
     {
       name: "A-Z",
@@ -43,8 +43,8 @@ function Searcher() {
           <label>
             <input
               className={`w-full h-12 px-4 rounded-lg
-                      border focus:outline-none
-                      bg-white`}
+                        bg-white dark:bg-black
+                        border focus:outline-none`}
               name="query"
               placeholder="Enter search terms..."
               value={searchQuery}

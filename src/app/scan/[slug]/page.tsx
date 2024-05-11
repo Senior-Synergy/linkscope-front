@@ -31,7 +31,7 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
   return (
     <MainWrapper>
       <header>
-        <h1 className="text-4xl font-semibold mb-1">Submission Results</h1>
+        <h1 className="font-semibold mb-1">Submission Results</h1>
         <p className="text-gray-500 font-extralight"></p>
       </header>
 

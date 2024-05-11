@@ -37,7 +37,7 @@ async function SearchResultList({
   return (
     <>
       <ResultList results={results} />
-      <ResultListPaginator totalCount={totalCount} />
+      <ResultListPaginator totalCount={totalCount} pageSize={10} />
     </>
   );
 }

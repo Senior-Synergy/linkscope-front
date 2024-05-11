@@ -79,3 +79,23 @@ export function camelCaseToNormalCase(str: string): string {
 
   return normalCaseString;
 }
+
+export function calculateVerdict(phishProbMod: number): string {
+  const baseValue = phishProbMod / 100;
+  if (baseValue < 0.2) {
+    return "VERY_LOW";
+  } else if (baseValue < 0.4) {
+    return "LOW";
+  } else if (baseValue < 0.6) {
+    return "MEDIUM";
+  } else if (baseValue < 0.8) {
+    return "HIGH";
+  } else {
+    return "VERY_HIGH";
+  }
+}
+
+export function calculateTrustScore(phishProbMod: number): number {
+  const score = Math.round((1 - phishProbMod / 100) * 5);
+  return score;
+}

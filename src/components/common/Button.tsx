@@ -38,11 +38,11 @@ function Button({
                 ${
                   primary
                     ? disabled
-                      ? "text-white border border-gray-300 bg-gray-300 dark:bg-gray-800 dark:text-gray-400"
-                      : "text-white border border-primary bg-primary hover:bg-primary-600 hover:border-primary-700"
+                      ? "text-white border border-gray-300 bg-gray-300 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400"
+                      : "text-white border border-primary bg-primary hover:bg-primary-600 hover:border-primary-600"
                     : disabled
-                    ? "border border-gray-300 text-gray-300 dark:text-gray-400 bg-white dark:bg-black"
-                    : "border border-primary text-primary bg-white dark:bg-black hover:bg-primary-100"
+                    ? "border border-gray-300 text-gray-300 dark:border-gray-700 dark:text-gray-700"
+                    : "border border-primary text-primary hover:bg-primary-100 hover:dark:bg-primary-900"
                 }
                 ${className}
                 `}

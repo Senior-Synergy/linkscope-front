@@ -1,72 +1,75 @@
+import Link from "next/link";
+import lookup from "country-code-lookup";
+import { notFound } from "next/navigation";
+import { FaCheck, FaChevronRight, FaX } from "react-icons/fa6";
+import { FaQuestionCircle } from "react-icons/fa";
+
 import Footer from "@/components/common/Footer";
+import MainWrapper from "@/components/common/wrapper/MainWrapper";
+import VerdictDisplay from "@/components/search/VerdictDisplay";
 import { ResultExtended } from "@/types/urlTypes";
 import { getResult } from "@/services/linkscopeApi";
-import MainWrapper from "@/components/common/wrapper/MainWrapper";
-import { FaCheck, FaChevronRight, FaX } from "react-icons/fa6";
-import lookup from "country-code-lookup";
 import { featureInformation } from "@/constants/feature";
-import Link from "next/link";
+import { calculateTrustScore, calculateVerdict } from "@/utils/formattor";
+import { verdictMappings } from "@/constants/result";
+import InfoBox from "@/components/search/InfoBox";
 
 async function ScanResultPage({ params }: { params: { slug: string } }) {
   const resultId = parseInt(params.slug);
 
   const result: ResultExtended | null = await getResult(resultId);
 
-  if (!result) throw new Error(`Failed to fetch result for ${params.slug}`);
+  if (!result) return notFound();
 
   const featureItem: Record<string, any> = result.feature;
+  const verdict = verdictMappings[calculateVerdict(result.phishProbMod)];
+  const trustScore = result.hasSoup
+    ? calculateTrustScore(result.phishProbMod)
+    : "-";
 
-  const verdictMappings: Record<string, { label: string; color: string }> = {
-    UNKNOWN: { label: "Unknown", color: "bg-gray-500" },
-    VERY_LOW: { label: "Safe", color: "bg-lime-500" },
-    LOW: { label: "Safe", color: "bg-lime-500" },
-    MEDIUM: { label: "Moderate", color: "bg-amber-500" },
-    HIGH: { label: "Suspecious", color: "bg-orange-500" },
-    VERY_HIGH: { label: "Malicious", color: "bg-red-500" },
-    //-------------------------------------------------------------------
-    unknown: { label: "Unknown", color: "bg-gray-500" },
-    safe: { label: "Safe", color: "bg-status-success" },
-    suspicious: { label: "Suspicious", color: "bg-status-caution" },
-    malicious: { label: "Malicious", color: "bg-status-warning" },
-  };
+  const verdictLabel = verdict.label;
+  const verdictColor = verdict.color || "bg-gray-500";
+
+  const modelResultItems = [
+    {
+      title: "Model Probability",
+      value: `${result.phishProb}%`,
+      hint: "The likelihood that the given URL is classified as phishing based on the features analyzed by the model. A higher percentage suggests a stronger indication of phishing.",
+    },
+    {
+      title: "Verdict",
+      value: verdictLabel,
+      hint: "The verdict is based on the threshold set by the model; if the model probability is below a certain threshold, the verdict will be 'safe,' indicating that the URL is not considered a phishing threat.",
+    },
+    {
+      title: "Trust Score",
+      value: `${trustScore} out of 5`,
+      hint: "The level of confidence users can have in the model's prediction. A higher trust score indicates a stronger confidence level in the model's accuracy.",
+    },
+  ];
 
   return (
     <MainWrapper>
       <header>
-        <h1 className="text-4xl font-semibold mb-1">Result</h1>
+        <h1 className="font-semibold mb-1">Result</h1>
         <p className="text-gray-500 font-extralight">
           Scan result of &apos;{result.submittedUrl}&apos;
         </p>
       </header>
 
       <div className="flex flex-wrap gap-2 mt-4">
-        <div
-          className={`px-4 py-2 text-center rounded-full
-                    ${
-                      result.verdict && result.verdict in verdictMappings
-                        ? verdictMappings[result.verdict].color
-                        : "bg-black"
-                    }
-                    `}
-        >
-          <p className="text-white text-sm font-normal">
-            {result.verdict && result.verdict in verdictMappings
-              ? verdictMappings[result.verdict].label
-              : result.verdict}
-          </p>
-        </div>
-
+        <VerdictDisplay label={verdictLabel} color={verdictColor} />
         <div
           className={`flex items-center gap-2 px-4 py-2 text-center rounded-full text-white
-                        ${
-                          !result.url.googleSafeBrowsing
-                            ? "bg-status-passive"
-                            : "bg-status-caution"
-                        }
-                        `}
+                      ${
+                        !result.url.googleIsMalicious
+                          ? "bg-status-passive"
+                          : "bg-status-caution"
+                      }
+                      `}
         >
           <p className="text-sm font-normal">Google Safe Browsing</p>
-          {!result.url.googleSafeBrowsing ? <FaCheck /> : <FaX />}
+          {!result.url.googleIsMalicious ? <FaCheck /> : <FaX />}
         </div>
 
         <div className="flex items-center gap-2 px-4 py-2 text-center border rounded-full">
@@ -77,58 +80,43 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
       </div>
 
       <div className="mt-8">
-        <div className="p-4 border rounded-lg">
+        <div className="rounded-lg">
           <Link href={`/url/${result.url.urlId}`}>
-            <div className=" flex items-center gap-8 p-4 border rounded hover:bg-gray-200 transition-colors">
+            <div
+              className=" flex items-center gap-8 p-4 rounded-lg border 
+                        border-primary hover:bg-primary-100 hover:dark:bg-primary-900 
+                        transition-colors"
+            >
               <div className="grow truncate">
-                <p className="text-sm text-gray-700 font-medium mb-1">
-                  URL Scanned
-                </p>
-                <h3 className="text-lg font-semibold truncate">
+                <p className="text-sm font-medium mb-1">URL Scanned</p>
+                <h3 className="text-xl text-primary font-semibold truncate">
                   {result.url.finalUrl}
                 </h3>
-                <p className="text-gray-500">{result.url.ipAddress}</p>
+                <p>{result.url.ipAddress}</p>
               </div>
 
               <div className="flex items-center gap-2">
-                <p className="hidden sm:block text-sm text-gray-500">
+                <p className="hidden sm:block text-sm text-primary">
                   More Details
                 </p>
-                <FaChevronRight className="w-7 h-7 fill-gray-400 shrink-0" />
+                <FaChevronRight className="w-7 h-7 fill-primary shrink-0" />
               </div>
             </div>
           </Link>
 
-          <ul className="flex flex-wrap gap-x-12 gap-y-4 p-4 mt-4 rounded bg-gray-100">
-            <li>
-              <p className="text-sm text-gray-500">Probability:</p>
-              <p>{result.phishProb}%</p>
-            </li>
-            <li>
-              <p className="text-sm text-gray-500">Verdict:</p>
-              <p>{result.verdict}</p>
-            </li>
-            <li>
-              <p className="text-sm text-gray-500">Trust Score:</p>
-              <p>{result.trustScore}</p>
-            </li>
-            <li>
-              <p className="text-sm text-gray-500">Date & Time Created:</p>
-              <p>{result.datetimeCreated.toString()}</p>
-            </li>
+          <ul className="flex flex-wrap gap-4 mt-4">
+            {modelResultItems.map((item, index) => (
+              <li key={index} className="flex-auto">
+                <InfoBox
+                  title={item.title}
+                  value={item.value}
+                  hint={item.hint}
+                />
+              </li>
+            ))}
           </ul>
         </div>
       </div>
-
-      {/* <div className="p-4 border rounded-lg">
-        <h2 className="text-3xl font-semibold mb-1 truncate">
-          {result.submittedUrl}
-        </h2>
-        <p className="text-gray-700 truncate">
-          <strong>Redirected to: </strong>
-          {result.url.finalUrl}
-        </p>
-      </div> */}
 
       <div className="mt-8">
         <h2 className="text-xl font-semibold">Summary</h2>
@@ -151,11 +139,11 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
             `is valid until ${result.url.expirationDate.toLocaleString()}.`}
         </p>
         <p className="mt-4">
-          {` Our model has classified this URL as "${result.verdict}," with a trust score of`}
-          <strong> {result.trustScore} out of 5.</strong>
+          {` Our model has classified this URL as "${result.phishProbMod}," with a trust score of`}
+          <strong> {result.phishProbMod} out of 5.</strong>
           {` Additionally, Google Safe Browsing has classified the URL as `}
           <strong>
-            {result.url.googleSafeBrowsing ? "malicious." : "safe."}
+            {result.url.googleIsMalicious ? "malicious." : "safe."}
           </strong>
         </p>
       </div>
@@ -164,13 +152,14 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
         <h2 className="text-xl font-semibold">Extracted Features</h2>
 
         <p className="mt-4">
-          Specific components or attributes that make up the URL&apos;s structure.
-          Each of these features plays a role in determining the destination and
-          behavior of the URL when accessed by a web browser or other client.{" "}
+          Specific components or attributes that make up the URL&apos;s
+          structure. Each of these features plays a role in determining the
+          destination and behavior of the URL when accessed by a web browser or
+          other client.{" "}
         </p>
 
         <div className="mt-8 border-t border-x rounded-t-lg px-4 py-2 bg-gray-100">
-          <h2 className="text-gray-700 font-semibold">Extracted Features</h2>
+          <p className="text-gray-700 font-semibold">Extracted Features</p>
         </div>
 
         <div className="border rounded-b-lg divide-y divide">

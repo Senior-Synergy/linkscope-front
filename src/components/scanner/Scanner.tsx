@@ -7,7 +7,6 @@ import ManualScanner from "./ManualScanner";
 import AutoScanner from "./AutoScanner";
 import { createBulkSubmission } from "@/services/linkscopeApi";
 import { useRouter } from "next/navigation";
-import Portal from "../common/wrapper/Portal";
 import { FaSpinner } from "react-icons/fa6";
 
 function Scanner() {
@@ -27,7 +26,7 @@ function Scanner() {
 
   async function submitUrls(urls: string[]) {
     setIsScanning(true);
-    
+
     const response = await createBulkSubmission(urls);
 
     if (response) {
@@ -64,7 +63,7 @@ function Scanner() {
         <div
           className={`absolute inset-0 
                     flex items-center justify-center 
-                    bg-white backdrop-blur rounded-lg 
+                    bg-transparent backdrop-blur-2xl rounded-lg 
                     ${
                       isScanning
                         ? "opacity-100 bg-opacity-25"
@@ -73,7 +72,7 @@ function Scanner() {
         >
           <div className="flex flex-col items-center gap-4 max-w-xs">
             <FaSpinner
-              className={`fill-black w-16 h-16 ${isScanning && "animate-spin"}`}
+              className={`w-16 h-16 ${isScanning && "animate-spin"}`}
             />
             <p className="text-lg text-center">
               Please wait a moment while your request is being processed

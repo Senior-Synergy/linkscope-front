@@ -84,7 +84,7 @@ function AutoScanner({ submitUrls }: AutoScannerProps) {
           className="min-h-32 w-full p-2
                     border dark:border-gray-700 rounded-md
                     focus:outline-none focus:ring-1 focus:ring-primary-300 
-                    bg-white dark:bg-gray-800"
+                    bg-white dark:bg-black"
           name="text"
           placeholder="Enter text here..."
           value={textareaInput}

@@ -42,11 +42,11 @@ export async function searchResults(
         break;
       case "D-D":
         sortBy = "datetime_created";
-        sortDirection = "desc";
+        sortDirection = "asc";
         break;
       case "D-A":
         sortBy = "datetime_created";
-        sortDirection = "asc";
+        sortDirection = "desc";
         break;
       default:
         break;
@@ -192,7 +192,7 @@ function mapFeatureBase(feature: FeatureBase): FeatureCommon {
     domainEnd: feature.domainend,
     shorttenUrl: feature.shortten_url,
     ipInUrl: feature.ip_in_url,
-    lenEmptyLinks: feature.empty_links_count,
+    emptyLinksCount: feature.empty_links_count,
     lenExternalLinks: feature.len_external_links,
     externalLinks: feature.external_links,
     externalImgRequrl: feature.external_img_requrl,
@@ -223,7 +223,7 @@ function mapUrlBase(url: UrlBase): UrlCommon {
     city: url.city,
     state: url.state,
     country: url.country,
-    googleSafeBrowsing: url.google_safe_browsing,
+    googleIsMalicious: url.google_is_malicious,
   };
 }
 
@@ -235,8 +235,8 @@ function mapResultBase(result: ResultBase): ResultCommon {
     featureId: result.feature_id,
     submittedUrl: result.submitted_url,
     phishProb: result.phish_prob,
-    verdict: result.verdict,
-    trustScore: result.trust_score,
+    phishProbMod: result.phish_prob_mod,
+    hasSoup: result.has_soup,
     datetimeCreated: new Date(result.datetime_created),
   };
 }

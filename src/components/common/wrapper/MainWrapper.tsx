@@ -7,8 +7,8 @@ interface MainWrapperProps {
 
 function MainWrapper({ children, className }: Readonly<MainWrapperProps>) {
   return (
-    <div className="w-full max-w-5xl m-auto">
-      <div className={`p-4 md:p-8 w-full ${className}`}>{children}</div>
+    <div className="w-full m-auto max-w-5xl">
+      <div className={`px-4 py-6 md:p-8 w-full ${className}`}>{children}</div>
     </div>
   );
 }

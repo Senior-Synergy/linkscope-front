@@ -18,9 +18,9 @@ async function SearchPage({
   return (
     <MainWrapper>
       <header>
-        <h1 className="text-4xl font-semibold mb-1">SEARCH</h1>
+        <h1 className="text-4xl font-semibold mb-1">Results</h1>
         <p className="text-gray-500 font-extralight">
-          Explore our database of previously scanned URLs.
+          Explore our database of previously created scan results.
         </p>
       </header>
 

@@ -5,15 +5,19 @@ import React, { useCallback } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 
 interface ResultListPaginatorProps {
+  pageSize: number;
   totalCount: number;
 }
 
-function ResultListPaginator({ totalCount }: ResultListPaginatorProps) {
+function ResultListPaginator({
+  totalCount,
+  pageSize,
+}: ResultListPaginatorProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const maxPage = totalCount == 0 ? 1 : Math.ceil(totalCount / 10);
+  const maxPage = totalCount == 0 ? 1 : Math.ceil(totalCount / pageSize);
   const currentPage = parseInt(searchParams.get("page") ?? "1");
 
   const createQueryString = useCallback(
@@ -29,10 +33,11 @@ function ResultListPaginator({ totalCount }: ResultListPaginatorProps) {
   return (
     <div className="flex items-center justify-center mt-4">
       <button
+        disabled={currentPage == 1}
         className={`flex justify-center items-center h-12 w-12 rounded-l-lg
                   ${
                     currentPage == 1
-                      ? "bg-gray-100 text-gray-300"
+                      ? "bg-gray-100 dark:bg-gray-900 text-gray-300 dark:text-gray-700"
                       : "bg-primary hover:bg-primary-600 text-white"
                   }`}
         onClick={() => {
@@ -47,10 +52,11 @@ function ResultListPaginator({ totalCount }: ResultListPaginatorProps) {
         {currentPage} / {maxPage}
       </div>
       <button
+        disabled={currentPage == maxPage}
         className={`flex justify-center items-center h-12 w-12 rounded-r-lg 
                   ${
                     currentPage == maxPage
-                      ? "bg-gray-100 text-gray-300"
+                      ? "bg-gray-100 dark:bg-gray-900 text-gray-300 dark:text-gray-700"
                       : "bg-primary hover:bg-primary-600 text-white"
                   }`}
         onClick={() => {

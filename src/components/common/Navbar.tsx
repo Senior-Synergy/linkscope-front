@@ -1,21 +1,26 @@
 import Image from "next/image";
 
-import LinkScopeIcon from "../../../public/logo/logo-icon-black.svg";
+import LinkScopeIcon from "../../../public/logo/logo-icon-primary.svg";
 import Link from "next/link";
+import DarkmodeSwitch from "./DarkmodeSwitch";
 import { FaGear } from "react-icons/fa6";
 
 function Navbar() {
   const NavItem = [
     {
-      name: "scan",
+      name: "Scan",
       route: "/scan",
     },
     {
-      name: "search",
-      route: "/search",
+      name: "Results",
+      route: "/result",
     },
+    // {
+    //   name: "URLs",
+    //   route: "/url",
+    // },
     {
-      name: "docs",
+      name: "Docs",
       route: "/docs",
     },
     // {
@@ -27,26 +32,25 @@ function Navbar() {
   return (
     <>
       <div className="sticky top-0 z-10">
-        <div
-          className="flex items-center justify-center
-                    bg-gray-100 bg-opacity-75 backdrop-blur border-b"
-        >
+        <div className="flex items-center justify-center">
           <div
             className="flex items-center justify-between
-                      p-4 md:p-8 gap-10 w-full max-w-5xl"
+                      p-4 md:px-8 gap-10 w-full bg-transparent backdrop-blur-2xl border border-t-0 border-x-0"
           >
             <div className="flex items-center gap-2">
               <Image
                 src={LinkScopeIcon}
                 alt="logo"
-                className="h-6 w-auto"
+                className="h-6 w-auto mb-[2px]"
                 priority
               />
-              <p className="font-extrabold text-2xl">LINKSCOPE</p>
+              <p className="font-extrabold text-2xl hidden md:block">
+                LINKSCOPE
+              </p>
             </div>
 
             <div className="flex items-center">
-              <nav className="flex items-center space-x-2 mr-4">
+              <nav className="flex items-center space-x-4 mr-4">
                 {NavItem.map((item, index) => (
                   <Link key={index} href={item.route}>
                     <div className="flex items-center justify-center h-8 rounded hover:bg-gray-200 hover:bg-opacity-50 transition-colors">
@@ -55,6 +59,8 @@ function Navbar() {
                   </Link>
                 ))}
               </nav>
+
+              <DarkmodeSwitch />
 
               {/* <button
                 disabled

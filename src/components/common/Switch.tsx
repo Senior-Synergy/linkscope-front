@@ -12,11 +12,13 @@ function Switch({ isOn, onToggle }: SwitchProps) {
       className={`flex p-1 w-10 rounded-full transition-colors ${
         isOn ? "bg-primary" : "bg-gray-200"
       }`}
+      suppressHydrationWarning
     >
       <div
         className={`h-4 w-4 bg-white rounded-full transition-transform ${
           isOn ? "translate-x-full" : "translate-x-0"
         }`}
+        suppressHydrationWarning
       />
     </button>
   );

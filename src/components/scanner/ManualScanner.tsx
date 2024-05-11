@@ -126,7 +126,7 @@ function ManualScanner({ submitUrls }: ManualScannerProps) {
             <input
               className={`w-full h-12 p-2 rounded-lg
                           border focus:outline-none
-                          bg-white`}
+                          bg-white dark:bg-black`}
               name="url-input"
               placeholder="Enter a URL..."
               value={textInput}
@@ -164,7 +164,7 @@ function ManualScanner({ submitUrls }: ManualScannerProps) {
         <div
           className="flex flex-col
                     h-60 overflow-y-auto
-                    rounded-lg bg-gray-100"
+                    rounded-lg bg-gray-100 dark:bg-gray-800"
         >
           {/* Url list */}
           {urlList.length > 0 ? (
@@ -179,7 +179,7 @@ function ManualScanner({ submitUrls }: ManualScannerProps) {
                   <button
                     type="button"
                     onClick={() => deleteUrlFromList(index)}
-                    className="group rounded-full p-2 bg-white hover:bg-red-500 transition-colors"
+                    className="group rounded-full p-2 bg-white dark:bg-gray-950 hover:bg-red-500 transition-colors"
                   >
                     <FaTrash className="fill-red-500 group-hover:fill-white" />
                   </button>

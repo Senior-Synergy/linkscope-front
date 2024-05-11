@@ -3,12 +3,15 @@
 export interface UrlBase {
   url_id: number;
   final_url: string;
-  hostname: string;
-  domain: string;
+  hostname: string | null;
+  domain: string | null;
   subdomains: string[] | null;
   scheme: string[] | null;
   registrar: string[] | null;
   ip_address: string[] | null;
+
+  // ---------------------------------
+
   creation_date: Date | null;
   expiration_date: Date | null;
   domainage: number | null;
@@ -16,42 +19,45 @@ export interface UrlBase {
   city: string | null;
   state: string | null;
   country: string | null;
-  google_safe_browsing: boolean;
+  google_is_malicious: boolean | null;
 }
 
 export interface ResultBase {
   result_id: number;
-  submission_id: number | null;
-  url_id: number | null;
-  feature_id: number | null;
+  submission_id: number;
+  url_id: number;
+  feature_id: number;
   submitted_url: string;
   phish_prob: number;
-  verdict: string | null;
-  trust_score: number | null;
+  phish_prob_mod: number;
+  has_soup: boolean;
   datetime_created: Date;
 }
 
 export interface FeatureBase {
   feature_id: number;
-  domainlength: number;
-  www: boolean;
-  https: boolean;
-  short_url: boolean;
-  ip: boolean;
-  dash_count: number;
-  equal_count: number;
-  dot_count: number;
-  underscore_count: number;
-  slash_count: number;
-  digit_count: number;
+  domainlength: number | null;
+  www: boolean | null;
+  https: boolean | null;
+  short_url: boolean | null;
+  ip: boolean | null;
+  dash_count: number | null;
+  equal_count: number | null;
+  dot_count: number | null;
+  underscore_count: number | null;
+  slash_count: number | null;
+  digit_count: number | null;
   pc_emptylink: number | null;
   pc_extlink: number | null;
   pc_requrl: number | null;
-  zerolink: boolean;
-  ext_favicon: boolean;
-  sfh: boolean;
-  redirection: boolean;
-  domainend: boolean;
+  zerolink: boolean | null;
+  ext_favicon: boolean | null;
+  sfh: boolean | null;
+  redirection: boolean | null;
+  domainend: boolean | null;
+
+  // ---------------------------------
+
   shortten_url: string | null;
   ip_in_url: string | null;
   empty_links_count: number;
@@ -60,11 +66,11 @@ export interface FeatureBase {
   external_audio_requrl: string[] | null;
   external_embed_requrl: string[] | null;
   external_iframe_requrl: string[] | null;
-  len_external_links: number;
-  len_external_img_requrl: number;
-  len_external_audio_requrl: number;
-  len_external_embed_requrl: number;
-  len_external_iframe_requrl: number;
+  len_external_links: number | null;
+  len_external_img_requrl: number | null;
+  len_external_audio_requrl: number | null;
+  len_external_embed_requrl: number | null;
+  len_external_iframe_requrl: number | null;
 }
 
 export interface SubmissionBase {

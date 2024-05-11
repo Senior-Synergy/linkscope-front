@@ -15,8 +15,8 @@ export interface SubmissionCommon {
 export interface UrlCommon {
   urlId: number;
   finalUrl: string;
-  hostname: string;
-  domain: string;
+  hostname: string | null;
+  domain: string | null;
   subdomains: string[] | null;
   registrar: string[] | null;
   ipAddress: string[] | null;
@@ -28,7 +28,7 @@ export interface UrlCommon {
   city: string | null;
   state: string | null;
   country: string | null;
-  googleSafeBrowsing: boolean;
+  googleIsMalicious: boolean | null;
 }
 
 export interface ResultCommon {
@@ -38,45 +38,48 @@ export interface ResultCommon {
   featureId: number | null;
   submittedUrl: string;
   phishProb: number;
-  verdict: string | null;
-  trustScore: number | null;
+  phishProbMod: number;
+  hasSoup: boolean | null;
   datetimeCreated: Date;
 }
 
 export interface FeatureCommon {
   featureId: number;
-  domainLength: number;
-  www: boolean;
-  https: boolean;
-  shortUrl: boolean;
-  ip: boolean;
-  dashCount: number;
-  equalCount: number;
-  dotCount: number;
-  underscoreCount: number;
-  slashCount: number;
-  digitCount: number;
+  domainLength: number | null;
+  www: boolean | null;
+  https: boolean | null;
+  shortUrl: boolean | null;
+  ip: boolean | null;
+  dashCount: number | null;
+  equalCount: number | null;
+  dotCount: number | null;
+  underscoreCount: number | null;
+  slashCount: number | null;
+  digitCount: number | null;
   pcEmptylink: number | null;
   pcExtlink: number | null;
   pcRequrl: number | null;
-  zerolink: boolean;
-  extFavicon: boolean;
-  sfh: boolean;
-  redirection: boolean;
-  domainEnd: boolean;
+  zerolink: boolean | null;
+  extFavicon: boolean | null;
+  sfh: boolean | null;
+  redirection: boolean | null;
+  domainEnd: boolean | null;
+
+  // --------------------------------
+
   shorttenUrl: string | null;
   ipInUrl: string | null;
-  lenEmptyLinks: number;
-  lenExternalLinks: number;
+  emptyLinksCount: number;
   externalLinks: string[] | null;
   externalImgRequrl: string[] | null;
   externalAudioRequrl: string[] | null;
   externalEmbedRequrl: string[] | null;
   externalIframeRequrl: string[] | null;
-  lenExternalImgRequrl: number;
-  lenExternalAudioRequrl: number;
-  lenExternalEmbedRequrl: number;
-  lenExternalIframeRequrl: number;
+  lenExternalLinks: number | null;
+  lenExternalImgRequrl: number | null;
+  lenExternalAudioRequrl: number | null;
+  lenExternalEmbedRequrl: number | null;
+  lenExternalIframeRequrl: number | null;
 }
 
 export interface Result extends ResultCommon {

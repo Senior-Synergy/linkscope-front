@@ -5,7 +5,38 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaChevronRight } from "react-icons/fa6";
 
-const DocumentationPage = () => {
+const docsContent = {
+  "en-US": {
+    title: "Your News",
+    content: [
+      {
+        title:
+          "Otter.ai’s new assistant can automatically transcribe your Zoom meetings",
+        synopsis:
+          "A.I.-powered voice transcription service Otter.ai wants to make it even easier for its business users to record their meetings. The company is today introducing a new feature, Otter Assistant, whic...",
+        imageUrl: "",
+      },
+      // ...
+    ],
+  },
+  "th-TH": {
+    title: "Your News",
+    content: [
+      {
+        title:
+          "Otter.ai’s new assistant can automatically transcribe your Zoom meetings",
+        synopsis:
+          "A.I.-powered voice transcription service Otter.ai wants to make it even easier for its business users to record their meetings. The company is today introducing a new feature, Otter Assistant, whic...",
+        imageUrl: "",
+      },
+      // ...
+    ],
+  },
+};
+
+function DocumentationPage() {
+  // const { title, content } = docsContent[locale];
+
   const accuracy = 96.13;
   const precision = 96.28;
   const recall = 95.97;
@@ -35,18 +66,18 @@ const DocumentationPage = () => {
   ];
 
   return (
-    <MainWrapper className="relative">
+    <main className="relative px-4 py-6 md:p-8 w-full">
       <section id="tb-content" className="hidden md:block md:fixed w-64">
         <div>
-          <div className="flex justify-between border-t border rounded-t-lg px-4 py-2 bg-gray-100 text-gray-700 font-semibold">
+          <div className="flex justify-between border-t border rounded-t-lg px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700  dark:text-gray-200 font-semibold">
             <p className="font-semibold">On this page</p>
           </div>
           <div className="border border-t-0 rounded-b-lg">
             <ul className="flex flex-col divide-y">
               {contentItems.map((content, index) => (
                 <Link key={index} href={`#${content.id}`}>
-                  <li className="flex justify-between items-center hover:bg-gray-200 transition-colors px-4 py-2">
-                    <p className="mr-8 text-gray-800">{content.title}</p>
+                  <li className="flex justify-between items-center hover:bg-gray-200 hover:dark:bg-gray-800 transition-colors px-4 py-2">
+                    <p className="mr-8">{content.title}</p>
                     <FaChevronRight />
                   </li>
                 </Link>
@@ -94,14 +125,14 @@ const DocumentationPage = () => {
               alt="url-structure"
               width={500}
               height={100}
-              className="border rounded-xl mx-auto my-4"
+              className="border rounded-xl mx-auto my-4 bg-white"
             />
             <p className="mt-4">
               A phisher has complete control over the subdomain sections and can
               assign any value to them. The URL might also include a path and
               file elements that can be manipulated by the phisher as desired.
-              The path is entirely under the phisher&apos;s control. In the rest of
-              this article, we refer to these portions of the URL as FreeURL.
+              The path is entirely under the phisher&apos;s control. In the rest
+              of this article, we refer to these portions of the URL as FreeURL.
             </p>
           </section>
 
@@ -143,7 +174,7 @@ const DocumentationPage = () => {
               alt="feature-importance-chart"
               width={500}
               height={100}
-              className="border rounded-xl mx-auto my-8 p-4"
+              className="border rounded-xl mx-auto my-8 p-4 bg-white"
             />
             <p className="mt-8">
               Particle Swarm Optimization is a population based technique to
@@ -170,9 +201,9 @@ const DocumentationPage = () => {
 
           <section id="model-result" className="mt-8">
             <h2 className="text-xl font-semibold">Model Results</h2>
-            <ul className="flex flex-wrap gap-4 mt-4">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
               <li className="flex-auto">
-                <div className="font-bold flex items-center justify-center p-2 rounded-t-lg bg-gray-100 text-gray-700 border">
+                <div className="font-bold flex items-center justify-center p-2 rounded-t-lg bg-gray-100 dark:bg-gray-800 text-gray-700  dark:text-gray-200 border">
                   Accuracy
                 </div>
                 <div className="text-4xl text-center p-8 border border-t-0 rounded-b-lg">
@@ -180,7 +211,7 @@ const DocumentationPage = () => {
                 </div>
               </li>
               <li className="flex-auto">
-                <div className="font-bold flex items-center justify-center p-2 rounded-t-lg bg-gray-100 text-gray-700 border">
+                <div className="font-bold flex items-center justify-center p-2 rounded-t-lg bg-gray-100 dark:bg-gray-800 text-gray-700  dark:text-gray-200 border">
                   Precision
                 </div>
                 <div className="text-4xl text-center p-8 border border-t-0 rounded-b-lg">
@@ -188,7 +219,7 @@ const DocumentationPage = () => {
                 </div>
               </li>
               <li className="flex-auto">
-                <div className="font-bold flex items-center justify-center p-2 rounded-t-lg bg-gray-100 text-gray-700 border">
+                <div className="font-bold flex items-center justify-center p-2 rounded-t-lg bg-gray-100 dark:bg-gray-800 text-gray-700  dark:text-gray-200 border">
                   Recall
                 </div>
                 <div className="text-4xl text-center p-8 border border-t-0 rounded-b-lg">
@@ -196,7 +227,7 @@ const DocumentationPage = () => {
                 </div>
               </li>
               <li className="flex-auto">
-                <div className="font-bold flex items-center justify-center p-2 rounded-t-lg bg-gray-100 text-gray-700 border">
+                <div className="font-bold flex items-center justify-center p-2 rounded-t-lg bg-gray-100 dark:bg-gray-800 text-gray-700  dark:text-gray-200 border">
                   F1-Score
                 </div>
                 <div className="text-4xl text-center p-8 border border-t-0 rounded-b-lg">
@@ -220,8 +251,8 @@ const DocumentationPage = () => {
 
         <Footer />
       </div>
-    </MainWrapper>
+    </main>
   );
-};
+}
 
 export default DocumentationPage;

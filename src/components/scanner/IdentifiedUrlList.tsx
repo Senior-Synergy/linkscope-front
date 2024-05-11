@@ -22,7 +22,7 @@ function IdentifiedUrlList({
     <div
       className="flex flex-col p-2 gap-4
                 w-full h-64 overflow-y-auto
-                rounded-md bg-gray-100 dark:bg-gray-900"
+                rounded-md bg-gray-100 dark:bg-gray-800"
     >
       {/* Url list */}
       {urlList.length > 0 ? (
