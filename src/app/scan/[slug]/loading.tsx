@@ -1,8 +1,7 @@
 import Spinner from "@/components/common/Spinner";
-import React from "react";
 
 function loading() {
-  return <Spinner description="Loading Result Information..." />;
+  return <Spinner description="Loading Scan Results..." />;
 }
 
 export default loading;

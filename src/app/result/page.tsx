@@ -29,7 +29,7 @@ async function SearchPage({
       </section>
 
       <section className="mt-8">
-        <Suspense fallback={<ResultListSuspense />}>
+        <Suspense key={pageNumber} fallback={<ResultListSuspense />}>
           <SearchResultList
             pageNumber={pageNumber}
             searchQuery={searchQuery}

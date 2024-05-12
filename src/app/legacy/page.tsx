@@ -30,7 +30,7 @@ const HomePage = () => {
       <section>
         <h2 className="text-2xl font-bold mb-4">Our Project</h2>
 
-        <div className="bg-white border rounded-lg p-4 mb-4">
+        <div className="border rounded-lg p-4 mb-4">
           <div className="flex items-center justify-between w-full gap-2 mb-4 transition-colors rounded-md">
             <div className="flex flex-col items-start">
               <h1 className="text-3xl font-bold text-primary">LINKSCOPE</h1>
@@ -62,7 +62,7 @@ const HomePage = () => {
         </div>
 
         <div className="flex flex-col lg:flex-row gap-4">
-          <div className="flex justify-between items-center gap-4 bg-white border rounded-lg p-4 lg:w-1/2">
+          <div className="flex justify-between items-center gap-4 border rounded-lg p-4 lg:w-1/2">
             <div>
               <h2 className="text-2xl font-bold">Search</h2>
 
@@ -71,7 +71,7 @@ const HomePage = () => {
 
             <FaChevronRight className="w-6 h-6 mx-4" />
           </div>
-          <div className="flex justify-between items-center gap-4 bg-white border rounded-lg p-4 lg:w-1/2">
+          <div className="flex justify-between items-center gap-4 border rounded-lg p-4 lg:w-1/2">
             <div>
               <h2 className="text-2xl font-bold">Documentation</h2>
 
@@ -86,7 +86,7 @@ const HomePage = () => {
       <section>
         <h2 className="text-2xl font-bold mb-4">Introduction</h2>
 
-        <p className="bg-white border rounded-lg p-4">
+        <p className="border rounded-lg p-4">
           Senior Synergy is a group of dedicated individuals working together to
           create innovative projects that make a difference. We are passionate
           about technology and its potential to solve real-world problems.

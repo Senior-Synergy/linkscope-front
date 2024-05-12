@@ -14,7 +14,7 @@ interface TabSelectorItemProps {
 
 function TabSelector({ itemList, currentItem, onSelect }: TabSelectorProps) {
   return (
-    <div className="flex w-full h-full rounded-md divide-x border dark:border-gray-700 dark:divide-gray-700 overflow-hidden">
+    <div className="flex w-full h-full rounded-md divide-x border overflow-hidden">
       {itemList.map((item, index) => (
         <TabSelectorItem
           key={index}

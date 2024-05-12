@@ -5,6 +5,7 @@ import { Result } from "@/types/urlTypes";
 import ResultList from "./ResultList";
 
 import ResultListPaginator from "./ResultListPaginator";
+import { notFound } from "next/navigation";
 
 interface SearchResultListProps {
   searchQuery: string;
@@ -31,7 +32,7 @@ async function SearchResultList({
     results = fetchedData.results;
     totalCount = fetchedData.totalCount;
   } else {
-    throw new Error("Failed to fetch data");
+    return notFound();
   }
 
   return (

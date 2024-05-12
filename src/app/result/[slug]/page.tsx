@@ -22,13 +22,12 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
   if (!result) return notFound();
 
   const featureItem: Record<string, any> = result.feature;
-  const verdict = verdictMappings[calculateVerdict(result.phishProbMod)];
+  const verdict = result.hasSoup
+    ? calculateVerdict(result.phishProbMod)
+    : "UNKNOWN";
   const trustScore = result.hasSoup
     ? calculateTrustScore(result.phishProbMod)
     : "-";
-
-  const verdictLabel = verdict.label;
-  const verdictColor = verdict.color || "bg-gray-500";
 
   const modelResultItems = [
     {
@@ -38,7 +37,7 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
     },
     {
       title: "Verdict",
-      value: verdictLabel,
+      value: verdictMappings[verdict]?.label ?? "Unavailable",
       hint: "The verdict is based on the threshold set by the model; if the model probability is below a certain threshold, the verdict will be 'safe,' indicating that the URL is not considered a phishing threat.",
     },
     {
@@ -58,7 +57,7 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
       </header>
 
       <div className="flex flex-wrap gap-2 mt-4">
-        <VerdictDisplay label={verdictLabel} color={verdictColor} />
+        <VerdictDisplay verdict={verdict} />
         <div
           className={`flex items-center gap-2 px-4 py-2 text-center rounded-full text-white
                       ${
@@ -158,58 +157,60 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
           other client.{" "}
         </p>
 
-        <div className="mt-8 border-t border-x rounded-t-lg px-4 py-2 bg-gray-100">
-          <p className="text-gray-700 font-semibold">Extracted Features</p>
-        </div>
+        <section>
+          <div className="mt-8 border border-b-0 rounded-t-lg px-4 py-2 bg-gray-100 dark:bg-gray-900">
+            <p className="font-semibold">Extracted Features</p>
+          </div>
 
-        <div className="border rounded-b-lg divide-y divide">
-          {Object.entries(featureInformation).map(
-            ([featureName, featureInfo], index) => (
-              <div
-                key={index}
-                className="flex items-stretch justify-between gap-4 p-4"
-              >
-                <div>
-                  <div className="flex items-center gap-2">
-                    <p className="font-medium">{featureInfo.featureName}</p>
-                    <p
-                      className={`hidden sm:block text-xs p-1 px-2 rounded-full border
+          <div className="border rounded-b-lg divide-y divide">
+            {Object.entries(featureInformation).map(
+              ([featureName, featureInfo], index) => (
+                <div
+                  key={index}
+                  className="flex items-stretch justify-between gap-4 p-4"
+                >
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <p className="font-medium">{featureInfo.featureName}</p>
+                      <p
+                        className={`hidden sm:block text-xs p-1 px-2 rounded-full border
                                 ${
                                   featureInfo.featureTypes == "Address Bar" &&
-                                  "border-primary-400 text-primary-700"
+                                  "border-primary-500 text-primary-500"
                                 }
                                 ${
                                   featureInfo.featureTypes ==
                                     "HTML/DOM Structure" &&
-                                  "border-lime-400 text-lime-700"
+                                  "border-lime-500 text-lime-500"
                                 }
                                 ${
                                   featureInfo.featureTypes == "Abnormal" &&
-                                  "border-amber-400 text-amber-700"
+                                  "border-amber-500 text-amber-500"
                                 }
                                 ${
                                   featureInfo.featureTypes == "Domain" &&
-                                  "border-red-400 text-red-700"
+                                  "border-red-500 text-red-500"
                                 }`}
-                    >
-                      {featureInfo.featureTypes}
+                      >
+                        {featureInfo.featureTypes}
+                      </p>
+                    </div>
+                    <p className="text-sm text-gray-500 mt-2 whitespace-pre-wrap">
+                      {featureInfo.explanation}
                     </p>
                   </div>
-                  <p className="text-sm text-gray-500 mt-2 whitespace-pre-wrap">
-                    {featureInfo.explanation}
-                  </p>
+                  <div
+                    className={`flex items-center justify-center shrink-0 w-14 bg-gray-100 dark:bg-gray-900 rounded`}
+                  >
+                    {featureItem[featureName] != null
+                      ? featureItem[featureName].toString()
+                      : "-"}
+                  </div>
                 </div>
-                <div
-                  className={`flex items-center justify-center shrink-0 w-14 bg-gray-100 rounded`}
-                >
-                  {featureItem[featureName] != null
-                    ? featureItem[featureName].toString()
-                    : "-"}
-                </div>
-              </div>
-            )
-          )}
-        </div>
+              )
+            )}
+          </div>
+        </section>
       </div>
 
       <Footer />

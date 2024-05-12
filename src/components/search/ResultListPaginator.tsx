@@ -34,7 +34,7 @@ function ResultListPaginator({
     <div className="flex items-center justify-center mt-4">
       <button
         disabled={currentPage == 1}
-        className={`flex justify-center items-center h-12 w-12 rounded-l-lg
+        className={`flex justify-center items-center h-12 w-12 rounded-l-lg transition-colors 
                   ${
                     currentPage == 1
                       ? "bg-gray-100 dark:bg-gray-900 text-gray-300 dark:text-gray-700"
@@ -53,7 +53,7 @@ function ResultListPaginator({
       </div>
       <button
         disabled={currentPage == maxPage}
-        className={`flex justify-center items-center h-12 w-12 rounded-r-lg 
+        className={`flex justify-center items-center h-12 w-12 rounded-r-lg transition-colors 
                   ${
                     currentPage == maxPage
                       ? "bg-gray-100 dark:bg-gray-900 text-gray-300 dark:text-gray-700"

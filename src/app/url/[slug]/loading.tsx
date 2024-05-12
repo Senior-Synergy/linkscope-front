@@ -1,15 +1,7 @@
-import React from "react";
-import { FaSpinner } from "react-icons/fa6";
+import Spinner from "@/components/common/Spinner";
 
 function loading() {
-  return (
-    <div className="m-auto">
-      <div className="flex flex-col items-center">
-        <FaSpinner className="fill-black w-12 h-12 animate-spin" />
-        <p className="text-lg mt-4">Loading URL Information...</p>
-      </div>
-    </div>
-  );
+  return <Spinner description="Loading URL Information..." />;
 }
 
 export default loading;

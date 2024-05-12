@@ -24,10 +24,10 @@ function IdentifiedUrlListItem({
             transition-all
             ${
               isSelected
-                ? "bg-primary-50 border-primary"
+                ? "bg-primary-50 dark:bg-primary-950 border-primary"
                 : isDisabled
-                ? "bg-gray-50 text-gray-400"
-                : "bg-white"
+                ? "bg-gray-50 dark:bg-gray-950 text-gray-400 dark:text-gray-600"
+                : "bg-white dark:bg-black"
             }`}
     >
       <div className={`${!isSelected && ""} truncate`}>{url}</div>

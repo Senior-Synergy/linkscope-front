@@ -63,8 +63,8 @@ function UrlInfo({ url, hideDetails }: UrlInfoProps) {
 
   return (
     <div>
-      <div className="border-t border-x rounded-t-lg px-4 py-2 bg-gray-100">
-        <h2 className="text-gray-700 font-semibold">URL Information</h2>
+      <div className="border border-b-0 rounded-t-lg px-4 py-2 bg-gray-100 dark:bg-gray-900">
+        <p className="font-semibold">URL Information</p>
       </div>
 
       <div className="p-4 border rounded-b-lg">
@@ -84,20 +84,20 @@ function UrlInfo({ url, hideDetails }: UrlInfoProps) {
 
         <div className="flex gap-2 mt-4">
           <TextCopyWrapper text={url.finalUrl}>
-            <div className="flex items-center gap-2 p-2 border rounded bg-white hover:bg-gray-200 transition-all">
+            <div className="flex items-center gap-2 p-2 border rounded hover:bg-gray-200 hover:dark:bg-gray-800 transition-all">
               <p className="text-sm">Copy</p>
               <FaCopy className="w-5 h-5 fill-gray-400 shrink-0" />
             </div>
           </TextCopyWrapper>
           <Link href={url.finalUrl} target="_blank">
-            <div className="flex items-center gap-2 p-2 border rounded bg-white hover:bg-gray-200 transition-all">
+            <div className="flex items-center gap-2 p-2 border rounded hover:bg-gray-200 hover:dark:bg-gray-800 transition-all">
               <p className="text-sm">Go To</p>
               <FaLink className="w-5 h-5 fill-gray-400 shrink-0" />
             </div>
           </Link>
         </div>
 
-        <div className="flex flex-wrap gap-x-12 gap-y-4 p-4 mt-4 rounded bg-gray-100">
+        <div className="flex flex-wrap gap-x-12 gap-y-4 p-4 mt-4 rounded bg-gray-100 dark:bg-gray-900">
           {urlInfoItems.map((item, index) => (
             <div key={index}>
               <p className="text-sm text-gray-500">{item.name}</p>

@@ -43,11 +43,15 @@
 
   /* This is how you apply the border-color for both light and dark mode */
   .border {
-    @apply border-gray-300 dark:border-gray-700;
+    @apply border-gray-200 dark:border-gray-800;
   }
 
   .divide-y {
-    @apply divide-gray-300 dark:divide-gray-700;
+    @apply divide-gray-200 dark:divide-gray-800;
+  }
+
+  .divide-x {
+    @apply divide-gray-200 dark:divide-gray-800;
   }
 }
 

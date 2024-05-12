@@ -38,7 +38,7 @@ function ResultList({ results }: ResultListProps) {
           <h2 className="text-4xl font-bold text-center">
             No results found...
           </h2>
-          <p className="text-gray-600 max-w-lg  text-center">
+          <p className="text-gray-500 max-w-lg text-center">
             The result you are looking for might have been removed or is
             temporarily unavailable.
           </p>
