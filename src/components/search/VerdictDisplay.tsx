@@ -18,7 +18,8 @@ function VerdictDisplay({ verdict }: VerdictDisplayProps) {
                 ${color == "GREENLIGHT" && "bg-lime-500"}
                 ${color == "YELLOW" && "bg-yellow-500"}
                 ${color == "ORANGE" && "bg-orange-500"}
-                ${color == "RED" && "bg-red-500"}`}
+                ${color == "RED" && "bg-red-500"}
+                ${color == "GRAY" && "bg-gray-500"}`}
     >
       <p className="text-white text-sm font-normal">{label}</p>
     </div>

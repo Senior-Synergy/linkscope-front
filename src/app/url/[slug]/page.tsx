@@ -7,6 +7,7 @@ import UrlInfo from "@/components/url/UrlInfo";
 import { getUrl } from "@/services/linkscopeApi";
 import { Url, UrlExtended } from "@/types/urlTypes";
 import React, { Suspense } from "react";
+import UrlResultList from "@/components/url/UrlResultList";
 
 async function UrlPage({
   params,
@@ -22,19 +23,11 @@ async function UrlPage({
 
   if (!url) throw new Error(`Failed to fetch result for ${params.slug}`);
 
-  const itemsPerPage = 10;
-  const startIndex = (pageNumber - 1) * itemsPerPage;
-  const endIndex = pageNumber * itemsPerPage;
-
-  const resultsPerPage = url.results
-    .map((result) => ({ ...result, url: url }))
-    .slice(startIndex, endIndex);
-
   return (
     <MainWrapper>
       <header>
-        <h1 className="text-4xl font-semibold mb-1">URL INFORMATION</h1>
-        <p className="text-gray-500 font-extralight">
+        <h1 className="text-4xl font-semibold mb-1">URL Information</h1>
+        <p className="text-gray-800 dark:text-gray-200 font-extralight truncate">
           Details and historical records.
         </p>
       </header>
@@ -51,12 +44,11 @@ async function UrlPage({
         </div>
 
         {/* TODO: Fetch results separately from URL info to improve pagination efficiency*/}
-        <Suspense key={pageNumber} fallback={<ResultListFallback pageSize={10} />}>
-          <ResultList results={resultsPerPage} />
-          <Paginator
-            pageSize={itemsPerPage}
-            totalCount={url.results.length}
-          />
+        <Suspense
+          key={pageNumber}
+          fallback={<ResultListFallback pageSize={10} />}
+        >
+          <UrlResultList url={url} pageNumber={pageNumber} />
         </Suspense>
       </section>
     </MainWrapper>

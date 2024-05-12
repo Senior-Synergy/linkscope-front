@@ -16,7 +16,7 @@ const DevelopPage = () => {
     <MainWrapper>
       <header>
         <h1 className="text-4xl font-semibold">Develop Page</h1>
-        <p className="text-gray-500">
+        <p className="text-gray-800 dark:text-gray-200 font-extralight truncate">
           This page is a sanbox for testing stuff!
         </p>
       </header>

@@ -23,15 +23,15 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
 
   const featureItem: Record<string, any> = result.feature;
   const verdict = result.hasSoup
-    ? calculateVerdict(result.phishProbMod)
+    ? calculateVerdict(result.phishProb)
     : "UNKNOWN";
   const trustScore = result.hasSoup
-    ? calculateTrustScore(result.phishProbMod)
+    ? calculateTrustScore(result.phishProb)
     : "-";
 
   const modelResultItems = [
     {
-      title: "Model Probability",
+      title: "Phishing Probability",
       value: `${Math.round(result.phishProb * 100)}%`,
       hint: "The likelihood that the given URL is classified as phishing based on the features analyzed by the model. A higher percentage suggests a stronger indication of phishing.",
     },
@@ -51,7 +51,7 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
     <MainWrapper>
       <header>
         <h1 className="font-semibold mb-1">Result</h1>
-        <p className="text-gray-500 font-extralight">
+        <p className="text-gray-800 dark:text-gray-200 font-extralight truncate">
           Scan result of &apos;{result.submittedUrl}&apos;
         </p>
       </header>
@@ -87,14 +87,14 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
                         transition-colors"
             >
               <div className="grow truncate">
-                <p className="text-sm font-medium mb-1">URL Scanned</p>
+                <p className="text-sm font-medium mb-1">Redirected to:</p>
                 <h3 className="text-xl text-primary font-semibold truncate">
                   {result.url.finalUrl}
                 </h3>
                 <p>{result.url.ipAddress}</p>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 shrink-0">
                 <p className="hidden sm:block text-sm text-primary">
                   More Details
                 </p>

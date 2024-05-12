@@ -90,7 +90,9 @@ function DocumentationPage() {
       <div className="md:ml-72">
         <header>
           <h1 className="text-4xl font-bold">Documentation</h1>
-          <p className="text-gray-500">The development of LINKSCOPE</p>
+          <p className="text-gray-800 dark:text-gray-200 font-extralight truncate">
+            The development of LINKSCOPE
+          </p>
         </header>
 
         <article className="mt-8">

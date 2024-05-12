@@ -12,6 +12,7 @@ import {
   ResultSearchResponse,
   UrlSearchResponse,
   UrlSearchRequest,
+  UrlResultsResponse,
 } from "@/types/apiTypes";
 import {
   FeatureCommon,
@@ -146,6 +147,63 @@ export async function searchUrls(
       return null;
     });
 }
+
+export async function getUrlResults(
+  urlId: number,
+  page: number,
+  pageSize: number,
+  sortOption?: string
+) {
+  let sortBy = "datetime_created";
+  let sortDirection = "desc";
+
+  if (sortOption) {
+    switch (sortOption) {
+      case "A-D":
+        sortBy = "submitted_url";
+        sortDirection = "desc";
+        break;
+      case "A-A":
+        sortBy = "submitted_url";
+        sortDirection = "asc";
+        break;
+      case "D-D":
+        sortBy = "datetime_created";
+        sortDirection = "asc";
+        break;
+      case "D-A":
+        sortBy = "datetime_created";
+        sortDirection = "desc";
+        break;
+      default:
+        break;
+    }
+  }
+
+  const req = {
+    page: page,
+    page_size: pageSize,
+    sort_by: sortBy,
+    sort_direction: sortDirection,
+  };
+
+  return apiInstance
+    .post<UrlResultsResponse>(`/v3/url/results/${urlId}`, req)
+    .then((res) => {
+      const data = res.data;
+      const results = data.results.map((result) => mapResultBase(result));
+
+      return {
+        totalCount: data.total_count,
+        results: results,
+      };
+    })
+    .catch((e) => {
+      console.error(e);
+      return null;
+    });
+}
+
 
 export async function createBulkSubmission(urls: string[]) {
   const req: SubmissionCreateRequest = { urls: urls };

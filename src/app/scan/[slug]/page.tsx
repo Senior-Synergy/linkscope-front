@@ -32,7 +32,7 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
     <MainWrapper>
       <header>
         <h1 className="font-semibold mb-1">Submission Results</h1>
-        <p className="text-gray-500 font-extralight"></p>
+        <p className="text-gray-800 dark:text-gray-200 font-extralight truncate"></p>
       </header>
 
       <section className="mt-6">

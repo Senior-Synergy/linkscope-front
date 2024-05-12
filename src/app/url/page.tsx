@@ -23,7 +23,7 @@ async function UrlPage({
     <MainWrapper>
       <header>
         <h1 className="text-4xl font-semibold mb-1">URLs</h1>
-        <p className="text-gray-500 font-extralight">
+        <p className="text-gray-800 dark:text-gray-200 font-extralight truncate">
           Explore our database of previously scanned URLs.
         </p>
       </header>

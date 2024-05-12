@@ -139,6 +139,11 @@ export interface UrlSearchResponse {
   urls: UrlBase[];
 }
 
+export interface UrlResultsResponse {
+  total_count: number;
+  results: ResultBase[];
+}
+
 export interface ResultSearchRequest {
   keyword: string;
   page?: number;
