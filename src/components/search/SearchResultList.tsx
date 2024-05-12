@@ -4,7 +4,7 @@ import { searchResults } from "@/services/linkscopeApi";
 import { Result } from "@/types/urlTypes";
 import ResultList from "./ResultList";
 
-import ResultListPaginator from "./ResultListPaginator";
+import Paginator from "../common/Paginator";
 import { notFound } from "next/navigation";
 
 interface SearchResultListProps {
@@ -38,7 +38,7 @@ async function SearchResultList({
   return (
     <>
       <ResultList results={results} />
-      <ResultListPaginator totalCount={totalCount} pageSize={10} />
+      <Paginator totalCount={totalCount} pageSize={10} />
     </>
   );
 }

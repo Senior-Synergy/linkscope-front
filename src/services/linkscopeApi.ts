@@ -8,8 +8,10 @@ import {
   SubmissionResponse,
   UrlBase,
   UrlExtendedResponse,
-  UrlSearchRequest,
+  ResultSearchRequest,
+  ResultSearchResponse,
   UrlSearchResponse,
+  UrlSearchRequest,
 } from "@/types/apiTypes";
 import {
   FeatureCommon,
@@ -22,6 +24,68 @@ import {
 import apiInstance from "@/utils/axiosInstance";
 
 export async function searchResults(
+  keyword: string,
+  page: number,
+  pageSize: number,
+  sortOption?: string
+) {
+  let sortBy = "datetime_created";
+  let sortDirection = "desc";
+
+  if (sortOption) {
+    switch (sortOption) {
+      case "A-D":
+        sortBy = "submitted_url";
+        sortDirection = "desc";
+        break;
+      case "A-A":
+        sortBy = "submitted_url";
+        sortDirection = "asc";
+        break;
+      case "D-D":
+        sortBy = "datetime_created";
+        sortDirection = "asc";
+        break;
+      case "D-A":
+        sortBy = "datetime_created";
+        sortDirection = "desc";
+        break;
+      default:
+        break;
+    }
+  }
+
+  const req: ResultSearchRequest = {
+    keyword: keyword,
+    page: page,
+    page_size: pageSize,
+    creation_date_start: null,
+    creation_date_end: null,
+    phish_prob_min: null,
+    phish_prob_max: null,
+    country: null,
+    sort_by: sortBy,
+    sort_direction: sortDirection,
+  };
+
+  return apiInstance
+    .post<ResultSearchResponse>("/v3/result/result-list/search", req)
+    .then((res) => {
+      const data = res.data;
+      const results = data.results.map((result) => mapResultResponse(result));
+
+      return {
+        totalCount: data.total_count,
+        results: results,
+      };
+    })
+    .catch((e) => {
+      console.error(e);
+      return null;
+    });
+}
+
+export async function searchUrls(
   keyword: string,
   page: number,
   pageSize: number,
@@ -67,14 +131,14 @@ export async function searchResults(
   };
 
   return apiInstance
-    .post<UrlSearchResponse>("/v3/result/result-list/search", req)
+    .post<UrlSearchResponse>("/v3/url/list/search", req)
     .then((res) => {
       const data = res.data;
-      const results = data.results.map((result) => mapResultResponse(result));
+      const urls = data.urls.map((url) => mapUrlBase(url));
 
       return {
         totalCount: data.total_count,
-        results: results,
+        urls: urls,
       };
     })
     .catch((e) => {
@@ -114,7 +178,7 @@ export function getResult(resultId: number) {
 
 export function getUrl(urlId: number) {
   return apiInstance
-    .get<UrlExtendedResponse>(`/v3/url/url-info/${urlId}`)
+    .get<UrlExtendedResponse>(`/v3/url/info-extended/${urlId}`)
     .then((res) => {
       const data = mapUrlExtendedResponse(res.data);
       return data;
@@ -165,6 +229,7 @@ function mapUrlExtendedResponse(url: UrlExtendedResponse): UrlExtended {
   return {
     ...mapUrlBase(url),
     results: url.results.map((result) => ({ ...mapResultBase(result) })),
+    similarUrls: url.similar_urls.map((url) => ({ ...mapUrlBase(url) })),
   };
 }
 
@@ -224,6 +289,7 @@ function mapUrlBase(url: UrlBase): UrlCommon {
     state: url.state,
     country: url.country,
     googleIsMalicious: url.google_is_malicious,
+    updateDate: new Date(url.updated_date),
   };
 }
 

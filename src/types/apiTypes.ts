@@ -20,6 +20,10 @@ export interface UrlBase {
   state: string | null;
   country: string | null;
   google_is_malicious: boolean | null;
+
+  // ---------------------------------
+
+  updated_date: Date;
 }
 
 export interface ResultBase {
@@ -93,6 +97,7 @@ export interface UrlResponse extends UrlBase {
 
 export interface UrlExtendedResponse extends UrlBase {
   results: ResultBase[];
+  similar_urls: UrlBase[];
 }
 
 export interface ResultResponse extends ResultBase {
@@ -130,6 +135,24 @@ export interface UrlSearchRequest {
 }
 
 export interface UrlSearchResponse {
+  total_count: number;
+  urls: UrlBase[];
+}
+
+export interface ResultSearchRequest {
+  keyword: string;
+  page?: number;
+  page_size?: number;
+  creation_date_start?: Date | null;
+  creation_date_end?: Date | null;
+  phish_prob_min?: number | null;
+  phish_prob_max?: number | null;
+  country?: string | null;
+  sort_by?: string | null;
+  sort_direction?: string | null;
+}
+
+export interface ResultSearchResponse {
   total_count: number;
   results: ResultResponse[];
 }

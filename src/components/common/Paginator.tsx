@@ -4,15 +4,12 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useCallback } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 
-interface ResultListPaginatorProps {
+interface PaginatorProps {
   pageSize: number;
   totalCount: number;
 }
 
-function ResultListPaginator({
-  totalCount,
-  pageSize,
-}: ResultListPaginatorProps) {
+function Paginator({ totalCount, pageSize }: PaginatorProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -72,4 +69,4 @@ function ResultListPaginator({
   );
 }
 
-export default ResultListPaginator;
+export default Paginator;

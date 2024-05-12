@@ -1,4 +1,8 @@
-function ResultListSuspense() {
+interface ResultListFallbackProps {
+  pageSize: number;
+}
+
+function ResultListFallback({ pageSize }: ResultListFallbackProps) {
   return (
     <div>
       <div>
@@ -16,7 +20,7 @@ function ResultListSuspense() {
             className="flex flex-col
                   w-full divide-y divide"
           >
-            {Array(10)
+            {Array(pageSize)
               .fill(0)
               .map((_, index) => (
                 <div
@@ -36,4 +40,4 @@ function ResultListSuspense() {
   );
 }
 
-export default ResultListSuspense;
+export default ResultListFallback;

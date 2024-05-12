@@ -4,7 +4,6 @@ import React from "react";
 import { FaQuestionCircle } from "react-icons/fa";
 
 import { Result } from "@/types/urlTypes";
-import { verdictMappings } from "@/constants/result";
 import { calculateVerdict } from "@/utils/formattor";
 import Link from "next/link";
 import ReactCountryFlag from "react-country-flag";

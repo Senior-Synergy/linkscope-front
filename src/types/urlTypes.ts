@@ -29,6 +29,7 @@ export interface UrlCommon {
   state: string | null;
   country: string | null;
   googleIsMalicious: boolean | null;
+  updateDate: Date;
 }
 
 export interface ResultCommon {
@@ -97,6 +98,7 @@ export interface Url extends UrlCommon {
 
 export interface UrlExtended extends UrlCommon {
   results: ResultCommon[];
+  similarUrls: UrlCommon[];
 }
 
 export interface Submission extends SubmissionCommon {

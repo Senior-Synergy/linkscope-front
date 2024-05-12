@@ -5,6 +5,7 @@ import "./globals.css";
 const krub = Prompt({
   weight: ["100", "200", "300", "400", "500", "600", "700"],
   subsets: ["latin", "thai"],
+  preload: false,
 });
 
 import Navbar from "@/components/common/Navbar";

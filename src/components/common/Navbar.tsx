@@ -15,10 +15,10 @@ function Navbar() {
       name: "Results",
       route: "/result",
     },
-    // {
-    //   name: "URLs",
-    //   route: "/url",
-    // },
+    {
+      name: "URLs",
+      route: "/url",
+    },
     {
       name: "Docs",
       route: "/docs",

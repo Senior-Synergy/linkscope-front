@@ -4,7 +4,7 @@ import Searcher from "@/components/search/Searcher";
 
 import { Suspense } from "react";
 import SearchResultList from "@/components/search/SearchResultList";
-import ResultListSuspense from "@/components/search/ResultListSuspense";
+import ResultListFallback from "@/components/search/ResultListFallback";
 
 async function SearchPage({
   searchParams,
@@ -29,7 +29,10 @@ async function SearchPage({
       </section>
 
       <section className="mt-8">
-        <Suspense key={pageNumber} fallback={<ResultListSuspense />}>
+        <Suspense
+          key={pageNumber}
+          fallback={<ResultListFallback pageSize={12} />}
+        >
           <SearchResultList
             pageNumber={pageNumber}
             searchQuery={searchQuery}
