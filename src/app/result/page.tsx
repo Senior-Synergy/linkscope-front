@@ -31,7 +31,7 @@ async function SearchPage({
       <section className="mt-8">
         <Suspense
           key={pageNumber}
-          fallback={<ResultListFallback pageSize={12} />}
+          fallback={<ResultListFallback pageSize={10} />}
         >
           <SearchResultList
             pageNumber={pageNumber}

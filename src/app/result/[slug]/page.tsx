@@ -32,7 +32,7 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
   const modelResultItems = [
     {
       title: "Model Probability",
-      value: `${result.phishProb}%`,
+      value: `${Math.round(result.phishProb * 100)}%`,
       hint: "The likelihood that the given URL is classified as phishing based on the features analyzed by the model. A higher percentage suggests a stronger indication of phishing.",
     },
     {
@@ -138,8 +138,8 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
             `is valid until ${result.url.expirationDate.toLocaleString()}.`}
         </p>
         <p className="mt-4">
-          {` Our model has classified this URL as "${result.phishProbMod}," with a trust score of`}
-          <strong> {result.phishProbMod} out of 5.</strong>
+          {` Our model has classified this URL as "${verdictMappings[verdict].label}," with a trust score of`}
+          <strong> {trustScore} out of 5.</strong>
           {` Additionally, Google Safe Browsing has classified the URL as `}
           <strong>
             {result.url.googleIsMalicious ? "malicious." : "safe."}

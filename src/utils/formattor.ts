@@ -81,7 +81,7 @@ export function camelCaseToNormalCase(str: string): string {
 }
 
 export function calculateVerdict(phishProbMod: number): string {
-  const baseValue = phishProbMod / 100;
+  const baseValue = phishProbMod;
   if (baseValue < 0.2) {
     return "VERY_LOW";
   } else if (baseValue < 0.4) {
@@ -96,6 +96,6 @@ export function calculateVerdict(phishProbMod: number): string {
 }
 
 export function calculateTrustScore(phishProbMod: number): number {
-  const score = Math.round((1 - phishProbMod / 100) * 5);
+  const score = Math.round((1 - phishProbMod) * 5);
   return score;
 }
