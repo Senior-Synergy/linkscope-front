@@ -1,14 +1,12 @@
-import { ReactNode } from "react";
+"use client";
+
+import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 
-interface PortalProps {
-  children: ReactNode;
+export default function Modal({ children }: React.PropsWithChildren) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true));
+
+  return mounted ? createPortal(<>{children}</>, document.body) : null;
 }
-
-const Portal = ({ children }: PortalProps) => {
-  const portalRoot = document.getElementById("portal-root") as HTMLElement;
-
-  return createPortal(children, portalRoot);
-};
-
-export default Portal;
