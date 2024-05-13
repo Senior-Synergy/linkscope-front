@@ -2,7 +2,7 @@ import { getUrlResults } from "@/services/linkscopeApi";
 import { Result, UrlExtended } from "@/types/urlTypes";
 import { notFound } from "next/navigation";
 import React from "react";
-import ResultList from "../search/ResultList";
+import ResultList from "../result/ResultList";
 import Paginator from "../common/Paginator";
 
 interface UrlResultListProps {

@@ -1,10 +1,10 @@
+import { Suspense } from "react";
+
 import Footer from "@/components/common/Footer";
 import MainWrapper from "@/components/common/wrapper/MainWrapper";
-import Searcher from "@/components/search/Searcher";
-
-import { Suspense } from "react";
-import SearchResultList from "@/components/search/SearchResultList";
-import ResultListFallback from "@/components/search/ResultListFallback";
+import Searcher from "@/components/result/Searcher";
+import SearchResultList from "@/components/result/SearchResultList";
+import ResultListFallback from "@/components/result/ResultListFallback";
 
 async function SearchPage({
   searchParams,

@@ -204,7 +204,6 @@ export async function getUrlResults(
     });
 }
 
-
 export async function createBulkSubmission(urls: string[]) {
   const req: SubmissionCreateRequest = { urls: urls };
 
@@ -239,6 +238,28 @@ export function getUrl(urlId: number) {
     .get<UrlExtendedResponse>(`/v3/url/info-extended/${urlId}`)
     .then((res) => {
       const data = mapUrlExtendedResponse(res.data);
+      return data;
+    })
+    .catch((e) => {
+      console.error(e);
+      return null;
+    });
+}
+
+export function getSimilarUrls(
+  urlId: number,
+  threshold: number,
+  amount: number
+) {
+  const req = {
+    threshold: threshold ?? 5,
+    amount: amount ?? 5,
+  };
+
+  return apiInstance
+    .post<UrlBase[]>(`/v3/url/similar/${urlId}`, req)
+    .then((res) => {
+      const data = res.data.map((url) => mapUrlBase(url));
       return data;
     })
     .catch((e) => {

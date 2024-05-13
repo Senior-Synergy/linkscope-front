@@ -6,13 +6,14 @@ import { FaQuestionCircle } from "react-icons/fa";
 
 import Footer from "@/components/common/Footer";
 import MainWrapper from "@/components/common/wrapper/MainWrapper";
-import VerdictDisplay from "@/components/search/VerdictDisplay";
+import VerdictDisplay from "@/components/result/VerdictDisplay";
 import { ResultExtended } from "@/types/urlTypes";
 import { getResult } from "@/services/linkscopeApi";
 import { featureInformation } from "@/constants/feature";
 import { calculateTrustScore, calculateVerdict } from "@/utils/formattor";
 import { verdictMappings } from "@/constants/result";
-import InfoBox from "@/components/search/InfoBox";
+import InfoBox from "@/components/result/InfoBox";
+import ExtractedFeaturesList from "@/components/result/ExtractedFeaturesList";
 
 async function ScanResultPage({ params }: { params: { slug: string } }) {
   const resultId = parseInt(params.slug);
@@ -154,63 +155,10 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
           Specific components or attributes that make up the URL&apos;s
           structure. Each of these features plays a role in determining the
           destination and behavior of the URL when accessed by a web browser or
-          other client.{" "}
+          other client.
         </p>
 
-        <section>
-          <div className="mt-8 border border-b-0 rounded-t-lg px-4 py-2 bg-gray-100 dark:bg-gray-900">
-            <p className="font-semibold">Extracted Features</p>
-          </div>
-
-          <div className="border rounded-b-lg divide-y divide">
-            {Object.entries(featureInformation).map(
-              ([featureName, featureInfo], index) => (
-                <div
-                  key={index}
-                  className="flex items-stretch justify-between gap-4 p-4"
-                >
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <p className="font-medium">{featureInfo.featureName}</p>
-                      <p
-                        className={`hidden sm:block text-xs p-1 px-2 rounded-full border
-                                ${
-                                  featureInfo.featureTypes == "Address Bar" &&
-                                  "border-primary-500 text-primary-500"
-                                }
-                                ${
-                                  featureInfo.featureTypes ==
-                                    "HTML/DOM Structure" &&
-                                  "border-lime-500 text-lime-500"
-                                }
-                                ${
-                                  featureInfo.featureTypes == "Abnormal" &&
-                                  "border-amber-500 text-amber-500"
-                                }
-                                ${
-                                  featureInfo.featureTypes == "Domain" &&
-                                  "border-red-500 text-red-500"
-                                }`}
-                      >
-                        {featureInfo.featureTypes}
-                      </p>
-                    </div>
-                    <p className="text-sm text-gray-500 mt-2 whitespace-pre-wrap">
-                      {featureInfo.explanation}
-                    </p>
-                  </div>
-                  <div
-                    className={`flex items-center justify-center shrink-0 w-14 bg-gray-100 dark:bg-gray-900 rounded`}
-                  >
-                    {featureItem[featureName] != null
-                      ? featureItem[featureName].toString()
-                      : "-"}
-                  </div>
-                </div>
-              )
-            )}
-          </div>
-        </section>
+        <ExtractedFeaturesList features={result.feature} />
       </div>
 
       <Footer />

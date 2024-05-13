@@ -17,27 +17,27 @@ export const featureInformation: Record<
     featureName: "WWW",
     featureTypes: "Address Bar",
     explanation:
-      "If the URL has 'www' as the subdomain, then return 0; otherwise, return 1.",
+      "If the URL has 'www' as the subdomain, then true; otherwise, false.",
     note: "",
   },
   https: {
     featureName: "HTTPS",
     featureTypes: "Address Bar",
     explanation:
-      "Address Bar based If the URL contains 'https', then return 0; otherwise, return 1.",
+      "Address Bar based If the URL contains 'https', then true; otherwise, false.",
     note: "",
   },
   shortUrl: {
     featureName: "Short URL",
     featureTypes: "Address Bar",
-    explanation: "If the URL is a short URL, return 1; otherwise, return 0.",
+    explanation: "If the URL is a short URL, false; otherwise, true.",
     note: "",
   },
   ip: {
     featureName: "IP",
     featureTypes: "Address Bar",
     explanation:
-      "If the URL contains an 'IP address', return 1; otherwise, return 0.",
+      "If the URL contains an 'IP address', false; otherwise, true.",
     note: "",
   },
   dashCount: {
@@ -99,35 +99,35 @@ export const featureInformation: Record<
     featureName: "Zero Link",
     featureTypes: "HTML/DOM Structure",
     explanation:
-      "If the favicon URL is from a different domain than the submitted URL, return 1; otherwise, return 0.",
+      "If the favicon URL is from a different domain than the submitted URL, false; otherwise, true.",
     note: "",
   },
   extFavicon: {
     featureName: "External Favicon",
     featureTypes: "HTML/DOM Structure",
     explanation:
-      "If the favicon URL is from a different domain than the submitted URL, return 1; otherwise, return 0.",
+      "If the favicon URL is from a different domain than the submitted URL, false; otherwise, true.",
     note: "",
   },
   sfh: {
     featureName: "SFH",
     featureTypes: "HTML/DOM Structure",
     explanation:
-      "SFHs (server-side form handlers) that contain an empty string or lead to different domain sites from the submitted URL should return 1; otherwise, return 0.",
+      "SFHs (server-side form handlers) that contain an empty string or lead to different domain sites from the submitted URL should false; otherwise, true.",
     note: "Note: SFH stands for server-side form handler, which is the URL specified in the `action` attribute of an HTML form. This URL determines where the form data will be submitted for processing when a user fills out and submits the form.",
   },
   redirection: {
     featureName: "Redirection",
     featureTypes: "Abnormal",
     explanation:
-      "If clicking the submitted URL results in a redirection to another URL, return 1; otherwise, return 0. For example, clicking www.eabc1255.com and being redirected to www.eabc5255.com.",
+      "If clicking the submitted URL results in a redirection to another URL, false; otherwise, true. For example, clicking www.eabc1255.com and being redirected to www.eabc5255.com.",
     note: "",
   },
   domainend: {
     featureName: "Domain End",
     featureTypes: "Domain",
     explanation:
-      "Calculate the difference in days between the current date and the expiration date (registration length). If the difference is less than or equal to one year, return 1; otherwise, return 0.",
+      "Calculate the difference in days between the current date and the expiration date (registration length). If the difference is less than or equal to one year, false; otherwise, true.",
     note: "",
   },
 };

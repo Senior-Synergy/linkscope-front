@@ -9,6 +9,7 @@ import Paginator from "@/components/common/Paginator";
 import { searchUrls } from "@/services/linkscopeApi";
 import SearchUrlGrid from "@/components/url/SearchUrlGrid";
 import UrlGridFallback from "@/components/url/UrlGridFallback";
+import Searcher from "@/components/result/Searcher";
 
 async function UrlPage({
   searchParams,
@@ -28,7 +29,11 @@ async function UrlPage({
         </p>
       </header>
 
-      <div className="mx-auto mt-4">
+      <section className="mt-8">
+        <Searcher />
+      </section>
+
+      <div className="mx-auto mt-8">
         <Suspense key={pageNumber} fallback={<UrlGridFallback pageSize={12} />}>
           <SearchUrlGrid
             pageNumber={pageNumber}

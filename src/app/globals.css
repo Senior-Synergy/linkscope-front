@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
+  --foreground-rgb: 50, 50, 50;
   --background-rgb: 255, 255, 255;
   --text-rgb: 255, 255, 255;
   --border-color-rgb: 224, 224, 224; /* Default border color */

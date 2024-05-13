@@ -6,7 +6,7 @@ interface UrlGridFallbackProps {
 
 function UrlGridFallback({ pageSize }: UrlGridFallbackProps) {
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+    <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {Array(pageSize)
         .fill(0)
         .map((_, index) => (

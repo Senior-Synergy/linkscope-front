@@ -9,7 +9,7 @@ function Navbar() {
   const NavItem = [
     {
       name: "Scan",
-      route: "/scan",
+      route: "/",
     },
     {
       name: "Results",
@@ -37,17 +37,19 @@ function Navbar() {
             className="flex items-center justify-between
                       p-4 md:px-8 gap-10 w-full bg-transparent backdrop-blur-2xl border border-t-0 border-x-0"
           >
-            <div className="flex items-center gap-2">
-              <Image
-                src={LinkScopeIcon}
-                alt="logo"
-                className="h-6 w-auto mb-[2px]"
-                priority
-              />
-              <p className="font-extrabold text-2xl hidden md:block">
-                LINKSCOPE
-              </p>
-            </div>
+            <Link href="/scan">
+              <div className="flex items-center gap-2">
+                <Image
+                  src={LinkScopeIcon}
+                  alt="logo"
+                  className="h-6 w-auto mb-[2px]"
+                  priority
+                />
+                <p className="font-extrabold text-2xl hidden md:block">
+                  LINKSCOPE
+                </p>
+              </div>
+            </Link>
 
             <div className="flex items-center">
               <nav className="flex items-center space-x-4 mr-4">

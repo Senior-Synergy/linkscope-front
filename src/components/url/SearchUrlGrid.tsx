@@ -19,7 +19,7 @@ async function SearchUrlGrid({
   let urls: UrlCommon[] = [];
   let totalCount: number = 0;
 
-  const fetchedData = await searchUrls("", pageNumber, 12, sortOption);
+  const fetchedData = await searchUrls(searchQuery, pageNumber, 12, sortOption);
 
   if (fetchedData) {
     urls = fetchedData.urls;
@@ -31,7 +31,9 @@ async function SearchUrlGrid({
   return (
     <div>
       <UrlGrid urls={urls} />
-      <Paginator pageSize={12} totalCount={totalCount} />
+      <div className="mt-8">
+        <Paginator pageSize={12} totalCount={totalCount} />
+      </div>
     </div>
   );
 }

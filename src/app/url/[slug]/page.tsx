@@ -1,13 +1,14 @@
 import MainWrapper from "@/components/common/wrapper/MainWrapper";
-import TextCopyWrapper from "@/components/common/wrapper/TextCopyWrapper";
-import ResultList from "@/components/search/ResultList";
-import Paginator from "@/components/common/Paginator";
-import ResultListFallback from "@/components/search/ResultListFallback";
+import ResultListFallback from "@/components/result/ResultListFallback";
 import UrlInfo from "@/components/url/UrlInfo";
 import { getUrl } from "@/services/linkscopeApi";
-import { Url, UrlExtended } from "@/types/urlTypes";
+import { UrlExtended } from "@/types/urlTypes";
 import React, { Suspense } from "react";
 import UrlResultList from "@/components/url/UrlResultList";
+import UrlGrid from "@/components/url/UrlGrid";
+import SimilarUrlGrid from "@/components/url/SimilarUrlGrid";
+import UrlGridFallback from "@/components/url/UrlGridFallback";
+import Footer from "@/components/common/Footer";
 
 async function UrlPage({
   params,
@@ -32,25 +33,38 @@ async function UrlPage({
         </p>
       </header>
 
-      <section className="mt-6">
+      <section className="mt-8">
         <UrlInfo url={url} />
       </section>
 
-      <section></section>
+      <section className="mt-8">
+        <h2 className="text-xl font-bold">Similar URLs</h2>
+        <p className="text-gray-800 dark:text-gray-200 font-extralight truncate mb-6">
+          Top 4 most similar URLs based on their textual content.
+        </p>
 
-      <section className="mt-6">
-        <div className="mb-4">
-          <h2 className="text-xl font-bold mb-2">Scan Result History</h2>
-        </div>
+        <Suspense fallback={<UrlGridFallback pageSize={4} />}>
+          <SimilarUrlGrid urlId={url.urlId} />
+        </Suspense>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="text-xl font-bold">Scan Result History</h2>
+
+        <p className="text-gray-800 dark:text-gray-200 font-extralight truncate mb-6">
+          A historical records of previous scans of this URL.
+        </p>
 
         {/* TODO: Fetch results separately from URL info to improve pagination efficiency*/}
         <Suspense
           key={pageNumber}
-          fallback={<ResultListFallback pageSize={10} />}
+          fallback={<ResultListFallback pageSize={1} />}
         >
           <UrlResultList url={url} pageNumber={pageNumber} />
         </Suspense>
       </section>
+
+      <Footer />
     </MainWrapper>
   );
 }

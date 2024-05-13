@@ -9,13 +9,13 @@ interface UrlGridProps {
 
 async function UrlGrid({ urls }: UrlGridProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {urls.map((url, index) => (
         <Link key={index} href={`url/${url.urlId}`}>
           <div
             key={index}
             className="flex items-center justify-between 
-                      p-4 h-20 min-w-72 min-h-36 
+                      p-4 h-20 min-w-72 min-h-32 
                       border rounded-lg
                       hover:bg-gray-200 hover:dark:bg-gray-800
                       transition-colors"
@@ -38,7 +38,7 @@ async function UrlGrid({ urls }: UrlGridProps) {
               </div>
             </div>
 
-            <FaChevronRight className="h-5 w-5" />
+            <FaChevronRight className="h-5 w-5 shrink-0" />
           </div>
         </Link>
       ))}

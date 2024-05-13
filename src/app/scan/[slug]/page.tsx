@@ -1,13 +1,8 @@
-import { FaChevronRight, FaCopy, FaLink } from "react-icons/fa6";
-
 import Footer from "@/components/common/Footer";
 import { Result } from "@/types/urlTypes";
-import DetailedUrlList from "@/components/result/DetailedUrlList";
 import { getSubmissionResults } from "@/services/linkscopeApi";
-import Link from "next/link";
 import MainWrapper from "@/components/common/wrapper/MainWrapper";
-import TextCopyWrapper from "@/components/common/wrapper/TextCopyWrapper";
-import ResultList from "@/components/search/ResultList";
+import ResultList from "@/components/result/ResultList";
 import { redirect } from "next/navigation";
 
 async function ScanResultPage({ params }: { params: { slug: string } }) {

@@ -6,11 +6,11 @@ import MainWrapper from "@/components/common/wrapper/MainWrapper";
 import axios from "axios";
 
 const DevelopPage = () => {
-  async function handleTestAPI() {
-    const res = await axios.get(
-      `http://localhost:8000/scan?url=${"example.com"}`
-    );
-  }
+  // async function handleTestAPI() {
+  //   const res = await axios.get(
+  //     `http://localhost:8000/scan?url=${"example.com"}`
+  //   );
+  // }
 
   return (
     <MainWrapper>
