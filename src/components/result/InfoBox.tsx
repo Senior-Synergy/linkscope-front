@@ -16,7 +16,7 @@ function InfoBox({ title, value, hint }: InfoBoxProps) {
         {hint && (
           <div className="group/item relative">
             <FaCircleQuestion className="cursor-pointer" />
-            <div className="absolute right-0 bottom-6 p-4 w-52 md:w-80 rounded-lg shadow-lg opacity-0 group-hover/item:opacity-100 pointer-events-none transition-opacity bg-white dark:bg-black border">
+            <div className="absolute text-center right-0 bottom-6 p-4 w-52 md:w-80 rounded-lg shadow-lg opacity-0 group-hover/item:opacity-100 pointer-events-none transition-opacity bg-white dark:bg-black border">
               {hint}
             </div>
           </div>
