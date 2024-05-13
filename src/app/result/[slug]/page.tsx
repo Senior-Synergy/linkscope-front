@@ -151,7 +151,7 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
             .&nbsp;
           </span>
           <span>
-            The website's SSL certificate was issued on&nbsp;
+            The website&apos;s SSL certificate was issued on&nbsp;
             <strong>
               {result.url.creationDate?.toLocaleString() ??
                 "an unspecified date"}
@@ -159,7 +159,7 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
             .&nbsp;
           </span>
           <span>
-            The website's SSL certificate is valid until&nbsp;
+            The website&apos;s SSL certificate is valid until&nbsp;
             <strong>
               {result.url.expirationDate?.toLocaleString() ??
                 "an unspecified date"}
