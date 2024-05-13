@@ -207,17 +207,11 @@ export async function getUrlResults(
 export async function createBulkSubmission(urls: string[]) {
   const req: SubmissionCreateRequest = { urls: urls };
 
-  return apiInstance
-    .post("/v3/submission/create/bulk", req)
-    .then((res) => {
-      return {
-        submissionId: res.data.submission_id,
-      };
-    })
-    .catch((e) => {
-      console.error(e);
-      return null;
-    });
+  return apiInstance.post("/v3/submission/create/bulk", req).then((res) => {
+    return {
+      submissionId: res.data.submission_id,
+    };
+  });
 }
 
 export function getResult(resultId: number) {
