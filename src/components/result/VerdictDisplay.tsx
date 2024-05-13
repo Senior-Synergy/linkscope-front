@@ -29,7 +29,7 @@ function VerdictDisplay({ hideHint, verdict }: VerdictDisplayProps) {
         <div className="group/item relative">
           <FaCircleQuestion className="cursor-pointer ml-1" />
           <div className="absolute left-0 top-6 p-4 w-52 md:w-80 rounded-lg shadow-lg opacity-0 group-hover/item:opacity-100 pointer-events-none transition-opacity bg-white dark:bg-black border">
-            Crucial information cannot be extracted from the given URL.
+            Unknown due to not being able to  extract crucial information from the provided URL.
           </div>
         </div>
       )}
