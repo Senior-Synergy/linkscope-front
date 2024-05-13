@@ -1,19 +1,18 @@
 import Link from "next/link";
 import lookup from "country-code-lookup";
 import { notFound } from "next/navigation";
-import { FaCheck, FaChevronRight, FaX } from "react-icons/fa6";
-import { FaQuestionCircle } from "react-icons/fa";
+import { FaArrowDown, FaCheck, FaChevronRight, FaX } from "react-icons/fa6";
 
 import Footer from "@/components/common/Footer";
 import MainWrapper from "@/components/common/wrapper/MainWrapper";
 import VerdictDisplay from "@/components/result/VerdictDisplay";
-import { ResultExtended } from "@/types/urlTypes";
-import { getResult } from "@/services/linkscopeApi";
-import { featureInformation } from "@/constants/feature";
-import { calculateTrustScore, calculateVerdict } from "@/utils/formattor";
-import { verdictMappings } from "@/constants/result";
 import InfoBox from "@/components/result/InfoBox";
 import ExtractedFeaturesList from "@/components/result/ExtractedFeaturesList";
+
+import { ResultExtended } from "@/types/urlTypes";
+import { getResult } from "@/services/linkscopeApi";
+import { calculateTrustScore, calculateVerdict } from "@/utils/formattor";
+import { verdictMappings } from "@/constants/result";
 
 async function ScanResultPage({ params }: { params: { slug: string } }) {
   const resultId = parseInt(params.slug);
@@ -22,10 +21,11 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
 
   if (!result) return notFound();
 
-  const featureItem: Record<string, any> = result.feature;
   const verdict = result.hasSoup
     ? calculateVerdict(result.phishProb)
     : "UNKNOWN";
+  const verdictLabel = verdictMappings[verdict].label;
+
   const trustScore = result.hasSoup
     ? calculateTrustScore(result.phishProb)
     : "-";
@@ -80,11 +80,23 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
       </div>
 
       <div className="mt-8">
-        <div className="rounded-lg">
+        <div className="p-4 border rounded-xl">
+          <div className="p-4 rounded-lg bg-primary">
+            <p className="text-white truncate">
+              <strong>URL Submitted:</strong>
+              &nbsp;{result.submittedUrl}
+            </p>
+          </div>
+
+          <div className="w-full my-2">
+            <FaArrowDown className="shrink-0 m-auto h-6 w-6 fill-primary" />
+          </div>
+
           <Link href={`/url/${result.url.urlId}`}>
             <div
-              className=" flex items-center gap-8 p-4 rounded-lg border 
-                        border-primary hover:bg-primary-100 hover:dark:bg-primary-900 
+              className="flex items-center gap-4 p-4 rounded-lg border 
+                        border-primary bg-primary-50 hover:bg-primary-100 
+                        dark:bg-primary-950 hover:dark:bg-primary-900 
                         transition-colors"
             >
               <div className="grow truncate">
@@ -103,48 +115,74 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
               </div>
             </div>
           </Link>
-
-          <ul className="flex flex-wrap gap-4 mt-4">
-            {modelResultItems.map((item, index) => (
-              <li key={index} className="flex-auto">
-                <InfoBox
-                  title={item.title}
-                  value={item.value}
-                  hint={item.hint}
-                />
-              </li>
-            ))}
-          </ul>
         </div>
+
+        <ul className="flex flex-wrap gap-4 mt-4">
+          {modelResultItems.map((item, index) => (
+            <li key={index} className="flex-auto">
+              <InfoBox title={item.title} value={item.value} hint={item.hint} />
+            </li>
+          ))}
+        </ul>
       </div>
 
       <div className="mt-8">
         <h2 className="text-xl font-semibold">Summary</h2>
+
         <p className="mt-4">
-          The website&apos;s domain name is managed by
-          <strong>
-            {result.url.registrar ?? " an unknown registrar. "}
-          </strong>
-          The main IP address is
-          <strong> {result.url.ipAddress ?? "unknown"}</strong>
-          {result.url.country
-            ? `, located in ${lookup.byIso(result.url.country)?.country}.`
-            : `.`}
-          {(result.url.creationDate || result.url.expirationDate) &&
-            ` The website's SSL certificate `}
-          {result.url.creationDate &&
-            `was issued on ${result.url.creationDate.toLocaleString()}`}
-          {result.url.creationDate && result.url.expirationDate && ` and `}
-          {result.url.expirationDate &&
-            `is valid until ${result.url.expirationDate.toLocaleString()}.`}
+          <span>
+            The website&apos;s domain name is managed by&nbsp;
+            <strong>{result.url.registrar ?? "an unknown registrar."}</strong>
+            .&nbsp;
+          </span>
+          <span>
+            The IP address is
+            <strong> {result.url.ipAddress ?? "unknown"}</strong>
+            .&nbsp;
+          </span>
+          <span>
+            It is located in&nbsp;
+            <strong>
+              {result.url.country
+                ? lookup.byIso(result.url.country)?.country ??
+                  result.url.country
+                : "unknown location"}
+            </strong>
+            .&nbsp;
+          </span>
+          <span>
+            The website's SSL certificate was issued on&nbsp;
+            <strong>
+              {result.url.creationDate?.toLocaleString() ??
+                "an unspecified date"}
+            </strong>
+            .&nbsp;
+          </span>
+          <span>
+            The website's SSL certificate is valid until&nbsp;
+            <strong>
+              {result.url.expirationDate?.toLocaleString() ??
+                "an unspecified date"}
+            </strong>
+            .&nbsp;
+          </span>
         </p>
+
         <p className="mt-4">
-          {` Our model has classified this URL as "${verdictMappings[verdict].label}," with a trust score of`}
-          <strong> {trustScore} out of 5.</strong>
-          {` Additionally, Google Safe Browsing has classified the URL as `}
-          <strong>
-            {result.url.googleIsMalicious ? "malicious." : "safe."}
-          </strong>
+          <span>
+            Our model has classified this URL as&nbsp;&quot;
+            <strong>{verdictLabel}</strong>&quot;&nbsp;with a trust score of&nbsp;
+            {trustScore} out of 5.&nbsp;
+          </span>
+          <span>
+            Additionally, Google Safe Browsing has classified the URL as&nbsp;
+            <strong>
+              &quot;
+              {result.url.googleIsMalicious ? "malicious" : "not malicious"}
+              ,&quot;
+            </strong>
+            &nbsp;
+          </span>
         </p>
       </div>
 

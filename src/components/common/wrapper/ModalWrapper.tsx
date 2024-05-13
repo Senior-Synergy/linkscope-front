@@ -30,12 +30,12 @@ function ModalWrapper({ isOpen, onClose, children }: ReusableModalProps) {
   return (
     <Portal>
       <div
-        className={`fixed inset-0 flex items-center justify-center z-50 bg-gray-300 bg-opacity-50 backdrop-blur-sm transition-all
+        className={`fixed inset-0 flex items-center justify-center z-50 bg-gray-300 dark:bg-gray-700 bg-opacity-50 dark:bg-opacity-50 backdrop-blur-sm transition-all
                   ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
       >
         <div
           ref={modalRef}
-          className="bg-white p-4 rounded-lg max-w-lg w-full overflow-y-auto m-8"
+          className="bg-white dark:bg-black p-4 rounded-lg max-w-lg w-full overflow-y-auto m-8"
         >
           {children}
           {/* <button
