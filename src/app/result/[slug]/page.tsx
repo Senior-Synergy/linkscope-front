@@ -123,7 +123,7 @@ async function ScanResultPage({ params }: { params: { slug: string } }) {
         <p className="mt-4">
           The website&apos;s domain name is managed by
           <strong>
-            {` ${result.url.registrar}. ` ?? " an unknown registrar. "}
+            {result.url.registrar ?? " an unknown registrar. "}
           </strong>
           The main IP address is
           <strong> {result.url.ipAddress ?? "unknown"}</strong>
