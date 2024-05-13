@@ -38,7 +38,7 @@ function ResultListItem({ result }: ResultListItemProps) {
             <p>{result.datetimeCreated.toLocaleTimeString()}</p>
           </div>
 
-          <VerdictDisplay verdict={verdict} />
+          <VerdictDisplay verdict={verdict} hideHint/>
         </div>
       </div>
     </Link>
