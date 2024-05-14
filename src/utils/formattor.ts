@@ -36,30 +36,6 @@ export function formatSecDuration(seconds: number): string {
   return result.join(", ");
 }
 
-export function formatDayDuration(days: number): string {
-  const years = Math.floor(days / 365);
-  days -= years * 365;
-
-  const months = Math.floor(days / 30);
-  days -= months * 30;
-
-  const result: string[] = [];
-
-  if (years > 0) {
-    result.push(`${years} year${years > 1 ? "s" : ""}`);
-  }
-
-  if (months > 0) {
-    result.push(`${months} month${months > 1 ? "s" : ""}`);
-  }
-
-  if (days > 0) {
-    result.push(`${days} day${days > 1 ? "s" : ""}`);
-  }
-
-  return result.join(", ");
-}
-
 export function divideArrayToString(arr: string[], delimiter: string): string {
   return arr.join(delimiter);
 }
@@ -80,8 +56,14 @@ export function camelCaseToNormalCase(str: string): string {
   return normalCaseString;
 }
 
-export function calculateVerdict(phishProbMod: number): string {
+export function calculateVerdict(
+  phishProbMod: number,
+  hasSoup: boolean
+): string {
+  if (!hasSoup) return "UNKNOWN";
+
   const baseValue = phishProbMod;
+
   if (baseValue < 0.3) {
     return "VERY_LOW";
   } else if (baseValue < 0.45) {
@@ -98,4 +80,21 @@ export function calculateVerdict(phishProbMod: number): string {
 export function calculateTrustScore(phishProbMod: number): number {
   const score = Math.round((1 - phishProbMod) * 5);
   return score;
+}
+
+export function removeTrailingDot(str: string | null) {
+  if (!str) return null;
+
+  if (str[str.length - 1] === ".") str = str.slice(0, -1);
+
+  // // Multiple dots:
+  // while (str[str.length - 1] === ".") str = str.slice(0, -1);
+
+  // // Single dot, regex:
+  // str = str.replace(/\.$/, "");
+
+  // // Multiple dots, regex:
+  // str = str.replace(/\.+$/, "");
+
+  return str;
 }

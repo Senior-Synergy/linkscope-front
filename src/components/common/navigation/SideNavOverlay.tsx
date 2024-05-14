@@ -2,13 +2,39 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { FaEllipsisVertical } from "react-icons/fa6";
+import { FaChevronRight, FaEllipsisVertical } from "react-icons/fa6";
 import { usePathname } from "next/navigation";
 
-import SideNavContent from "./SideNavContent";
-import LinkScopeIcon from "../../../../public/logo/logo-icon-black.svg";
+// import SideNavContent from "./SideNavContent";
+import LinkScopeIcon from "../../../../public/logo/logo-icon-primary.svg";
+import Link from "next/link";
+import LocaleSwitcher from "../LocaleSwitcher";
+import DarkmodeSwitch from "../DarkmodeSwitch";
 
 function SideNavOverlay() {
+  const NavItem = [
+    {
+      name: "Scan",
+      route: "/",
+    },
+    {
+      name: "Results",
+      route: "/result",
+    },
+    {
+      name: "URLs",
+      route: "/url",
+    },
+    {
+      name: "Docs",
+      route: "/docs",
+    },
+    // {
+    //   name: "dev",
+    //   route: "/develop",
+    // },
+  ];
+
   const currentPath = usePathname();
   const [isCollapsed, setIsCollapsed] = useState(true);
 
@@ -28,29 +54,29 @@ function SideNavOverlay() {
     };
   });
 
-  useEffect(() => {
-    setIsCollapsed(true);
-  }, [currentPath]);
+  // useEffect(() => {
+  //   setIsCollapsed(true);
+  // }, [currentPath]);
 
   return (
     <>
       <div>
         <button
-          className={`lg:hidden fixed top-0 right-0 z-10 h-14 w-8`}
+          className={`md:hidden fixed top-0 right-0 z-10 p-4 w-16 h-16`}
           onClick={toggleCollapse}
         >
-          <FaEllipsisVertical className="fill-black w-6 h-6" />
+          <FaEllipsisVertical className="w-6 h-6" />
         </button>
       </div>
 
       <div
         onClick={toggleCollapse}
         className={`fixed inset-0 z-10 lg:hidden
-                  bg-gray-300
+                  bg-gray-200 dark:bg-gray-800
                   ${
                     isCollapsed
-                      ? "bg-opacity-0 pointer-events-none"
-                      : "bg-opacity-50 backdrop-blur-sm"
+                      ? "bg-opacity-0 dark:bg-opacity-0 pointer-events-none"
+                      : "bg-opacity-50 dark:bg-opacity-50 backdrop-blur-sm"
                   }
                   lg:opacity-0 lg:pointer-events-none
                   transform duration-500 ease-in-out
@@ -59,7 +85,7 @@ function SideNavOverlay() {
 
       <div
         className={`fixed z-10 h-full w-64 overflow-auto
-                  bg-white
+                  bg-white dark:bg-black
                   ${
                     isCollapsed
                       ? "-translate-x-full opacity-0"
@@ -70,14 +96,45 @@ function SideNavOverlay() {
                   transition-all`}
       >
         <div className="flex justify-center items-center gap-2 p-8 pb-4">
-          <Image src={LinkScopeIcon} alt="logo" className="h-12 w-auto" />
+          <Image src={LinkScopeIcon} alt="logo" className="h-7 mb-1 w-auto" />
           <div>
-            <p className="font-extrabold text-3xl h-8">SENIOR</p>
-            <p className="font-bold text-xl">SYNERGY</p>
+            <p className="font-extrabold text-2xl h-8">LINKSCOPE</p>
           </div>
         </div>
 
-        <SideNavContent />
+        {/* <SideNavContent /> */}
+
+        <div className="p-8">
+          {/* <p className="mb-4 font-medium">Navigation</p> */}
+
+          <div className="flex flex-col space-y-2 w-full">
+            {NavItem.map((item, index) => (
+              <Link key={index} href={item.route} onClick={() => setIsCollapsed(true)}>
+                <div
+                  className={`flex items-center justify-between px-4 py-2 h-14 w-full space-x-2 rounded-lg border hover:bg-gray-200 hover:dark:bg-gray-800 transition-colors`}
+                >
+                  {/* <item.icon /> */}
+
+                  <p>{item.name}</p>
+
+                  <FaChevronRight />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+        <div className="p-8">
+          <p className="mb-4 font-medium">Options</p>
+
+          <div className="flex space-x-2">
+            <div className="w-1/2">
+              <LocaleSwitcher />
+            </div>
+            <div className="w-1/2">
+              <DarkmodeSwitch />
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

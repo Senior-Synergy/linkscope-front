@@ -1,9 +1,8 @@
-import { getSimilarUrls, searchUrls } from "@/services/linkscopeApi";
-import { UrlCommon } from "@/types/urlTypes";
-
 import { notFound } from "next/navigation";
-import Paginator from "../common/Paginator";
+
 import UrlGrid from "./UrlGrid";
+import { getSimilarUrls } from "@/services/linkscopeApi";
+import { UrlCommon } from "@/types/urlTypes";
 
 interface SimilarUrlGridProps {
   urlId: number;
@@ -20,14 +19,7 @@ async function SimilarUrlGrid({ urlId }: SimilarUrlGridProps) {
     return notFound();
   }
 
-  return (
-    <div>
-      <UrlGrid urls={urls} />
-      {/* <div className="mt-8">
-        <Paginator pageSize={12} totalCount={totalCount} />
-      </div> */}
-    </div>
-  );
+  return <UrlGrid urls={urls} />;
 }
 
 export default SimilarUrlGrid;

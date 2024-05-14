@@ -3,12 +3,15 @@ import CountryFlag from "@/components/common/CountryFlag";
 import { FaChevronRight } from "react-icons/fa6";
 import { UrlCommon } from "@/types/urlTypes";
 import { FaQuestionCircle } from "react-icons/fa";
+import { useTranslations } from "next-intl";
 
 interface UrlGridProps {
   urls: UrlCommon[];
 }
 
 async function UrlGrid({ urls }: UrlGridProps) {
+  const t = useTranslations("Url");
+
   return (
     <div>
       {urls.length > 0 ? (
@@ -35,7 +38,7 @@ async function UrlGrid({ urls }: UrlGridProps) {
                     </div>
 
                     <p className="mt-4 text-sm">
-                      <strong>Last Updated: </strong>
+                      <strong>{t("last-updated")}:&nbsp;</strong>
                       {url.creationDate
                         ? new Date(url.updateDate).toLocaleString()
                         : "-"}
@@ -51,9 +54,7 @@ async function UrlGrid({ urls }: UrlGridProps) {
       ) : (
         <div className="flex flex-col justify-center items-center p-4 min-h-96 m-auto border rounded-lg">
           <FaQuestionCircle className="w-24 h-24 mb-4" />
-          <h2 className="font-bold text-center">
-            No URLs Found...
-          </h2>
+          <h2 className="font-bold text-center">No URLs Found...</h2>
         </div>
       )}
     </div>

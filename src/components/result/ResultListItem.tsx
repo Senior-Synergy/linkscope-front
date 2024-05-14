@@ -1,19 +1,18 @@
 "use client";
 
-import { Result } from "@/types/urlTypes";
-import { calculateVerdict } from "@/utils/formattor";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
+
 import VerdictDisplay from "./VerdictDisplay";
 import CountryFlag from "../common/CountryFlag";
+import { Result } from "@/types/urlTypes";
 
 interface ResultListItemProps {
   result: Result;
 }
 
 function ResultListItem({ result }: ResultListItemProps) {
-  const verdict = result.hasSoup
-    ? calculateVerdict(result.phishProb)
-    : "UNKNOWN";
+  const t = useTranslations("Result");
 
   return (
     <Link href={`/result/${result.resultId}`}>
@@ -22,7 +21,7 @@ function ResultListItem({ result }: ResultListItemProps) {
           <p className="truncate"> {result.submittedUrl}</p>
 
           <p className="truncate text-sm text-gray-500">
-            <strong>Redirected to:</strong> {result.url.finalUrl}
+            <strong>{t("redirected-to")}:</strong> {result.url.finalUrl}
           </p>
         </div>
 
@@ -38,7 +37,11 @@ function ResultListItem({ result }: ResultListItemProps) {
             <p>{result.datetimeCreated.toLocaleTimeString()}</p>
           </div>
 
-          <VerdictDisplay verdict={verdict} hideHint/>
+          <VerdictDisplay
+            phishProbMod={result.phishProbMod}
+            hasSoup={result.hasSoup ?? false}
+            hideHint
+          />
         </div>
       </div>
     </Link>

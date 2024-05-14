@@ -1,107 +1,127 @@
 import { FeatureCommon } from "@/types/urlTypes";
+import { useTranslations } from "next-intl";
 
 interface ExtractedFeaturesListProps {
   features: FeatureCommon;
 }
 
 function ExtractedFeaturesList({ features }: ExtractedFeaturesListProps) {
+  const t_common = useTranslations("Common");
+  const t = useTranslations("Feature.extracted-features");
+
   const featureItems = [
     {
       name: "domainLength",
-      title: "Domain Length",
+      title: t("domain-length.title"),
       type: "Address Bar",
-      explanation: "Count the characters in the hostname string.",
+      explanation: t("domain-length.explanation"),
       note: "",
       value: features.domainLength,
     },
     {
       name: "www",
-      title: "WWW",
+      title: t("www.title"),
       type: "Address Bar",
-      explanation:
-        "If the URL has 'www' as the subdomain, then true; otherwise, false.",
+      explanation: t("www.explanation"),
       note: "",
-      value: features.www?.toString(),
+      value:
+        features.www != null
+          ? features.www
+            ? t_common("true")
+            : t_common("false")
+          : null,
     },
     {
       name: "https",
-      title: "HTTPS",
+      title: t("https.title"),
       type: "Address Bar",
-      explanation:
-        "Address Bar based If the URL contains 'https', then true; otherwise, false.",
+      explanation: t("https.explanation"),
       note: "",
-      value: features.https?.toString(),
+      value:
+        features.https != null
+          ? features.https
+            ? t_common("true")
+            : t_common("false")
+          : null,
     },
     {
       name: "shortUrl",
-      title: "Short URL",
+      title: t("short-url.title"),
       type: "Address Bar",
-      explanation: "If the URL is a short URL, false; otherwise, true.",
+      explanation: t("short-url.explanation"),
       note: "",
-      value: features.shortUrl?.toString(),
+      value:
+        features.shortUrl != null
+          ? features.shortUrl
+            ? t_common("true")
+            : t_common("false")
+          : null,
     },
     {
       name: "ip",
-      title: "IP",
+      title: t("ip.title"),
       type: "Address Bar",
-      explanation:
-        "If the URL contains an 'IP address', false; otherwise, true.",
-      note: "",
-      value: features.ip?.toString(),
+      explanation: t("ip.explanation"),
+      value:
+        features.ip != null
+          ? features.ip
+            ? t_common("true")
+            : t_common("false")
+          : null,
     },
     {
-      name: "dashCount",
-      title: "Dash Symbol Counts",
+      name: "dash-count",
+      title: t("dash-count.title"),
       type: "Address Bar",
-      explanation: "Count the '-' characters in the URL.",
+      explanation: t("dash-count.explanation"),
       note: "",
       value: features.dashCount,
     },
     {
-      name: "equalCount",
-      title: "Equal Symbol Counts",
+      name: "equal-count",
+      title: t("equal-count.title"),
       type: "Address Bar",
-      explanation: "Count the '=' characters in the URL.",
+      explanation: t("equal-count.explanation"),
       note: "",
       value: features.equalCount,
     },
     {
-      name: "dotCount",
-      title: "Dot Symbol Counts",
+      name: "dot-count",
+      title: t("dot-count.title"),
       type: "Address Bar",
-      explanation: "Count the '.' characters in the URL's hostname.",
+      explanation: t("dot-count.explanation"),
       note: "",
       value: features.dotCount,
     },
     {
-      name: "underscoreCount",
-      title: "Underscore Symbol Counts",
+      name: "underscore-count",
+      title: t("underscore-count.title"),
       type: "Address Bar",
-      explanation: "Count the '_' characters in the URL.",
+      explanation: t("underscore-count.explanation"),
       note: "",
       value: features.underscoreCount,
     },
     {
-      name: "slashCount",
-      title: "Slash Symbol Counts",
+      name: "slash-count",
+      title: t("slash-count.title"),
       type: "Address Bar",
-      explanation: "Count the '/' characters in the URL.",
+      explanation: t("slash-count.explanation"),
       note: "",
       value: features.slashCount,
     },
     {
-      name: "digitCount",
-      title: "Digit",
+      name: "digit-count",
+      title: t("digit-count.title"),
       type: "Address Bar",
-      explanation: "Count the digit (0-9) characters in the URL.",
+      explanation: t("digit-count.explanation"),
       note: "",
       value: features.digitCount,
     },
     {
       name: "pcemptylinks",
-      title: "PC Empty Links",
+      title: t("pcemptylinks.title"),
       type: "HTML/DOM Structure",
-      explanation: "Percentage of empty links.",
+      explanation: t("pcemptylinks.explanation"),
       note: "An empty link is a hyperlink that does not lead to a different web page. When clicked, it typically results in staying on the current page or displaying a blank page. This can occur when the link's URL is missing or invalid.",
       value: features.pcEmptylink
         ? `${Math.round(features.pcEmptylink)}%`
@@ -109,72 +129,95 @@ function ExtractedFeaturesList({ features }: ExtractedFeaturesListProps) {
     },
     {
       name: "pcextlinks",
-      title: "PC External Links",
+      title: t("pcextlinks.title"),
       type: "HTML/DOM Structure",
-      explanation:
-        "Percentage of external links that direct you to another site with a different domain from the submitted URL.",
+      explanation: t("pcextlinks.explanation"),
       note: "Note : An external link is a hyperlink that directs users from one website to a different website with a different domain. When clicked, the link takes the user away from the current site and navigates them to a new site.",
       value: features.pcExtlink ? `${Math.round(features.pcExtlink)}%` : null,
     },
     {
       name: "pcrequrl",
-      title: "PC External Resources URL",
+      title: t("pcrequrl.title"),
       type: "HTML/DOM Structure",
-      explanation: "Percentage of external resource URLs.",
+      explanation: t("pcrequrl.explanation"),
       note: "Note: An external resource URL refers to the web address of a resource, such as images, audio files, or embedded content, that is hosted on a different domain from the main or submitted URL.",
       value: features.pcRequrl ? `${Math.round(features.pcRequrl)}%` : null,
     },
     {
       name: "zerolink",
-      title: "Zero Link",
+      title: t("zerolink.title"),
       type: "HTML/DOM Structure",
-      explanation:
-        "If the favicon URL is from a different domain than the submitted URL, false; otherwise, true.",
+      explanation: t("zerolink.explanation"),
       note: "",
-      value: features.zerolink?.toString(),
+      value:
+        features.zerolink != null
+          ? features.zerolink
+            ? t_common("true")
+            : t_common("false")
+          : null,
     },
     {
       name: "extFavicon",
-      title: "External Favicon",
+      title: t("ext-favicon.title"),
       type: "HTML/DOM Structure",
-      explanation:
-        "If the favicon URL is from a different domain than the submitted URL, false; otherwise, true.",
+      explanation: t("ext-favicon.explanation"),
       note: "",
-      value: features.extFavicon?.toString(),
+      value:
+        features.extFavicon != null
+          ? features.extFavicon
+            ? t_common("true")
+            : t_common("false")
+          : null,
     },
     {
       name: "sfh",
-      title: "SFH",
+      title: t("sfh.title"),
       type: "HTML/DOM Structure",
-      explanation:
-        "SFHs (server-side form handlers) that contain an empty string or lead to different domain sites from the submitted URL should false; otherwise, true.",
+      explanation: t("sfh.explanation"),
       note: "Note: SFH stands for server-side form handler, which is the URL specified in the `action` attribute of an HTML form. This URL determines where the form data will be submitted for processing when a user fills out and submits the form.",
-      value: features.sfh?.toString(),
+      value:
+        features.sfh != null
+          ? features.sfh
+            ? t_common("true")
+            : t_common("false")
+          : null,
     },
     {
       name: "redirection",
-      title: "Redirection",
+      title: t("redirection.title"),
       type: "Abnormal",
-      explanation:
-        "If clicking the submitted URL results in a redirection to another URL, false; otherwise, true. For example, clicking www.eabc1255.com and being redirected to www.eabc5255.com.",
+      explanation: t("redirection.explanation"),
       note: "",
-      value: features.redirection?.toString(),
+      value:
+        features.redirection != null
+          ? features.redirection
+            ? t_common("true")
+            : t_common("false")
+          : null,
     },
     {
       name: "domainend",
-      title: "Domain End",
+      title: t("domainend.title"),
       type: "Domain",
-      explanation:
-        "Calculate the difference in days between the current date and the expiration date (registration length). If the difference is less than or equal to one year, false; otherwise, true.",
+      explanation: t("domainend.explanation"),
       note: "",
-      value: features.domainEnd?.toString(),
+      value:
+        features.domainEnd != null
+          ? features.domainEnd
+            ? t_common("true")
+            : t_common("false")
+          : null,
     },
   ];
 
   return (
     <section>
-      <div className="mt-8 border border-b-0 rounded-t-lg px-4 py-2 bg-gray-100 dark:bg-gray-900">
-        <p className="font-semibold">Extracted Features</p>
+      <div className="flex justify-between items-center mt-8 border border-b-0 rounded-t-lg px-4 py-2 bg-gray-100 dark:bg-gray-900">
+        <p className="font-semibold">{t("title")}</p>
+
+        <div className={`flex items-center justify-center shrink-0 w-14`}>
+          {t("value")}
+        </div>
       </div>
 
       <div className="border rounded-b-lg divide-y divide">
@@ -205,7 +248,10 @@ function ExtractedFeaturesList({ features }: ExtractedFeaturesListProps) {
                               "border-red-500 text-red-500"
                             }`}
                 >
-                  {item.type}
+                  {item.type == "Address Bar" && t("type.address-bar")}
+                  {item.type == "HTML/DOM Structure" && t("type.html-dom")}
+                  {item.type == "Abnormal" && t("type.abnormal")}
+                  {item.type == "Domain" && t("type.domain")}
                 </p>
               </div>
               <p className="text-sm text-gray-500 mt-2 whitespace-pre-wrap">

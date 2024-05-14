@@ -6,7 +6,7 @@ interface CountryFlagProps {
 }
 function CountryFlag({ country }: CountryFlagProps) {
   return (
-    <div>
+    <div className="shrink-0">
       {country ? (
         <ReactCountryFlag
           style={{

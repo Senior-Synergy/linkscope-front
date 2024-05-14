@@ -53,6 +53,10 @@
   .divide-x {
     @apply divide-gray-200 dark:divide-gray-800;
   }
+
+  hr {
+    @apply divide-gray-200 dark:divide-gray-800;
+  }
 }
 
 body {

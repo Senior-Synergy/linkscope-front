@@ -4,8 +4,13 @@ import React, { useState } from "react";
 
 import { useSearchParams } from "next/navigation";
 import Button from "../common/Button";
+import { useTranslations } from "next-intl";
 
 function Searcher() {
+  const t_common = useTranslations("Common");
+  const t_sorter = useTranslations("Sorter");
+  const t_searcher = useTranslations("Searcher");
+
   const searchParams = useSearchParams();
 
   const previousSearchQuery = searchParams.get("query") ?? "";
@@ -19,11 +24,11 @@ function Searcher() {
 
   const sortOptions = [
     {
-      name: "Newer",
+      name: t_sorter("newer"),
       value: "D-A",
     },
     {
-      name: "Older",
+      name: t_sorter("older"),
       value: "D-D",
     },
     {
@@ -46,7 +51,7 @@ function Searcher() {
                         bg-white dark:bg-black
                         border focus:outline-none`}
               name="query"
-              placeholder="Enter search terms..."
+              placeholder={t_searcher("placeholder")}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -59,12 +64,12 @@ function Searcher() {
           disabled={searchQuery.length < 1 && !sortOption}
           primary
         >
-          Apply
+          {t_common("apply")}
         </Button>
       </div>
 
       <div className="flex flex-wrap gap-4">
-        <p className="font-medium">Sort By:</p>
+        <p className="font-medium">{t_sorter("sort-by")}:</p>
         <div className="flex flex-wrap gap-4">
           {sortOptions.map((item, index) => (
             <label key={index} className="flex items-center gap-2">

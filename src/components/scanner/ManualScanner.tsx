@@ -1,6 +1,7 @@
 "use client";
 
-import React, { FormEvent, useState } from "react";
+import { useTranslations } from "next-intl";
+import { FormEvent, useState } from "react";
 import { FaTrash } from "react-icons/fa6";
 
 import Button from "../common/Button";
@@ -10,6 +11,9 @@ interface ManualScannerProps {
 }
 
 function ManualScanner({ submitUrls }: ManualScannerProps) {
+  const t = useTranslations("Common");
+  const t_scanner = useTranslations("Scanner");
+
   const [textInput, setTextInput] = useState("");
   const [urlList, setUrlList] = useState<string[]>([]);
 
@@ -117,8 +121,10 @@ function ManualScanner({ submitUrls }: ManualScannerProps) {
     <>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <div>
-          <h3 className="text-xl font-bold mb-2">Manual Mode</h3>
-          <p>Manually input individual URLs that you wish to scan.</p>
+          <h3 className="text-xl font-bold mb-2">
+            {t_scanner("manual-mode.title")}
+          </h3>
+          <p>{t_scanner("manual-mode.subtitle")}</p>
         </div>
 
         <div className="flex gap-4">
@@ -128,7 +134,7 @@ function ManualScanner({ submitUrls }: ManualScannerProps) {
                           border focus:outline-none
                           bg-white dark:bg-black`}
               name="url-input"
-              placeholder="Enter a URL..."
+              placeholder={t_scanner("manual-mode.placeholder")}
               value={textInput}
               onChange={(e) => setTextInput(e.target.value)}
             />
@@ -141,23 +147,25 @@ function ManualScanner({ submitUrls }: ManualScannerProps) {
             disabled={textInput.length < 1 || urlList.length >= 5}
             primary
           >
-            Add
+            {t("add")}
           </Button>
         </div>
 
         {isWarningInvalid && (
-          <p className="text-sm text-red-500">Please enter a valid URL</p>
+          <p className="text-sm text-red-500">
+            {t_scanner("message.enter-invalid")}
+          </p>
         )}
 
         {isWarningRepeat && (
           <p className="text-sm text-red-500">
-            This URL has already been added
+            {t_scanner("message.enter-repeat")}
           </p>
         )}
 
         {urlList.length >= 5 && (
           <p className="text-sm text-red-500">
-            Maximum of 5 URLs is allowed per submission
+            {t_scanner("message.enter-max-five")}
           </p>
         )}
 
@@ -197,7 +205,7 @@ function ManualScanner({ submitUrls }: ManualScannerProps) {
           disabled={urlList.length <= 0}
           primary
         >
-          Submit
+          {t("submit")}
         </Button>
       </form>
     </>

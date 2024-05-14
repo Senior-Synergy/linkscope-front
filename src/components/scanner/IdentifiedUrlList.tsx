@@ -1,6 +1,7 @@
+import { useTranslations } from "next-intl";
+
 import { UrlSelectorItem } from "@/types/urlTypes";
 
-import React from "react";
 import IdentifiedUrlListItem from "./IdentifiedUrlListItem";
 
 interface IdentifiedUrlListProps {
@@ -17,6 +18,7 @@ function IdentifiedUrlList({
     updatedList[index].isSelected = !updatedList[index].isSelected;
     onUpdateUrlList(updatedList);
   }
+  const t_scanner = useTranslations("Scanner");
 
   return (
     <div
@@ -42,7 +44,7 @@ function IdentifiedUrlList({
           className="flex flex-col flex-auto items-center justify-center 
                     text-gray-400"
         >
-          No URL detected
+          {t_scanner("auto-mode.no-urls")}
         </div>
       )}
     </div>

@@ -1,12 +1,12 @@
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin();
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   compiler: {
     styledComponents: true,
   },
-  i18n: {
-    locales: ["en-US", "th-TH"],
-    defaultLocale: "en-US",
-  },
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

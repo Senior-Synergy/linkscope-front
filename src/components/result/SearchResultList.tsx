@@ -1,11 +1,11 @@
 // server component...
+import { notFound } from "next/navigation";
 
 import { searchResults } from "@/services/linkscopeApi";
 import { Result } from "@/types/urlTypes";
 import ResultList from "./ResultList";
-
 import Paginator from "../common/Paginator";
-import { notFound } from "next/navigation";
+
 
 interface SearchResultListProps {
   searchQuery: string;

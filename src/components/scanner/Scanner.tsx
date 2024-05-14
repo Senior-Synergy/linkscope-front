@@ -11,17 +11,22 @@ import { FaSpinner } from "react-icons/fa6";
 import ModalWrapper from "../common/wrapper/ModalWrapper";
 import { FaExclamationTriangle } from "react-icons/fa";
 import Button from "../common/Button";
+import { useTranslations } from "next-intl";
 
 function Scanner() {
   const router = useRouter();
+
+  const t = useTranslations("Common");
+  const t_scanner = useTranslations("Scanner");
+
   const [isScanning, setIsScanning] = useState(false);
   const [isWarning, setIsWarning] = useState(false);
 
   const [latestUrls, setLatestUrls] = useState<string[]>([]);
 
   const scannerModeOptions = [
-    { title: "Manual", value: 1 },
-    { title: "Automatic", value: 0 },
+    { title: t("normal"), value: 1 },
+    { title: t("auto"), value: 0 },
   ];
 
   const [scannerMode, setScannerMode] = useState(1);
@@ -35,18 +40,15 @@ function Scanner() {
     setIsScanning(true);
 
     try {
-      console.log("started");
       const response = await createBulkSubmission(urls);
 
       if (response) {
         router.push(`/scan/${response.submissionId}`);
       }
     } catch (e) {
-      console.log("error");
       setIsWarning(true);
       console.error(e);
     } finally {
-      console.log("end");
       setIsScanning(false);
     }
   }
@@ -79,9 +81,7 @@ function Scanner() {
             <FaSpinner
               className={`w-16 h-16 ${isScanning && "animate-spin"}`}
             />
-            <p className="text-lg text-center">
-              Please wait for a moment while your request is being processed
-            </p>
+            <p className="text-lg text-center">{t_scanner("message.wait")}</p>
           </div>
         </ModalWrapper>
 
@@ -89,8 +89,7 @@ function Scanner() {
           <div className="flex flex-col justify-center items-center gap-4 max-w-xs w-full h-64 m-auto">
             <FaExclamationTriangle className={`w-16 h-16`} />
             <p className="text-lg text-center">
-              An has occured while processing your URLs. One of your URLs maybe
-              unreachable. Please check your input and try again.
+              {t_scanner("message.scan-error")}
             </p>
           </div>
           <Button
@@ -98,7 +97,7 @@ function Scanner() {
             onClick={() => setIsWarning(false)}
             primary
           >
-            Go back
+            {t("go-back")}
           </Button>
           <Button
             className="w-full h-14 mt-4"
@@ -107,7 +106,7 @@ function Scanner() {
               submitUrls(latestUrls);
             }}
           >
-            Retry
+            {t("retry")}
           </Button>
         </ModalWrapper>
       </div>

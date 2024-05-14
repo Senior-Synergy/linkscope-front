@@ -6,9 +6,9 @@ export interface UrlBase {
   hostname: string | null;
   domain: string | null;
   subdomains: string[] | null;
-  scheme: string[] | null;
-  registrar: string[] | null;
-  ip_address: string[] | null;
+  scheme: string | null;
+  registrar: string | null;
+  ip_address: string | null;
 
   // ---------------------------------
 

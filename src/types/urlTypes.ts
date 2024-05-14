@@ -18,9 +18,9 @@ export interface UrlCommon {
   hostname: string | null;
   domain: string | null;
   subdomains: string[] | null;
-  registrar: string[] | null;
-  ipAddress: string[] | null;
-  scheme: string[] | null;
+  registrar: string | null;
+  ipAddress: string | null;
+  scheme: string | null;
   creationDate: Date | null;
   expirationDate: Date | null;
   domainAge: number | null;

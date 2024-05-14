@@ -1,6 +1,8 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
+
 import { UrlSelectorItem } from "@/types/urlTypes";
 
 import ModalWrapper from "../common/wrapper/ModalWrapper";
@@ -12,6 +14,9 @@ interface AutoScannerProps {
 }
 
 function AutoScanner({ submitUrls }: AutoScannerProps) {
+  const t = useTranslations("Common");
+  const t_scanner = useTranslations("Scanner");
+
   const [textareaInput, setTextareaInput] = useState("");
   const [urlList, setUrlList] = useState<UrlSelectorItem[]>([]);
 
@@ -66,16 +71,16 @@ function AutoScanner({ submitUrls }: AutoScannerProps) {
         {/* Title */}
         <div>
           <h3 className="text-xl font-bold mb-2">
-            Automatic Mode
-            <span className="text-red-500 font-normal"> (experimental)</span>
+            {t_scanner("auto-mode.title")}
+            <span className="text-red-500 font-normal">
+              {" "}
+              ({t_scanner("auto-mode.experimental")})
+            </span>
           </h3>
-          <p className="mb-2">
-            Simply Input a text body that contains suspecious URLs. They will
-            automatically be extracted from the text body for you.
-          </p>
+          <p className="mb-2">{t_scanner("auto-mode.subtitle")}</p>
           <p className="text-gray-500">
-            <span className="font-semibold">Note: </span>
-            Some unique URLs may not be recognized.
+            <span className="font-semibold">{t("note")}: </span>
+            {t_scanner("auto-mode.note")}
           </p>
         </div>
 
@@ -86,18 +91,18 @@ function AutoScanner({ submitUrls }: AutoScannerProps) {
                     focus:outline-none focus:ring-1 focus:ring-primary-300 
                     bg-white dark:bg-black"
           name="text"
-          placeholder="Enter text here..."
+          placeholder= {t_scanner("auto-mode.placeholder")}
           value={textareaInput}
           onChange={(e) => setTextareaInput(e.target.value)}
         />
 
         <section className="flex flex-col gap-4 w-full">
           {/* Title */}
-          <p className="font-medium">Identified URL(s)</p>
+          <p className="font-medium"> {t_scanner("auto-mode.identified-urls")}</p>
 
           {urlList.filter((url) => url.isSelected).length >= 5 && (
             <p className="text-sm text-red-500">
-              Maximum of 5 URLs is allowed per submission
+               {t_scanner("message.enter-max-five")}
             </p>
           )}
 
@@ -112,7 +117,7 @@ function AutoScanner({ submitUrls }: AutoScannerProps) {
             onClick={() => setIsConfirmingReset(true)}
             disabled={textareaInput.length < 1}
           >
-            Reset
+            {t("reset")}
           </Button>
           <Button
             className="w-1/2"
@@ -120,7 +125,7 @@ function AutoScanner({ submitUrls }: AutoScannerProps) {
             disabled={!urlList.some((urlItem) => urlItem.isSelected)}
             primary
           >
-            Submit
+            {t("submit")}
           </Button>
         </div>
       </div>

@@ -1,0 +1,354 @@
+{
+    "Common": {
+        "linkscope": "ลิงก์สโคป",
+        "senior-synergy": "ซีเนียร์ ซินเนอร์จี",
+        "add": "เพิ่ม",
+        "submit": "ส่ง",
+        "reset": "รีเซ็ต",
+        "apply": "ใช้",
+        "note": "หมายเหตุ",
+        "scan": "สแกน",
+        "result": "ผลลัพธ์",
+        "results": "ผลลัพธ์",
+        "urls": "URL",
+        "docs": "เอกสาร",
+        "manual": "คู่มือ",
+        "normal": "ปกติ",
+        "auto": "อัตโนมัติ",
+        "date": "วันที่",
+        "status": "สถานะ",
+        "safe": "ปลอดภัย",
+        "moderate": "ปานกลาง",
+        "suspicious": "น่าสงสัย",
+        "malicious": "อันตราย",
+        "unknown": "ไม่ทราบ",
+        "true": "จริง",
+        "false": "เท็จ",
+        "copy": "คัดลอก",
+        "go-to": "ไปที่",
+        "go-back": "กลับ",
+        "retry": "ลองอีกครั้ง"
+    },
+    "Datetime": {
+        "year": "ปี",
+        "month": "เดือน",
+        "day": "วัน",
+        "years": "ปี",
+        "months": "เดือน",
+        "days": "วัน"
+    },
+    "Verdict": {
+        "unknown": "ไม่มีทราบ",
+        "inconclusive": "ระบุไม่ได้",
+        "unavailable": "ไม่มี",
+        "safe": "ปลอดภัย",
+        "moderate": "ปานกลาง",
+        "suspicious": "น่าสงสัย",
+        "malicious": "เป็นอันตราย"
+    },
+    "Searcher": {
+        "placeholder": "ป้อนคำค้นหาที่นี่..."
+    },
+    "Sorter": {
+        "sort-by": "เรียงลำดับตาม",
+        "newer": "ใหม่กว่า",
+        "older": "เก่ากว่า"
+    },
+    "Footer": {
+        "linkscope": "ลิงก์สโคป",
+        "title": "พัฒนาโดย ซีเนียร์ ซินเนอร์จี"
+    },
+    "Index": {
+        "title": "สวัสดีชาวโลก!",
+        "header": {
+            "title-1": "เราขอแนะนำ",
+            "title-2": "LINKSCOPE",
+            "subtitle": "สแกน URL ด้วย AI"
+        }
+    },
+    "Scanner": {
+        "manual-mode": {
+            "title": "โหมดปกติ",
+            "subtitle": "ป้อน URL แต่ละอันที่คุณต้องการสแกนเอง",
+            "placeholder": "ป้อน URL ที่นี่..."
+        },
+        "auto-mode": {
+            "title": "โหมดอัตโนมัติ",
+            "subtitle": "เพียงป้อนข้อความที่มี URL ที่เป็นที่สงสัย เราจะสแกน URL ให้คุณโดยอัตโนมัติ",
+            "note": "บาง URL อาจจะไม่ถูกตรวจพบ",
+            "placeholder": "ป้อนข้อความที่นี่...",
+            "experimental": "ทดลองใช้",
+            "identified-urls": "URL(s) ที่ถูกตรวจพบ",
+            "no-urls": "ไม่พบ URL"
+        },
+        "message": {
+            "scan-error": "เกิดข้อผิดพลาดขณะประมวลผล URL ของคุณ หนึ่งใน URL ของคุณดูเหมือนจะไม่สามารถประมวลผลได้ กรุณาตรวจสอบข้อมูลของคุณและลองอีกครั้ง",
+            "wait": "กรุณารอสักครู่ในขณะที่คำขอของคุณกำลังถูกประมวลผล",
+            "reset-confirmation": "คุณแน่ใจหรือไม่ว่าต้องการรีเซ็ต?",
+            "reset-explanation": "การดำเนินการนี้จะล้างทั้งหมดลิงก์ที่ระบุและผลสแกนที่แสดงอยู่ในปัจจุบัน",
+            "enter-max-five": "สามารถมี URL ได้สูงสุด 5 รายการต่อการส่ง",
+            "enter-invalid": "โปรดป้อน URL ที่ถูกต้อง",
+            "enter-repeat": "URL นี้ถูกเพิ่มแล้ว"
+        }
+    },
+    "Submission": {
+        "header": {
+            "title": "ผลการสแกน",
+            "subtitle": "ภาพรวมของผลการสแกนของ URL ทั้งหมดที่ส่ง"
+        },
+        "results": "ผลการสแกน URL ของคุณ",
+        "recent-results": {
+            "title": "ผลล่าสุดที่สร้างขึ้นเมื่อเร็ว ๆ นี้",
+            "subtitle": "ผลการสแกนล่าสุดอื่น ๆ ที่คุณอาจสนใจ"
+        }
+    },
+    "Result": {
+        "header": {
+            "title": "ผลลัพธ์",
+            "subtitle": "สำรวจฐานข้อมูลของเราเกี่ยวกับผลลัพธ์การสแกนที่สร้างไว้ก่อนหน้านี้"
+        },
+        "no-result-found": {
+            "title": "ไม่พบผลลัพธ์...",
+            "desc": " ผลลัพธ์ที่คุณกำลังมองหาอาจถูกลบออกหรือไม่สามารถใช้ได้ชั่วคราว"
+        },
+        "result": "ผลลัพธ์",
+        "results": "ผลลัพธ์",
+        "redirected-to": "เปลี่ยนเส้นทางไปยัง",
+        "url-submitted": "URL ที่ส่งมา",
+        "google-safe": "การสแกนของ Google",
+        "scan-result-of": "ผลการสแกนของ",
+        "more-details": "รายละเอียดเพิ่มเติม",
+        "out-of": "เต็ม",
+        "info-box": {
+            "phish-prob": {
+                "title": "ความน่าจะเป็น (Phishing)",
+                "desc": "ความน่าจะเป็นที่ URL ที่กำหนดจะถูกจัดประเภทเป็นฟิชชิ่งโดยพิจารณาจากฟีเจอร์ที่วิเคราะห์โดยโมเดล เปอร์เซ็นต์ที่สูงกว่าจะชัดเจนยิ่งขึ้น"
+            },
+            "verdict": {
+                "title": "คำตัดสิน",
+                "desc": "คำตัดสินจะขึ้นอยู่กับเกณฑ์ที่กำหนด หากความน่าจะเป็นของโมเดลต่ำกว่าเกณฑ์ที่กำหนด การตัดสินจะเป็น 'ปลอดภัย' ซึ่งบ่งชี้ว่า URL ไม่ถือว่าเป็นภัยคุกคามแบบฟิชชิ่ง"
+            },
+            "trust-score": {
+                "title": "คะแนนความเชื่อถือ",
+                "desc": "ระดับความมั่นใจที่ผู้ใช้มีได้ในการคาดการณ์ของโมเดล คะแนนความน่าเชื่อถือที่สูงกว่าบ่งชี้ถึงระดับความเชื่อมั่นที่มากขึ้นในความแม่นยำ"
+            }
+        },
+        "summary": {
+            "title": "สรุป",
+            "body-info-1": {
+                "1": "ชื่อโดเมนของเว็บไซต์ถูกจัดการโดย",
+                "2": "ที่อยู่ IP คือ",
+                "3": "มีที่ตั้งอยู่ที่",
+                "4": "ใบรับรอง SSL ของเว็บไซต์ได้รับการออกให้ใช้เมื่อ",
+                "5": "ใบรับรอง SSL ของเว็บไซต์มีอายุถึงวันที่"
+            },
+            "body-info-2": {
+                "1": "โมเดลของเราจำแนก URL นี้ว่า",
+                "2": "ด้วยคะแนนความเชื่อถือ",
+                "3": "นอกจากนี้ Google Safe Browsing ยังจำแนก URL นี้ว่า"
+            },
+            "unknown-source": "แหล่งที่ไม่ทราบที่มา",
+            "unknown-location": "ที่ไม่ทราบสถานที่",
+            "unknown": "ที่ไม่ทราบ",
+            "unspecified": "ที่ไม่ระบุ",
+            "unspecified-date": "วันที่ไม่ได้ระบุไว้",
+            "malicious": "อันตราย",
+            "not-malicious": "ไม่อันตราย"
+        }
+    },
+    "Feature": {
+        "extracted-features": {
+            "title": "คุณสมบัติ",
+            "body": "ส่วนประกอบหรือคุณลักษณะเฉพาะที่ประกอบเป็นโครงสร้างของ URL คุณลักษณะแต่ละอย่างเหล่านี้มีบทบาทในการกำหนดปลายทางและลักษณะการทำงานของ URL เมื่อเข้าถึงโดยเว็บเบราว์เซอร์หรือไคลเอ็นต์อื่น",
+            "featuer-details": "รายละเอียดคุณสมบัติ",
+            "value": "ค่า",
+            "type": {
+                "address-bar": "แถบที่อยู่",
+                "html-dom": "โครงสร้าง HTML/DOM",
+                "abnormal": "ความผิดปกติ",
+                "domain": "โดเมน"
+            },
+            "domain-length": {
+                "title": "ความยาวของโดเมน",
+                "type": "แถบที่อยู่",
+                "explanation": "นับตัวอักษรในสตริงโฮสต์เนม"
+            },
+            "www": {
+                "title": "WWW",
+                "type": "แถบที่อยู่",
+                "explanation": "หาก URL มี 'www' เป็นซับโดเมน แล้วเป็นจริง; มิฉะนั้นเป็นเท็จ"
+            },
+            "https": {
+                "title": "HTTPS",
+                "type": "แถบที่อยู่",
+                "explanation": "ในกรณีของแถบที่อยู่ หาก URL มี 'https' แล้วเป็นจริง; มิฉะนั้นเป็นเท็จ"
+            },
+            "short-url": {
+                "title": "URL ย่อ",
+                "type": "แถบที่อยู่",
+                "explanation": "หาก URL เป็น URL ย่อเป็นเท็จ; มิฉะนั้นเป็นจริง"
+            },
+            "ip": {
+                "title": "IP",
+                "type": "แถบที่อยู่",
+                "explanation": "หาก URL มี 'ที่อยู่ IP' เป็นเท็จ; มิฉะนั้นเป็นจริง"
+            },
+            "dash-count": {
+                "title": "การนับสัญลักษณ์ขีด",
+                "type": "แถบที่อยู่",
+                "explanation": "นับสัญลักษณ์ '-' ใน URL"
+            },
+            "equal-count": {
+                "title": "การนับสัญลักษณ์เท่ากัน",
+                "type": "แถบที่อยู่",
+                "explanation": "นับสัญลักษณ์ '=' ใน URL"
+            },
+            "dot-count": {
+                "title": "การนับสัญลักษณ์จุด",
+                "type": "แถบที่อยู่",
+                "explanation": "นับสัญลักษณ์ '.' ในโฮสต์เนมของ URL"
+            },
+            "underscore-count": {
+                "title": "การนับสัญลักษณ์ขีดล่าง",
+                "type": "แถบที่อยู่",
+                "explanation": "นับสัญลักษณ์ '_' ใน URL"
+            },
+            "slash-count": {
+                "title": "การนับสัญลักษณ์เส้นตาย",
+                "type": "แถบที่อยู่",
+                "explanation": "นับสัญลักษณ์ '/' ใน URL"
+            },
+            "digit-count": {
+                "title": "ตัวเลข",
+                "type": "แถบที่อยู่",
+                "explanation": "นับตัวเลข (0-9) ใน URL"
+            },
+            "pcemptylinks": {
+                "title": "ลิงก์ที่ว่างเปล่าบน PC",
+                "type": "โครงสร้าง HTML/DOM",
+                "explanation": "เปอร์เซ็นต์ของลิงก์ที่ว่างเปล่า",
+                "note": "ลิงก์ที่ว่างเปล่าคือลิงก์เชื่อมโยงที่ไม่นำไปยังหน้าเว็บไซต์ที่แตกต่าง หลังจากคลิกแล้ว มักจะทำให้ยังอยู่บนหน้าเว็บไซต์ปัจจุบันหรือแสดงหน้าเว็บเปล่าๆ สาเหตุอาจเกิดจาก URL ลิงก์ที่สูญหายหรือไม่ถูกต้อง"
+            },
+            "pcextlinks": {
+                "title": "ลิงก์ภายนอกบน PC",
+                "type": "โครงสร้าง HTML/DOM",
+                "explanation": "เปอร์เซ็นต์ของลิงก์ภายนอกที่นำคุณไปยังเว็บไซต์อื่นๆ ที่มีโดเมนที่แตกต่างจาก URL ที่ส่งมา",
+                "note": "หมายเหตุ: ลิงก์ภายนอกคือลิงก์เชื่อมโยงที่นำผู้ใช้จากเว็บไซต์หนึ่งไปยังเว็บไซต์อื่นที่มีโดเมนที่แตกต่าง หลังจากคลิก ลิงก์จะพาผู้ใช้ออกจากเว็บไซต์ปัจจุบันและนำไปยังเว็บไซต์ใหม่"
+            },
+            "pcrequrl": {
+                "title": "URL ของทรัพยากรภายนอกบน PC",
+                "type": "โครงสร้าง HTML/DOM",
+                "explanation": "เปอร์เซ็นต์ของ URL ทรัพยากรภายนอก",
+                "note": "หมายเหตุ: URL ทรัพยากรภายนอกหมายถึงที่อยู่เว็บของทรัพยากร เช่น รูปภาพ เสียงหรือเนื้อหาที่ฝัง ซึ่งโฮสต์อยู่ในโดเมนที่แตกต่างจาก URL หลักหรือ URL ที่ส่งมา"
+            },
+            "zerolink": {
+                "title": "ไม่มีลิงก์",
+                "type": "โครงสร้าง HTML/DOM",
+                "explanation": "หาก URL ไม่มีลิงก์ในส่วนเนื้อหา HTML ให้ถือว่าเป็นจริง มิฉะนั้นจะเป็นเท็จ"
+            },
+            "ext-favicon": {
+                "title": "ไอคอนเว็บไซต์ภายนอก",
+                "type": "โครงสร้าง HTML/DOM",
+                "explanation": "หาก URL ไอคอนเว็บไซต์มาจากโดเมนที่แตกต่างจาก URL ที่ส่งมา เป็นเท็จ; มิฉะนั้นเป็นจริง"
+            },
+            "sfh": {
+                "title": "SFH",
+                "type": "โครงสร้าง HTML/DOM",
+                "explanation": "SFHs (server-side form handlers) ที่มีสตริงว่างหรือนำไปสู่เว็บไซต์โดเมนที่แตกต่างจาก URL ที่ส่งมา ควรเป็นเท็จ; มิฉะนั้นเป็นจริง",
+                "note": "หมายเหตุ: SFH ย่อมาจาก server-side form handler ซึ่งเป็น URL ที่ระบุในแอตทริบิวต์ `action` ของแบบฟอร์ม HTML ที่กำหนดให้ว่าต้องการให้ข้อมูลแบบฟอร์มจะถูกส่งไปที่ไหนเมื่อผู้ใช้กรอกและส่งแบบฟอร์ม"
+            },
+            "redirection": {
+                "title": "การเปลี่ยนเส้นทาง",
+                "type": "ผิดปกติ",
+                "explanation": "หากการคลิกที่ URL ที่ส่งมาส่งผลให้เปลี่ยนเส้นทางไปยัง URL อื่นเป็นเท็จ; มิฉะนั้นเป็นจริง เช่น คลิก www.eabc1255.com และถูกเปลี่ยนเส้นทางไปยัง www.eabc5255.com"
+            },
+            "domainend": {
+                "title": "สิ้นสุดโดเมน",
+                "type": "โดเมน",
+                "explanation": "คำนวณความแตกต่างในวันระหว่างวันที่ปัจจุบันและวันที่หมดอายุ (ความยาวการลงทะเบียน) หากความแตกต่างน้อยกว่าหรือเท่ากับหนึ่งปีเป็นเท็จ; มิฉะนั้นเป็นจริง"
+            }
+        }
+    },
+    "UrlInfo": {
+        "header": {
+            "title": "ข้อมูล URL",
+            "subtitle": "รายละเอียดและประวัติทางประวัติ"
+        },
+        "url-details": {
+            "title": "รายละเอียด URL",
+            "info-items": {
+                "ip-address": "ที่อยู่ IP",
+                "hostname": "โฮสต์เนม",
+                "domain": "โดเมน",
+                "subdomains": "ซับโดเมน",
+                "scheme": "ระบบ",
+                "creation-date": "วันที่สร้าง",
+                "expiration-date": "วันที่หมดอายุ",
+                "domain-age": "อายุโดเมน",
+                "domain-ending-in": "โดเมนหมดอายลงใน",
+                "city": "เมือง",
+                "state": "รัฐ",
+                "country": "ประเทศ"
+            }
+        },
+        "similar-url": {
+            "title": "URL ที่คล้ายกัน",
+            "subtitle": "สี่ URL ที่คล้ายกันที่สุดในเชิงข้อความ"
+        },
+        "scan-history": {
+            "title": "ประวัติผลการสแกน",
+            "subtitle": "บันทึกประวัติการสแกนก่อนหน้าของ URL นี้"
+        }
+    },
+    "Url": {
+        "header": {
+            "title": "URLs",
+            "subtitle": "สำรวจฐานข้อมูลของ URL ที่สแกนแล้วก่อนหน้านี้"
+        },
+        "last-updated": "อัปเดตล่าสุด"
+    },
+    "Docs": {
+        "header": {
+            "title": "Documentation",
+            "subtitle": "The development of LINKSCOPE"
+        },
+        "on-this-page": "On this page",
+        "intro": {
+            "title": "Introduction",
+            "body": [
+                "Phishing URLs pose a grave threat to individuals in Thailand, and the risk is expected to escalate considerably in the future. While existing phishing link detection tools primarily focus on technical aspects, there remains a significant gap in addressing the informational needs of users beyond just numbers and data.",
+                "In response to the increasing threat of phishing attacks and the need for user-centric cybersecurity solutions, this project aims to develop a phishing detection tool powered by interpretable machine learning models."
+            ]
+        },
+        "url-comp": {
+            "title": "URL components",
+            "body": [
+                "A Uniform Resource Locator (URL) is designed to locate web pages. The diagram below outlines the structure of a common URL and its key components.",
+                "A phisher has complete control over the subdomain sections and can assign any value to them. The URL might also include a path and file elements that can be manipulated by the phisher as desired. The path is entirely under the phisher's control. In the rest of this article, we refer to these portions of the URL as FreeURL."
+            ]
+        },
+        "ml-tech": {
+            "title": "URL components",
+            "algo": {
+                "title": "Algorithm : Random Forest",
+                "body": [
+                    "The Random Forest algorithm can be utilized to enhance accuracy and mitigate overfitting in URL classification. The algorithm combines the outputs of multiple decision trees to categorize URLs. By using random subsets of features, each decision tree focuses on different combinations of URL features. The diverse set of decision trees creates a robust ensemble model that effectively analyzes and classifies URLs. A final decision is made through majority voting based on the predictions from each tree, resulting in more reliable and precise classifications compared to a single decision tree model."
+                ]
+            },
+            "feature-select": {
+                "title": "Features selection method : Particle Swarm Optimization",
+                "body": {
+                    "1": "The purpose of feature selection is to select a subset of relevant features from a large number of available features to achieve similar or even better classification performance than using all features. By eliminating/reducing irrelevant and redundant features, feature selection could reduce the number of features, shorten the training time, simplify the learned classifiers, and/or improve the classification performance.",
+                    "2": "Particle Swarm Optimization is a population based technique to address feature selection problems in this project due to better representation, capability of searching large spaces, being less expensive computationally, being easier to implement, and fewer parameters being required. PSO simulates social behavior such as birds flocking and fish schooling. In PSO, a population, also called a swarm, of candidate solutions are encoded as particles in the search space. PSO starts with the random initialisation of a population of particles. Particles move in the search space to search for the optimal solution by updating the position of each particle based on the experience of its own.",
+                    "3": "After performing feature selection using PSO, 19 features were selected, resulting in the highest accuracy of 96.12 percent. The following are the features used for the model."
+                }
+            },
+            "model-result": {
+                "accuracy": "Accuracy",
+                "precision": "Precision",
+                "recall": "Recall",
+                "f1-score": "F1-Score"
+            }
+        }
+    }
+}

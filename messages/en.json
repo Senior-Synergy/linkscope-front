@@ -1,0 +1,354 @@
+{
+    "Common": {
+        "linkscope": "LINKSCOPE",
+        "senior-synergy": "SENIOR SYNERGY",
+        "add": "Add",
+        "submit": "Submit",
+        "reset": "Reset",
+        "apply": "Apply",
+        "note": "Note",
+        "scan": "Scan",
+        "result": "Result",
+        "results": "Results",
+        "urls": "URLs",
+        "docs": "Docs",
+        "manual": "Manual",
+        "normal": "Normal",
+        "auto": "Automatic",
+        "date": "Date",
+        "status": "Status",
+        "safe": "Safe",
+        "moderate": "Moderate",
+        "suspicious": "Suspicious",
+        "malicious": "Malicious",
+        "unknown": "Unknown",
+        "true": "True",
+        "false": "False",
+        "copy": "Copy",
+        "go-to": "Go to",
+        "go-back": "Go back",
+        "retry": "Retry"
+    },
+    "Datetime": {
+        "year": "Year",
+        "month": "Month",
+        "day": "Day",
+        "years": "Years",
+        "months": "Months",
+        "days": "Days"
+    },
+    "Verdict": {
+        "unknown": "Unknown",
+        "inconclusive": "Inconclusive",
+        "unavailable": "Unavailable",
+        "safe": "Safe",
+        "moderate": "Moderate",
+        "suspecious": "Suspicious",
+        "malicious": "Malicious"
+    },
+    "Searcher": {
+        "placeholder": "Enter search terms..."
+    },
+    "Sorter": {
+        "sort-by": "Sort By",
+        "newer": "Newer",
+        "older": "Older"
+    },
+    "Footer": {
+        "linkscope": "LINKSCOPE",
+        "title": "Developed by Senior Synergy"
+    },
+    "Index": {
+        "title": "Hello world!",
+        "header": {
+            "title-1": "INTRODUCING",
+            "title-2": "LINKSCOPE",
+            "subtitle": "AI Powered URL Scanner"
+        }
+    },
+    "Scanner": {
+        "manual-mode": {
+            "title": "Manual Mode",
+            "subtitle": "Manually input individual URLs that you wish to scan",
+            "placeholder": "Enter a URL here..."
+        },
+        "auto-mode": {
+            "title": "Automatic Mode",
+            "subtitle": "Simply Input a text body that contains suspecious URLs. They will automatically be extracted from the text body for you",
+            "note": "Some unique URLs may not be recognized.",
+            "placeholder": "Enter text here...",
+            "experimental": "experimental",
+            "identified-urls": "Identified URL(s)",
+            "no-urls": "No URL detected"
+        },
+        "message": {
+            "scan-error": "An has occured while processing your URLs. One of your URLs appears to be unprocessable. Please check your input and try again",
+            "wait": "Please wait for a moment while your request is being processed",
+            "reset-confirmation": "Are you sure you want to reset?",
+            "reset-explanation": "This will also clear all the identified links and scanned results currently being displayed",
+            "enter-max-five": "Maximum of 5 URLs is allowed per submission",
+            "enter-invalid": "Please enter a valid URL",
+            "enter-repeat": "This URL has already been added"
+        }
+    },
+    "Submission": {
+        "header": {
+            "title": "Submission Results",
+            "subtitle": "An overview of the scan results of all URLs submitted"
+        },
+        "results": "Your URL Scan Results",
+        "recent-results": {
+            "title": "Recently Created Results",
+            "subtitle": "Other recent scan results you may be interested in"
+        }
+    },
+    "Result": {
+        "header": {
+            "title": "Results",
+            "subtitle": "Explore our database of previously created scan results"
+        },
+        "no-result-found": {
+            "title": "No results found...",
+            "desc": " The result you are looking for might have been removed or is temporarily unavailable."
+        },
+        "result": "Result",
+        "results": "Results",
+        "redirected-to": "Redirected to",
+        "url-submitted": "URL Submitted",
+        "google-safe": "Google Safe Browsing",
+        "scan-result-of": "Scan result of",
+        "more-details": "More Details",
+        "out-of": "out of",
+        "info-box": {
+            "phish-prob": {
+                "title": "Probability (Phishing)",
+                "desc": "The likelihood that the given URL is classified as phishing based on the features analyzed by the model. A higher percentage suggests a stronger indication of phishing."
+            },
+            "verdict": {
+                "title": "Verdict",
+                "desc": "The verdict is based on the threshold set by the model; if the model probability is below a certain threshold, the verdict will be 'safe,' indicating that the URL is not considered a phishing threat."
+            },
+            "trust-score": {
+                "title": "Trust Score",
+                "desc": "The level of confidence users can have in the model's prediction. A higher trust score indicates a stronger confidence level in the model's accuracy."
+            }
+        },
+        "summary": {
+            "title": "Summary",
+            "body-info-1": {
+                "1": "The website's domain name is managed by",
+                "2": "The IP address is",
+                "3": "It is located in",
+                "4": "The website's SSL certificate was issued on",
+                "5": "The website's SSL certificate is valid until"
+            },
+            "body-info-2": {
+                "1": "Our model has classified this URL as",
+                "2": "with a trust score of",
+                "3": "Additionally, Google Safe Browsing has classified the URL as"
+            },
+            "unknown-source": "an unknown origin",
+            "unknown-location": "an unknown location",
+            "unknown": "unknown",
+            "unspecified": "unspecified",
+            "unspecified-date": "an unspecified date",
+            "malicious": "malicious",
+            "not-malicious": "not malicious"
+        }
+    },
+    "Feature": {
+        "extracted-features": {
+            "title": "Extracted Features",
+            "body": "Specific components or attributes that make up the URL's structure. Each of these features plays a role in determining the destination and behavior of the URL when accessed by a web browser or other client.",
+            "featuer-details": "Feature Details",
+            "value": "Value",
+            "type": {
+                "address-bar": "Address Bar",
+                "html-dom": "HTML/DOM Structure",
+                "abnormal": "Abnormal",
+                "domain": "Domain"
+            },
+            "domain-length": {
+                "title": "Domain Length",
+                "type": "Address Bar",
+                "explanation": "Count the characters in the hostname string."
+            },
+            "www": {
+                "title": "WWW",
+                "type": "Address Bar",
+                "explanation": "If the URL has 'www' as the subdomain, then true; otherwise, false."
+            },
+            "https": {
+                "title": "HTTPS",
+                "type": "Address Bar",
+                "explanation": "Address Bar based If the URL contains 'https', then true; otherwise, false."
+            },
+            "short-url": {
+                "title": "Short URL",
+                "type": "Address Bar",
+                "explanation": "If the URL is a short URL, false; otherwise, true."
+            },
+            "ip": {
+                "title": "IP",
+                "type": "Address Bar",
+                "explanation": "If the URL contains an 'IP address', false; otherwise, true."
+            },
+            "dash-count": {
+                "title": "Dash Symbol Counts",
+                "type": "Address Bar",
+                "explanation": "Count the '-' characters in the URL."
+            },
+            "equal-count": {
+                "title": "Equal Symbol Counts",
+                "type": "Address Bar",
+                "explanation": "Count the '=' characters in the URL."
+            },
+            "dot-count": {
+                "title": "Dot Symbol Counts",
+                "type": "Address Bar",
+                "explanation": "Count the '.' characters in the URL's hostname."
+            },
+            "underscore-count": {
+                "title": "Underscore Symbol Counts",
+                "type": "Address Bar",
+                "explanation": "Count the '_' characters in the URL."
+            },
+            "slash-count": {
+                "title": "Slash Symbol Counts",
+                "type": "Address Bar",
+                "explanation": "Count the '/' characters in the URL."
+            },
+            "digit-count": {
+                "title": "Digit",
+                "type": "Address Bar",
+                "explanation": "Count the digit (0-9) characters in the URL."
+            },
+            "pcemptylinks": {
+                "title": "PC Empty Links",
+                "type": "HTML/DOM Structure",
+                "explanation": "Percentage of empty links.",
+                "note": "An empty link is a hyperlink that does not lead to a different web page. When clicked, it typically results in staying on the current page or displaying a blank page. This can occur when the link's URL is missing or invalid."
+            },
+            "pcextlinks": {
+                "title": "PC External Links",
+                "type": "HTML/DOM Structure",
+                "explanation": "Percentage of external links that direct you to another site with a different domain from the submitted URL.",
+                "note": "Note : An external link is a hyperlink that directs users from one website to a different website with a different domain. When clicked, the link takes the user away from the current site and navigates them to a new site."
+            },
+            "pcrequrl": {
+                "title": "PC External Resources URL",
+                "type": "HTML/DOM Structure",
+                "explanation": "Percentage of external resource URLs.",
+                "note": "Note: An external resource URL refers to the web address of a resource, such as images, audio files, or embedded content, that is hosted on a different domain from the main or submitted URL."
+            },
+            "zerolink": {
+                "title": "Zero Link",
+                "type": "HTML/DOM Structure",
+                "explanation": "If the URL page has no links in the HTML body, true; otherwise, false."
+            },
+            "ext-favicon": {
+                "title": "External Favicon",
+                "type": "HTML/DOM Structure",
+                "explanation": "If the favicon URL is from a different domain than the submitted URL, true; otherwise, false."
+            },
+            "sfh": {
+                "title": "SFH",
+                "type": "HTML/DOM Structure",
+                "explanation": "SFHs (server-side form handlers) that contain an empty string or lead to different domain sites from the submitted URL should false; otherwise, true.",
+                "note": "Note: SFH stands for server-side form handler, which is the URL specified in the `action` attribute of an HTML form. This URL determines where the form data will be submitted for processing when a user fills out and submits the form."
+            },
+            "redirection": {
+                "title": "Redirection",
+                "type": "Abnormal",
+                "explanation": "If clicking the submitted URL results in a redirection to another URL, false; otherwise, true. For example, clicking www.eabc1255.com and being redirected to www.eabc5255.com."
+            },
+            "domainend": {
+                "title": "Domain End",
+                "type": "Domain",
+                "explanation": "Calculate the difference in days between the current date and the expiration date (registration length). If the difference is less than or equal to one year, false; otherwise, true."
+            }
+        }
+    },
+    "UrlInfo": {
+        "header": {
+            "title": "URL Information",
+            "subtitle": "Details and Records"
+        },
+        "url-details": {
+            "title": "URL Details",
+            "info-items": {
+                "ip-address": "IP address",
+                "hostname": "hostname",
+                "domain": "domain",
+                "subdomains": "subdomains",
+                "scheme": "scheme",
+                "creation-date": "creation date",
+                "expiration-date": "expiration date",
+                "domain-age": "domain age",
+                "domain-ending-in": "domain ending in",
+                "city": "city",
+                "state": "state",
+                "country": "country"
+            }
+        },
+        "similar-url": {
+            "title": "Similar URLs",
+            "subtitle": "Top 4 most similar URLs based on their textual content"
+        },
+        "scan-history": {
+            "title": "Scan Result History",
+            "subtitle": "A historical records of previous scans of this URL."
+        }
+    },
+    "Url": {
+        "header": {
+            "title": "URLs",
+            "subtitle": "Explore our database of previously scanned URLs"
+        },
+        "last-updated": "Last Updated"
+    },
+    "Docs": {
+        "header": {
+            "title": "Documentation",
+            "subtitle": "The development of LINKSCOPE"
+        },
+        "on-this-page": "On this page",
+        "intro": {
+            "title": "Introduction",
+            "body": [
+                "Phishing URLs pose a grave threat to individuals in Thailand, and the risk is expected to escalate considerably in the future. While existing phishing link detection tools primarily focus on technical aspects, there remains a significant gap in addressing the informational needs of users beyond just numbers and data.",
+                "In response to the increasing threat of phishing attacks and the need for user-centric cybersecurity solutions, this project aims to develop a phishing detection tool powered by interpretable machine learning models."
+            ]
+        },
+        "url-comp": {
+            "title": "URL components",
+            "body": [
+                "A Uniform Resource Locator (URL) is designed to locate web pages. The diagram below outlines the structure of a common URL and its key components.",
+                "A phisher has complete control over the subdomain sections and can assign any value to them. The URL might also include a path and file elements that can be manipulated by the phisher as desired. The path is entirely under the phisher's control. In the rest of this article, we refer to these portions of the URL as FreeURL."
+            ]
+        },
+        "ml-tech": {
+            "title": "URL components",
+            "algo": {
+                "title": "Algorithm : Random Forest",
+                "body": [
+                    "The Random Forest algorithm can be utilized to enhance accuracy and mitigate overfitting in URL classification. The algorithm combines the outputs of multiple decision trees to categorize URLs. By using random subsets of features, each decision tree focuses on different combinations of URL features. The diverse set of decision trees creates a robust ensemble model that effectively analyzes and classifies URLs. A final decision is made through majority voting based on the predictions from each tree, resulting in more reliable and precise classifications compared to a single decision tree model."
+                ]
+            },
+            "feature-select": {
+                "title": "Features selection method : Particle Swarm Optimization",
+                "body": {
+                    "1": "The purpose of feature selection is to select a subset of relevant features from a large number of available features to achieve similar or even better classification performance than using all features. By eliminating/reducing irrelevant and redundant features, feature selection could reduce the number of features, shorten the training time, simplify the learned classifiers, and/or improve the classification performance.",
+                    "2": "Particle Swarm Optimization is a population based technique to address feature selection problems in this project due to better representation, capability of searching large spaces, being less expensive computationally, being easier to implement, and fewer parameters being required. PSO simulates social behavior such as birds flocking and fish schooling. In PSO, a population, also called a swarm, of candidate solutions are encoded as particles in the search space. PSO starts with the random initialisation of a population of particles. Particles move in the search space to search for the optimal solution by updating the position of each particle based on the experience of its own.",
+                    "3": "After performing feature selection using PSO, 19 features were selected, resulting in the highest accuracy of 96.12 percent. The following are the features used for the model."
+                }
+            },
+            "model-result": {
+                "accuracy": "Accuracy",
+                "precision": "Precision",
+                "recall": "Recall",
+                "f1-score": "F1-Score"
+            }
+        }
+    }
+}
