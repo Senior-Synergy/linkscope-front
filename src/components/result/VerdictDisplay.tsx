@@ -43,7 +43,7 @@ function VerdictDisplay({
   } else if (baseValue < 0.85) {
     verdict = {
       value: "HIGH",
-      label: t("suspecious"),
+      label: t("suspicious"),
     };
   } else {
     verdict = {

@@ -50,7 +50,7 @@
         "unavailable": "Unavailable",
         "safe": "Safe",
         "moderate": "Moderate",
-        "suspecious": "Suspicious",
+        "suspicious": "Suspicious",
         "malicious": "Malicious"
     },
     "Searcher": {
