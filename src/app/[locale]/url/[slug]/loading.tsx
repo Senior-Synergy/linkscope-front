@@ -1,7 +1,10 @@
 import Spinner from "@/components/common/Spinner";
+import { getTranslations } from "next-intl/server";
 
-function loading() {
-  return <Spinner description="Loading URL Information..." />;
+async function loading() {
+  const t = await getTranslations("Loading");
+
+  return <Spinner description={t("url-info")} />;
 }
 
 export default loading;

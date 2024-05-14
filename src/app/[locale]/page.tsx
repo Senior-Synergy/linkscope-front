@@ -8,7 +8,7 @@ import Scanner from "@/components/scanner/Scanner";
 function ScanPage({ params: { locale } }: { params: { locale: string } }) {
   unstable_setRequestLocale(locale);
 
-  const t_common = useTranslations("Common")
+  const t_common = useTranslations("Common");
   const t = useTranslations("Index");
 
   return (
@@ -16,7 +16,7 @@ function ScanPage({ params: { locale } }: { params: { locale: string } }) {
       <header>
         <h1 className="text-4xl font-semibold">
           {t("header.title-1")},
-          <span className="text-primary">&nbsp;{t_common("linkscope")}</span>
+          <span className="text-primary"> {t_common("linkscope")}</span>
         </h1>
         <p className="text-gray-800 dark:text-gray-200 font-extralight truncate">
           {t("header.subtitle")}

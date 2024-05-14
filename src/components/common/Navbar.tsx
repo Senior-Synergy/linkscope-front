@@ -7,7 +7,6 @@ import DarkmodeSwitch from "./DarkmodeSwitch";
 import LocaleSwitcher from "./LocaleSwitcher";
 import SideNavOverlay from "./navigation/SideNavOverlay";
 
-
 function Navbar() {
   const t = useTranslations("Common");
 
@@ -34,7 +33,7 @@ function Navbar() {
     // },
   ];
 
-  return (    
+  return (
     <>
       <div className="sticky top-0 z-10">
         <div
@@ -84,7 +83,7 @@ function Navbar() {
         {/* <div className="h-4 w-full bg-gradient-to-b from-white to-transparent"></div> */}
       </div>
 
-      <SideNavOverlay />
+      <SideNavOverlay navItems={NavItem} />
     </>
   );
 }

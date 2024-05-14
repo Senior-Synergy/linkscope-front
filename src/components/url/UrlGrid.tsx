@@ -17,7 +17,7 @@ async function UrlGrid({ urls }: UrlGridProps) {
       {urls.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {urls.map((url, index) => (
-            <Link key={index} href={`url/${url.urlId}`}>
+            <Link key={index} href={`/url/${url.urlId}`}>
               <div
                 key={index}
                 className="flex items-center justify-between 
@@ -53,7 +53,7 @@ async function UrlGrid({ urls }: UrlGridProps) {
         </div>
       ) : (
         <div className="flex flex-col justify-center items-center p-4 min-h-96 m-auto border rounded-lg">
-          <FaQuestionCircle className="w-24 h-24 mb-4" />
+          <FaQuestionCircle className="w-24 h-24 mb-4" />A
           <h2 className="font-bold text-center">No URLs Found...</h2>
         </div>
       )}

@@ -62,7 +62,7 @@ function Scanner() {
       >
         <div className="h-10">
           <TabSelector
-            currentItem={scannerMode}
+            currentValue={scannerMode}
             itemList={scannerModeOptions}
             onSelect={changeScannerMode}
           />

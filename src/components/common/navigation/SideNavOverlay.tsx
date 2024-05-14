@@ -11,31 +11,15 @@ import Link from "next/link";
 import LocaleSwitcher from "../LocaleSwitcher";
 import DarkmodeSwitch from "../DarkmodeSwitch";
 
-function SideNavOverlay() {
-  const NavItem = [
-    {
-      name: "Scan",
-      route: "/",
-    },
-    {
-      name: "Results",
-      route: "/result",
-    },
-    {
-      name: "URLs",
-      route: "/url",
-    },
-    {
-      name: "Docs",
-      route: "/docs",
-    },
-    // {
-    //   name: "dev",
-    //   route: "/develop",
-    // },
-  ];
+interface Props {
+  navItems: {
+    name: string;
+    route: string;
+  }[];
+}
 
-  const currentPath = usePathname();
+function SideNavOverlay({ navItems }: Props) {
+  // const currentPath = usePathname();
   const [isCollapsed, setIsCollapsed] = useState(true);
 
   function toggleCollapse() {
@@ -104,12 +88,16 @@ function SideNavOverlay() {
 
         {/* <SideNavContent /> */}
 
-        <div className="p-8">
+        <div className="p-4">
           {/* <p className="mb-4 font-medium">Navigation</p> */}
 
           <div className="flex flex-col space-y-2 w-full">
-            {NavItem.map((item, index) => (
-              <Link key={index} href={item.route} onClick={() => setIsCollapsed(true)}>
+            {navItems.map((item, index) => (
+              <Link
+                key={index}
+                href={item.route}
+                onClick={() => setIsCollapsed(true)}
+              >
                 <div
                   className={`flex items-center justify-between px-4 py-2 h-14 w-full space-x-2 rounded-lg border hover:bg-gray-200 hover:dark:bg-gray-800 transition-colors`}
                 >
@@ -123,8 +111,8 @@ function SideNavOverlay() {
             ))}
           </div>
         </div>
-        <div className="p-8">
-          <p className="mb-4 font-medium">Options</p>
+        <div className="p-4">
+          {/* <p className="mb-4 font-medium">Options</p> */}
 
           <div className="flex space-x-2">
             <div className="w-1/2">

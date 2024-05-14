@@ -29,6 +29,13 @@
         "go-back": "Go back",
         "retry": "Retry"
     },
+    "Loading":{
+        "result-info": "Loading Scan Result Information...",
+        "result-list": "Loading Scan Results...",
+        "url-info": "Loading URL Information...",
+        "url-list": "Loading URLs...",
+        "scan-list": "Loading Scan Results..."
+    },
     "Datetime": {
         "year": "Year",
         "month": "Month",
@@ -97,6 +104,7 @@
             "subtitle": "An overview of the scan results of all URLs submitted"
         },
         "results": "Your URL Scan Results",
+        "url-associated": "List of Unique URLs Detected in This Submission",
         "recent-results": {
             "title": "Recently Created Results",
             "subtitle": "Other recent scan results you may be interested in"

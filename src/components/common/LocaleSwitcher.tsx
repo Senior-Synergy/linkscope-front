@@ -36,8 +36,8 @@ export default function LocaleSwitcher() {
         { pathname, params },
         { locale: nextLocale }
       );
+      router.refresh()
     });
-    startTransition(() => router.refresh());
   }
 
   useEffect(() => {

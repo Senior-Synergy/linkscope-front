@@ -38,7 +38,7 @@ function ResultListItem({ result }: ResultListItemProps) {
           </div>
 
           <VerdictDisplay
-            phishProbMod={result.phishProbMod}
+            phishProb={result.phishProb}
             hasSoup={result.hasSoup ?? false}
             hideHint
           />

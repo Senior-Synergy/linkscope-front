@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Button from "../common/Button";
 import { useTranslations } from "next-intl";
+import { FaMagnifyingGlass } from "react-icons/fa6";
 
 function Searcher() {
   const t_common = useTranslations("Common");
@@ -45,9 +46,9 @@ function Searcher() {
     <form className="flex flex-col gap-4">
       <div className="flex gap-4 w-full">
         <div className="grow">
-          <label>
+          <label className="relative">
             <input
-              className={`w-full h-12 px-4 rounded-lg
+              className={`pl-12 w-full h-12 px-4 rounded-lg
                         bg-white dark:bg-black
                         border focus:outline-none`}
               name="query"
@@ -55,6 +56,8 @@ function Searcher() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
+
+            <FaMagnifyingGlass className="fill-gray-500 absolute top-1/2 left-4 transform -translate-y-1/2" />
           </label>
         </div>
 

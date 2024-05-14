@@ -1,8 +1,8 @@
-import React from "react";
+"use client"
 
 interface TabSelectorProps {
   itemList: { title: string; value: any }[];
-  currentItem: any;
+  currentValue: any;
   onSelect: (value: any) => void;
 }
 
@@ -12,7 +12,7 @@ interface TabSelectorItemProps {
   onClick: () => void;
 }
 
-function TabSelector({ itemList, currentItem, onSelect }: TabSelectorProps) {
+function TabSelector({ itemList, currentValue: currentItem, onSelect }: TabSelectorProps) {
   return (
     <div className="flex w-full h-full rounded-md divide-x border overflow-hidden">
       {itemList.map((item, index) => (

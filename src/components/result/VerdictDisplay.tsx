@@ -2,14 +2,14 @@ import { FaCircleQuestion } from "react-icons/fa6";
 import { useTranslations } from "next-intl";
 
 interface VerdictDisplayProps {
-  phishProbMod: number;
+  phishProb: number;
   hasSoup: boolean;
   hideHint?: boolean;
 }
 
 function VerdictDisplay({
   hideHint,
-  phishProbMod,
+  phishProb: phishProbMod,
   hasSoup,
 }: VerdictDisplayProps) {
   const t = useTranslations("Verdict");
