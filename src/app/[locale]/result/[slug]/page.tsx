@@ -17,8 +17,6 @@ import {
   calculateVerdict,
   removeTrailingDot,
 } from "@/utils/formattor";
-import TabSelector from "@/components/common/TabSelector";
-import ResultInfo from "@/components/result/ResultInfo";
 import { Suspense } from "react";
 import UrlGridFallback from "@/components/url/UrlGridFallback";
 import SimilarUrlGrid from "@/components/url/SimilarUrlGrid";
@@ -210,59 +208,59 @@ async function ScanResultPage({
         </ul>
       </div>
 
+      <hr className="my-12" />
+
       <section className="mt-8">
         <h2 className="text-xl font-semibold">{t_url("url-details.title")}</h2>
 
-        <div className="mt-4">
-          <div className="p-4 border rounded-xl">
-            <div className="p-4 rounded-lg bg-primary">
-              <p className="text-white truncate">
-                <strong>{t_result("url-submitted")}:</strong>
-                &nbsp;{result.submittedUrl}
-              </p>
-            </div>
+        <div className="p-4 border rounded-xl mt-4">
+          <div className="p-4 rounded-lg bg-primary">
+            <p className="text-white truncate">
+              <strong>{t_result("url-submitted")}:</strong>
+              &nbsp;{result.submittedUrl}
+            </p>
+          </div>
 
-            <div className="w-full my-2">
-              <FaArrowDown className="shrink-0 m-auto h-6 w-6 fill-primary" />
-            </div>
+          <div className="w-full my-2">
+            <FaArrowDown className="shrink-0 m-auto h-6 w-6 fill-primary" />
+          </div>
 
-            <Link href={`/url/${result.url.urlId}`}>
-              <div
-                className="flex items-center gap-4 p-4 rounded-lg border-2 
+          <Link href={`/url/${result.url.urlId}`}>
+            <div
+              className="flex items-center gap-4 p-4 rounded-lg border-2 
                         border-primary bg-primary-50 hover:bg-primary-100 
                         dark:bg-primary-950 hover:dark:bg-primary-900 
                         transition-colors"
-              >
-                <div className="grow truncate">
-                  <p className="text-sm font-medium mb-1">
-                    {t_result("redirected-to")}:
-                  </p>
-                  <h3 className="text-xl text-primary font-semibold truncate">
-                    {result.url.finalUrl}
-                  </h3>
-                  <p>{result.url.ipAddress}</p>
-                </div>
-
-                <div className="flex items-center gap-2 shrink-0">
-                  <p className="hidden sm:block text-sm text-primary">
-                    {t_result("more-details")}
-                  </p>
-                  <FaChevronRight className="w-7 h-7 fill-primary shrink-0" />
-                </div>
+            >
+              <div className="grow truncate">
+                <p className="text-sm font-medium mb-1">
+                  {t_result("redirected-to")}:
+                </p>
+                <h3 className="text-xl text-primary font-semibold truncate">
+                  {result.url.finalUrl}
+                </h3>
+                <p>{result.url.ipAddress}</p>
               </div>
-            </Link>
+
+              <div className="flex items-center gap-2 shrink-0">
+                <p className="hidden sm:block text-sm text-primary">
+                  {t_result("more-details")}
+                </p>
+                <FaChevronRight className="w-7 h-7 fill-primary shrink-0" />
+              </div>
+            </div>
+          </Link>
+
+          <div className="mt-6">
+            <h3 className="my-4">
+              {t_url("similar-url.title")}
+            </h3>
+
+            <Suspense fallback={<UrlGridFallback pageSize={4} />}>
+              <SimilarUrlGrid urlId={result.url.urlId} />
+            </Suspense>
           </div>
         </div>
-      </section>
-
-      <section className="mt-8">
-        <h2 className="text-xl font-semibold my-4">
-          {t_url("similar-url.title")}
-        </h2>
-
-        <Suspense fallback={<UrlGridFallback pageSize={4} />}>
-          <SimilarUrlGrid urlId={result.url.urlId} />
-        </Suspense>
       </section>
 
       <hr className="my-12" />

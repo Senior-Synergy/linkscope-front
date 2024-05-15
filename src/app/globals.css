@@ -28,7 +28,7 @@
   }
 
   h3 {
-    @apply text-2xl;
+    @apply text-xl font-medium text-gray-800 dark:text-gray-200;
   }
 
   /* Can directly apply colors : hard coded values for light and dark */
