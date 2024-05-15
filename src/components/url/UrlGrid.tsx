@@ -55,8 +55,8 @@ function UrlGrid({ urls }: UrlGridProps) {
         </div>
       ) : (
         <div className="flex flex-col justify-center items-center p-4 min-h-96 m-auto border rounded-lg">
-          <FaQuestionCircle className="w-24 h-24 mb-4" />A
-          <h2 className="font-bold text-center">No URLs Found...</h2>
+          <FaQuestionCircle className="w-24 h-24 mb-4" />
+          {/* <h2 className="font-bold text-center">No URLs Found...</h2> */}
         </div>
       )}
     </div>
