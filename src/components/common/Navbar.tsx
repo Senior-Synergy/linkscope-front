@@ -40,7 +40,7 @@ function Navbar() {
           className="flex items-center justify-between h-16
                       p-4 md:px-8 gap-10 w-full bg-transparent backdrop-blur-2xl border border-t-0 border-x-0"
         >
-          <Link href="/scan">
+          <Link href="/">
             <div className="flex items-center gap-2">
               <Image
                 src={LinkScopeIcon}
