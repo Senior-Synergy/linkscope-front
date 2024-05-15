@@ -98,11 +98,11 @@ export async function searchUrls(
   if (sortOption) {
     switch (sortOption) {
       case "A-D":
-        sortBy = "submitted_url";
+        sortBy = "final_url";
         sortDirection = "desc";
         break;
       case "A-A":
-        sortBy = "submitted_url";
+        sortBy = "final_url";
         sortDirection = "asc";
         break;
       case "D-D":
