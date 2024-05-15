@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link";
 import CountryFlag from "@/components/common/CountryFlag";
 import { FaChevronRight } from "react-icons/fa6";
@@ -9,7 +11,7 @@ interface UrlGridProps {
   urls: UrlCommon[];
 }
 
-async function UrlGrid({ urls }: UrlGridProps) {
+function UrlGrid({ urls }: UrlGridProps) {
   const t = useTranslations("Url");
 
   return (
