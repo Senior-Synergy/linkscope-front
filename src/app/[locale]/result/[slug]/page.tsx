@@ -59,7 +59,7 @@ async function ScanResultPage({
       verdict = t_verdict("moderate");
       break;
     case "HIGH":
-      verdict = t_verdict("suspecious");
+      verdict = t_verdict("suspicious");
       break;
     case "VERY_HIGH":
       verdict = t_verdict("malicious");
