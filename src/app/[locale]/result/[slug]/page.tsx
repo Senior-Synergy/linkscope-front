@@ -102,7 +102,7 @@ async function ScanResultPage({
 
       <div className="flex flex-wrap gap-2 mt-4">
         <VerdictDisplay
-          phishProb={result.phishProbMod}
+          phishProb={result.phishProb}
           hasSoup={result.hasSoup ?? false}
         />
         <div
