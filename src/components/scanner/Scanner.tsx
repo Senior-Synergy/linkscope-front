@@ -57,7 +57,8 @@ function Scanner() {
     <>
       <div
         className={`relative overflow-hidden 
-        b         border p-4 rounded-lg 
+                  border p-4 rounded-lg 
+                  bg-gray-50 dark:bg-gray-950
                   ${isScanning && "pointer-events-none"}`}
       >
         <div className="h-10">

@@ -22,7 +22,7 @@ function InfoBox({ title, value, hint }: InfoBoxProps) {
           </div>
         )}
       </div>
-      <div className="text-3xl text-center p-8 border border-t-0 rounded-b-lg">
+      <div className="text-3xl text-center p-8 border border-t-0 rounded-b-lg bg-gray-50 dark:bg-gray-950">
         <p className="font-semibold">{value}</p>
       </div>
     </div>

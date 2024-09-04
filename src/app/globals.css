@@ -4,7 +4,7 @@
 
 :root {
   --foreground-rgb: 50, 50, 50;
-  --background-rgb: 255, 255, 255;
+  --background-rgb: 245, 245, 245;
   --text-rgb: 255, 255, 255;
   --border-color-rgb: 224, 224, 224; /* Default border color */
   --divide-color-rgb: 224, 224, 224; /* Default divide color */
@@ -12,7 +12,7 @@
 
 .dark:root {
   --foreground-rgb: 255, 255, 255;
-  --background-rgb: 18, 18, 18;
+  --background-rgb: 15, 15, 15;
   --text-rgb: 0, 0, 0;
   --border-color-rgb: 64, 64, 64; /* Dark mode border color */
   --divide-color-rgb: 48, 48, 48; /* Dark mode divide color */

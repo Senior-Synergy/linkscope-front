@@ -26,7 +26,7 @@ function ExtractedFeaturesList({ features }: ExtractedFeaturesListProps) {
       note: "",
       value:
         features.www != null
-          ? features.www
+          ? !features.www
             ? t_common("true")
             : t_common("false")
           : null,
@@ -39,7 +39,7 @@ function ExtractedFeaturesList({ features }: ExtractedFeaturesListProps) {
       note: "",
       value:
         features.https != null
-          ? features.https
+          ? !features.https
             ? t_common("true")
             : t_common("false")
           : null,
@@ -52,7 +52,7 @@ function ExtractedFeaturesList({ features }: ExtractedFeaturesListProps) {
       note: "",
       value:
         features.shortUrl != null
-          ? features.shortUrl
+          ? !features.shortUrl
             ? t_common("true")
             : t_common("false")
           : null,
@@ -64,7 +64,7 @@ function ExtractedFeaturesList({ features }: ExtractedFeaturesListProps) {
       explanation: t("ip.explanation"),
       value:
         features.ip != null
-          ? features.ip
+          ? !features.ip
             ? t_common("true")
             : t_common("false")
           : null,
@@ -151,7 +151,7 @@ function ExtractedFeaturesList({ features }: ExtractedFeaturesListProps) {
       note: "",
       value:
         features.zerolink != null
-          ? features.zerolink
+          ? !features.zerolink
             ? t_common("true")
             : t_common("false")
           : null,
@@ -164,7 +164,7 @@ function ExtractedFeaturesList({ features }: ExtractedFeaturesListProps) {
       note: "",
       value:
         features.extFavicon != null
-          ? features.extFavicon
+          ? !features.extFavicon
             ? t_common("true")
             : t_common("false")
           : null,
@@ -177,7 +177,7 @@ function ExtractedFeaturesList({ features }: ExtractedFeaturesListProps) {
       note: "Note: SFH stands for server-side form handler, which is the URL specified in the `action` attribute of an HTML form. This URL determines where the form data will be submitted for processing when a user fills out and submits the form.",
       value:
         features.sfh != null
-          ? features.sfh
+          ? !features.sfh
             ? t_common("true")
             : t_common("false")
           : null,
@@ -190,7 +190,7 @@ function ExtractedFeaturesList({ features }: ExtractedFeaturesListProps) {
       note: "",
       value:
         features.redirection != null
-          ? features.redirection
+          ? !features.redirection
             ? t_common("true")
             : t_common("false")
           : null,
@@ -203,7 +203,7 @@ function ExtractedFeaturesList({ features }: ExtractedFeaturesListProps) {
       note: "",
       value:
         features.domainEnd != null
-          ? features.domainEnd
+          ? !features.domainEnd
             ? t_common("true")
             : t_common("false")
           : null,
@@ -212,7 +212,7 @@ function ExtractedFeaturesList({ features }: ExtractedFeaturesListProps) {
 
   return (
     <section>
-      <div className="flex justify-between items-center mt-8 border border-b-0 rounded-t-lg px-4 py-2 bg-gray-100 dark:bg-gray-900">
+      <div className="flex justify-between items-center mt-8 border border-b-0 rounded-t-lg px-4 py-2 bg-gray-200 dark:bg-gray-800">
         <p className="font-semibold">{t("title")}</p>
 
         <div className={`flex items-center justify-center shrink-0 w-14`}>
@@ -220,7 +220,7 @@ function ExtractedFeaturesList({ features }: ExtractedFeaturesListProps) {
         </div>
       </div>
 
-      <div className="border rounded-b-lg divide-y divide">
+      <div className="border rounded-b-lg divide-y divide bg-gray-50 dark:bg-gray-950">
         {featureItems.map((item, index) => (
           <div
             key={index}

@@ -38,7 +38,9 @@ function Navbar() {
       <div className="sticky top-0 z-10">
         <div
           className="flex items-center justify-between h-16
-                      p-4 md:px-8 gap-10 w-full bg-transparent backdrop-blur-2xl border border-t-0 border-x-0"
+                    p-4 md:px-8 gap-10 w-full 
+                    border border-t-0 border-x-0
+                    bg-white dark:bg-black"
         >
           <Link href="/">
             <div className="flex items-center gap-2">

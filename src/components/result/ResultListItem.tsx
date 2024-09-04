@@ -16,7 +16,7 @@ function ResultListItem({ result }: ResultListItemProps) {
 
   return (
     <Link href={`/result/${result.resultId}`}>
-      <div className="flex items-center justify-between gap-4 p-4 hover:bg-gray-200 hover:dark:bg-gray-800 transition-colors h-20">
+      <div className="flex items-center justify-between gap-4 p-4 hover:bg-gray-100 hover:dark:bg-gray-900 transition-colors h-20">
         <div className="grow truncate">
           <p className="truncate"> {result.submittedUrl}</p>
 

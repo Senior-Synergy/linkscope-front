@@ -25,6 +25,7 @@ function UrlGrid({ urls }: UrlGridProps) {
                 className="flex items-center justify-between 
                       p-4 h-20 min-w-72 min-h-32 
                       border rounded-lg
+                      bg-gray-50 dark:bg-gray-950
                       hover:bg-gray-200 hover:dark:bg-gray-800
                       transition-colors"
               >

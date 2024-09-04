@@ -105,7 +105,8 @@ async function ScanResultPage({
           phishProb={result.phishProb}
           hasSoup={result.hasSoup ?? false}
         />
-        <div
+
+        {/* <div
           className={`flex items-center gap-2 px-4 py-2 text-center rounded-full text-white
                     ${
                       !result.url.googleIsMalicious
@@ -116,9 +117,9 @@ async function ScanResultPage({
         >
           <p className="text-sm font-normal">{t_result("google-safe")}</p>
           {!result.url.googleIsMalicious ? <FaCheck /> : <FaX />}
-        </div>
+        </div> */}
 
-        <div className="flex items-center gap-2 px-4 py-2 text-center border rounded-full">
+        <div className="flex items-center gap-2 px-4 py-2 text-center border rounded-full bg-white dark:bg-black">
           <p className="text-gray-500 text-sm truncate">
             {result.datetimeCreated.toLocaleString()}
           </p>
@@ -131,7 +132,7 @@ async function ScanResultPage({
         onSelect={() => console.log()}
       /> */}
 
-      <div className="mt-8 p-4 border rounded-lg">
+      <div className="mt-8 p-4 border rounded-lg bg-white dark:bg-black">
         {/* <ResultInfo /> */}
 
         <div>
@@ -186,7 +187,7 @@ async function ScanResultPage({
               {t_result("summary.body-info-2.2")}&nbsp;
               {trustScore} {t_result("out-of")} 5.&nbsp;
             </span>
-            <span>
+            {/* <span>
               {t_result("summary.body-info-2.3")}&nbsp;
               <strong>
                 &quot;
@@ -195,7 +196,7 @@ async function ScanResultPage({
                   : t_result("summary.not-malicious")}
                 .&quot;
               </strong>
-            </span>
+            </span> */}
           </p>
         </div>
 
@@ -213,7 +214,7 @@ async function ScanResultPage({
       <section className="mt-8">
         <h2 className="text-xl font-semibold">{t_url("url-details.title")}</h2>
 
-        <div className="p-4 border rounded-xl mt-4">
+        <div className="p-4 border rounded-xl mt-4 bg-white dark:bg-black">
           <div className="p-4 rounded-lg bg-primary">
             <p className="text-white truncate">
               <strong>{t_result("url-submitted")}:</strong>
