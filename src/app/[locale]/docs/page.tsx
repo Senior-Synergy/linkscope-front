@@ -73,10 +73,10 @@ function DocumentationPage({ params: { locale } }: { params: { locale: string } 
     <main className="relative px-4 py-6 md:p-8 w-full">
       <section id="tb-content" className="hidden md:block md:fixed w-64">
         <div>
-          <div className="flex justify-between border-t border rounded-t-lg px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700  dark:text-gray-200 font-semibold">
+          <div className="flex justify-between border-t border rounded-t-lg px-4 py-2 bg-gray-50 dark:bg-gray-950 text-gray-700  dark:text-gray-200 font-semibold">
             <p className="font-semibold">On this page</p>
           </div>
-          <div className="border border-t-0 rounded-b-lg">
+          <div className="border border-t-0 rounded-b-lg bg-white dark:bg-black">
             <ul className="flex flex-col divide-y">
               {contentItems.map((content, index) => (
                 <Link key={index} href={`#${content.id}`}>
@@ -209,26 +209,26 @@ function DocumentationPage({ params: { locale } }: { params: { locale: string } 
             <h2 className="text-xl font-semibold">Model Results</h2>
             <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
               <li className="flex-auto">
-                <div className="font-bold flex items-center justify-center p-2 rounded-t-lg bg-gray-100 dark:bg-gray-800 text-gray-700  dark:text-gray-200 border">
+                <div className="font-bold flex items-center justify-center p-2 rounded-t-lg bg-gray-50 dark:bg-gray-950 text-gray-700  dark:text-gray-200 border">
                   Accuracy
                 </div>
-                <div className="text-4xl text-center p-8 border border-t-0 rounded-b-lg">
+                <div className="text-4xl text-center p-8 border border-t-0 rounded-b-lg bg-white dark:bg-black">
                   {accuracy}%
                 </div>
               </li>
               <li className="flex-auto">
-                <div className="font-bold flex items-center justify-center p-2 rounded-t-lg bg-gray-100 dark:bg-gray-800 text-gray-700  dark:text-gray-200 border">
+                <div className="font-bold flex items-center justify-center p-2 rounded-t-lg bg-gray-50 dark:bg-gray-950 text-gray-700  dark:text-gray-200 border">
                   Precision
                 </div>
-                <div className="text-4xl text-center p-8 border border-t-0 rounded-b-lg">
+                <div className="text-4xl text-center p-8 border border-t-0 rounded-b-lg bg-white dark:bg-black">
                   {precision}%
                 </div>
               </li>
               <li className="flex-auto">
-                <div className="font-bold flex items-center justify-center p-2 rounded-t-lg bg-gray-100 dark:bg-gray-800 text-gray-700  dark:text-gray-200 border">
+                <div className="font-bold flex items-center justify-center p-2 rounded-t-lg bg-gray-50 dark:bg-gray-950 text-gray-700  dark:text-gray-200 border">
                   Recall
                 </div>
-                <div className="text-4xl text-center p-8 border border-t-0 rounded-b-lg">
+                <div className="text-4xl text-center p-8 border border-t-0 rounded-b-lg bg-white dark:bg-black">
                   {recall}%
                 </div>
               </li>

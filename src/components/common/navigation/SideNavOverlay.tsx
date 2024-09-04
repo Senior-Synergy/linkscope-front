@@ -69,7 +69,7 @@ function SideNavOverlay({ navItems }: Props) {
 
       <div
         className={`fixed z-10 h-full w-64 overflow-auto
-                  bg-white dark:bg-black
+                  bg-gray-50 dark:bg-gray-950
                   ${
                     isCollapsed
                       ? "-translate-x-full opacity-0"
@@ -100,7 +100,7 @@ function SideNavOverlay({ navItems }: Props) {
               >
                 <div
                   className={`flex items-center justify-between px-4 py-2 h-14 w-full space-x-2 rounded-lg border 
-                           bg-gray-50 dark:bg-gray-950 hover:bg-gray-200 hover:dark:bg-gray-800 transition-colors`}
+                           bg-white dark:bg-black hover:bg-gray-200 hover:dark:bg-gray-800 transition-colors`}
                 >
                   {/* <item.icon /> */}
 

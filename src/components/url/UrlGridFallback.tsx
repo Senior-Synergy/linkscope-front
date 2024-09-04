@@ -12,7 +12,7 @@ function UrlGridFallback({ pageSize }: UrlGridFallbackProps) {
         .map((_, index) => (
           <div
             key={index}
-            className="flex items-center justify-between gap-4 p-4 h-20 min-w-72 min-h-36 border rounded-lg"
+            className="flex items-center justify-between gap-4 p-4 h-20 min-w-72 min-h-36 border rounded-lg bg-white dark:bg-black"
           >
             <div className="flex flex-col">
               <div className="h-4 w-56 bg-gray-300 dark:bg-gray-700 rounded-full animate-pulse" />

@@ -5,7 +5,7 @@ interface ResultListFallbackProps {
 function ResultListFallback({ pageSize }: ResultListFallbackProps) {
   return (
     <div>
-      <div className="flex justify-between border border-b-0 rounded-t-lg px-4 py-2 bg-gray-100 dark:bg-gray-900 font-semibold">
+      <div className="flex justify-between border border-b-0 rounded-t-lg px-4 py-2 bg-gray-50 dark:bg-gray-950 font-semibold">
         <p>Result</p>
 
         <div className="flex gap-4 text-center">
@@ -14,7 +14,7 @@ function ResultListFallback({ pageSize }: ResultListFallbackProps) {
         </div>
       </div>
 
-      <div className="border rounded-b-lg">
+      <div className="border rounded-b-lg bg-white dark:bg-black">
         <div
           className="flex flex-col
                   w-full divide-y divide"

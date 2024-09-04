@@ -31,7 +31,7 @@ function Paginator({ totalCount, pageSize }: PaginatorProps) {
     <div className="flex items-center justify-center mt-4">
       <button
         disabled={currentPage == 1}
-        className={`flex justify-center items-center h-12 w-12 rounded-l-lg transition-colors 
+        className={`flex justify-center items-center h-12 w-12 rounded-l-lg border transition-colors 
                   ${
                     currentPage == 1
                       ? "bg-gray-100 dark:bg-gray-900 text-gray-300 dark:text-gray-700"
@@ -45,12 +45,12 @@ function Paginator({ totalCount, pageSize }: PaginatorProps) {
       >
         <FaChevronLeft />
       </button>
-      <div className="flex items-center px-4 h-12 border">
+      <div className="flex items-center px-4 h-12 border-y bg-gray-50 dark:bg-gray-950">
         {currentPage} / {maxPage}
       </div>
       <button
         disabled={currentPage == maxPage}
-        className={`flex justify-center items-center h-12 w-12 rounded-r-lg transition-colors 
+        className={`flex justify-center items-center h-12 w-12 rounded-r-lg border transition-colors 
                   ${
                     currentPage == maxPage
                       ? "bg-gray-100 dark:bg-gray-900 text-gray-300 dark:text-gray-700"

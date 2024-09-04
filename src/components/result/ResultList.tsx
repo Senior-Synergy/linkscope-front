@@ -16,7 +16,7 @@ function ResultList({ results }: ResultListProps) {
     <div>
       {results.length > 0 ? (
         <div>
-          <div className="flex justify-between border border-b-0 rounded-t-lg px-4 py-2 bg-gray-200 dark:bg-gray-800 font-semibold">
+          <div className="flex justify-between border border-b-0 rounded-t-lg px-4 py-2 bg-gray-50 dark:bg-gray-950 font-semibold">
             <p>{t_common("result")}</p>
 
             <div className="flex gap-4 text-center">
@@ -25,7 +25,7 @@ function ResultList({ results }: ResultListProps) {
             </div>
           </div>
 
-          <div className="border rounded-b-lg overflow-hidden bg-gray-50 dark:bg-gray-950">
+          <div className="border rounded-b-lg overflow-hidden bg-white dark:bg-black">
             <div
               className="flex flex-col
                   w-full divide-y divide"

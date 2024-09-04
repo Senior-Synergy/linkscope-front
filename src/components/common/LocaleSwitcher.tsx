@@ -75,7 +75,7 @@ export default function LocaleSwitcher() {
       <button
         disabled={isPending}
         onClick={() => setIsSelecting(!isSelecting)}
-        className={`flex items-center justify-center px-4 py-2 w-full h-12 rounded-lg border hover:bg-gray-200 hover:dark:bg-gray-800 transition-colors ${
+        className={`flex items-center justify-center px-4 py-2 w-full h-12 rounded-lg border bg-white dark:bg-black hover:bg-gray-200 hover:dark:bg-gray-800 transition-colors ${
           isSelecting && "bg-gray-100 dark:bg-gray-900"
         }`}
       >

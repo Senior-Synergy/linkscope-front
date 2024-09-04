@@ -111,7 +111,7 @@ function FeatureTable() {
     <div className="overflow-x-auto rounded-lg border">
       <table>
         <thead>
-          <tr className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200">
+          <tr className="bg-gray-50 dark:bg-gray-950 text-gray-700 dark:text-gray-200 border-b">
             <th className="px-4 py-2">Name</th>
             <th className="px-4 py-2">Type</th>
             <th className="px-4 py-2">Explanation</th>
@@ -121,11 +121,11 @@ function FeatureTable() {
           {/* Feature rows */}
           {featureData.map((feature, index) => (
             <tr key={index}>
-              <td className="px-4 py-2 dark:bg-gray-900">{feature.featureName}</td>
+              <td className="px-4 py-2 bg-white dark:bg-black">{feature.featureName}</td>
               <td className="px-4 py-2 bg-gray-50 dark:bg-gray-950 text-center">
                 {feature.featureType}
               </td>
-              <td className="px-4 py-2 dark:bg-gray-900 text-center">
+              <td className="px-4 py-2 bg-white dark:bg-black text-center">
                 {feature.explanation}
               </td>
             </tr>

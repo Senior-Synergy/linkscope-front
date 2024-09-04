@@ -98,11 +98,11 @@ function UrlInfo({ url }: UrlInfoProps) {
 
   return (
     <div>
-      <div className="border border-b-0 rounded-t-lg px-4 py-2 bg-gray-100 dark:bg-gray-900">
+      <div className="border border-b-0 rounded-t-lg px-4 py-2 bg-gray-50 dark:bg-gray-950">
         <p className="font-semibold">{t("title")}</p>
       </div>
 
-      <div className="p-4 border rounded-b-lg">
+      <div className="p-4 border rounded-b-lg bg-white dark:bg-black">
         <div className="flex items-center gap-8">
           <div className="grow truncate">
             <h2 className="text-xl font-semibold mb-1 truncate">
