@@ -84,11 +84,11 @@ async function ScanResultPage({
       value: verdict ?? t_verdict("unavailable"),
       hint: t_result("info-box.verdict.desc"),
     },
-    {
-      title: t_result("info-box.trust-score.title"),
-      value: `${trustScore} ${t_result("out-of")} 5`,
-      hint: t_result("info-box.trust-score.desc"),
-    },
+    // {
+    //   title: t_result("info-box.trust-score.title"),
+    //   value: `${trustScore} ${t_result("out-of")} 5`,
+    //   hint: t_result("info-box.trust-score.desc"),
+    // },
   ];
 
   return (
@@ -132,7 +132,7 @@ async function ScanResultPage({
         onSelect={() => console.log()}
       /> */}
 
-      <div className="mt-8 p-4 border rounded-lg bg-white dark:bg-black">
+      <section className="mt-8 p-4 border rounded-lg bg-white dark:bg-black">
         {/* <ResultInfo /> */}
 
         <div>
@@ -163,31 +163,21 @@ async function ScanResultPage({
               .&nbsp;
             </span>
             <span>
-              {t_result("summary.body-info-1.4")}&nbsp;
-              <strong>
-                {result.url.creationDate?.toLocaleString() ??
-                  t_result("summary.unspecified-date")}
-              </strong>
-              .&nbsp;
-            </span>
-            <span>
-              {t_result("summary.body-info-1.5")}&nbsp;
-              <strong>
-                {result.url.expirationDate?.toLocaleString() ??
-                  t_result("summary.unspecified-date")}
-              </strong>
-              .&nbsp;
+              {t_result("summary.body-info-2.1")}&nbsp;&quot;
+              <strong>{verdict}</strong>.&quot;&nbsp;
+              {/* {t_result("summary.body-info-2.2")}&nbsp;
+              {trustScore} {t_result("out-of")} 5.&nbsp; */}
             </span>
           </p>
 
-          <p className="mt-4">
+          {/* <p className="mt-4">
             <span>
               {t_result("summary.body-info-2.1")}&nbsp;&quot;
               <strong>{verdict}</strong>&quot;&nbsp;
               {t_result("summary.body-info-2.2")}&nbsp;
               {trustScore} {t_result("out-of")} 5.&nbsp;
             </span>
-            {/* <span>
+            <span>
               {t_result("summary.body-info-2.3")}&nbsp;
               <strong>
                 &quot;
@@ -196,8 +186,8 @@ async function ScanResultPage({
                   : t_result("summary.not-malicious")}
                 .&quot;
               </strong>
-            </span> */}
-          </p>
+            </span>
+          </p> */}
         </div>
 
         <ul className="flex flex-wrap gap-4 mt-4">
@@ -207,15 +197,21 @@ async function ScanResultPage({
             </li>
           ))}
         </ul>
-      </div>
+      </section>
 
-      <hr className="my-12" />
+      {/* <div className="mt-8 p-4 border rounded-lg bg-white dark:bg-black">
+        <div>
+          <h2 className="text-xl font-semibold">{t_result("summary.title")}</h2>
+        </div>
+      </div> */}
 
       <section className="mt-8">
-        <h2 className="text-xl font-semibold">{t_url("url-details.title")}</h2>
-
         <div className="p-4 border rounded-xl mt-4 bg-white dark:bg-black">
-          <div className="p-4 rounded-lg bg-primary">
+          <h2 className="text-xl font-semibold">
+            {t_url("url-details.title")}
+          </h2>
+
+          <div className="p-4 mt-4 rounded-lg bg-primary">
             <p className="text-white truncate">
               <strong>{t_result("url-submitted")}:</strong>
               &nbsp;{result.submittedUrl}
@@ -253,9 +249,7 @@ async function ScanResultPage({
           </Link>
 
           <div className="mt-6">
-            <h3 className="my-4">
-              {t_url("similar-url.title")}
-            </h3>
+            <h3 className="my-4">{t_url("similar-url.title")}</h3>
 
             <Suspense fallback={<UrlGridFallback pageSize={4} />}>
               <SimilarUrlGrid urlId={result.url.urlId} />
@@ -266,7 +260,7 @@ async function ScanResultPage({
 
       <hr className="my-12" />
 
-      <div className="mt-8">
+      <section className="mt-8">
         <h2 className="text-xl font-semibold">
           {t_feature("extracted-features.title")}
         </h2>
@@ -274,7 +268,7 @@ async function ScanResultPage({
         <p className="mt-4">{t_feature("extracted-features.body")}</p>
 
         <ExtractedFeaturesList features={result.feature} />
-      </div>
+      </section>
 
       <Footer />
     </MainWrapper>
