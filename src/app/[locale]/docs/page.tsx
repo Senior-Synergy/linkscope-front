@@ -214,11 +214,11 @@ function DocumentationPage({
             <p className="mt-4">
               In this study, we developed a phishing URL detection model and
               evaluated its performance across key metrics, achieving highly
-              promising results. The model's overall accuracy was 95.07%
+              promising results. The model&apos;s overall accuracy was 95.07%
             </p>
             <h3 className="mt-4">Precision, Recall, and F1-Score</h3>
             <p className="mt-4">
-              To further assess the model's reliability, we considered
+              To further assess the model&apos;s reliability, we considered
               additional performance metrics:
             </p>
             <ul className="mt-4">
@@ -231,7 +231,7 @@ function DocumentationPage({
               </li>
               <li className="mt-4">
                 <strong>Recall:</strong> The recall was measured at 94.05%,
-                indicating the model's ability to detect most phishing URLs
+                indicating the model&apos;s ability to detect most phishing URLs
                 correctly. High recall ensures that phishing attacks are not
                 missed, which is critical for minimizing the risk of undetected
                 security threats.
