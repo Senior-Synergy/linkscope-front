@@ -48,22 +48,29 @@ export interface FeatureCommon {
   featureId: number;
   domainLength: number | null;
   www: boolean | null;
+  subDomain: boolean | null;
   https: boolean | null;
   shortUrl: boolean | null;
-  ip: boolean | null;
+  atCount: number | null;
   dashCount: number | null;
   equalCount: number | null;
   dotCount: number | null;
   underscoreCount: number | null;
   slashCount: number | null;
   digitCount: number | null;
+  hasLogWord: number | null;
+  hasPayWord: number | null;
+  hasWebWord: number | null;
+  hasAccountWord: number | null;
   pcEmptylink: number | null;
   pcExtlink: number | null;
   pcRequrl: number | null;
   zerolink: boolean | null;
   extFavicon: boolean | null;
+  submitToEmail: boolean | null;
   sfh: boolean | null;
   redirection: boolean | null;
+  domainAge: boolean | null;
   domainEnd: boolean | null;
 
   // --------------------------------

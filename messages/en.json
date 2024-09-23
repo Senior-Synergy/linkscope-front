@@ -29,7 +29,7 @@
         "go-back": "Go back",
         "retry": "Retry"
     },
-    "Loading":{
+    "Loading": {
         "result-info": "Loading Scan Result Information...",
         "result-list": "Loading Scan Results...",
         "url-info": "Loading URL Information...",
@@ -184,22 +184,32 @@
             "www": {
                 "title": "WWW",
                 "type": "Address Bar",
-                "explanation": "If the URL has 'www' as the subdomain, then true; otherwise, false."
+                "explanation": "If the URL has 'www' as the subdomain, then return 0; otherwise, return 1."
+            },
+            "subdomain": {
+                "title": "Subdomain",
+                "type": "Address Bar",
+                "explanation": "If the URL has more than 1 subdomain then return 1, else 0."
             },
             "https": {
                 "title": "HTTPS",
                 "type": "Address Bar",
-                "explanation": "Address Bar based If the URL contains 'https', then true; otherwise, false."
+                "explanation": "If the URL contains 'https', then return 0; otherwise, return 1."
             },
             "short-url": {
                 "title": "Short URL",
                 "type": "Address Bar",
-                "explanation": "If the URL is a short URL, false; otherwise, true."
+                "explanation": "If the URL is a short URL, return 1; otherwise, return 0."
             },
             "ip": {
                 "title": "IP",
                 "type": "Address Bar",
                 "explanation": "If the URL contains an 'IP address', false; otherwise, true."
+            },
+            "at-count": {
+                "title": "@ Symbol Counts",
+                "type": "Address Bar",
+                "explanation": "Count the '@' characters in the URL."
             },
             "dash-count": {
                 "title": "Dash Symbol Counts",
@@ -227,9 +237,29 @@
                 "explanation": "Count the '/' characters in the URL."
             },
             "digit-count": {
-                "title": "Digit",
+                "title": "Digit Word",
                 "type": "Address Bar",
                 "explanation": "Count the digit (0-9) characters in the URL."
+            },
+            "log-count": {
+                "title": "Log Word",
+                "type": "Address Bar",
+                "explanation": "If the URL contains a 'log' word in the URL then return 0, else 1."
+            },
+            "pay-count": {
+                "title": "Pay Word",
+                "type": "Address Bar",
+                "explanation": "If the URL contains a 'pay' word in the URL then return 0, else 1."
+            },
+            "web-count": {
+                "title": "Web Word",
+                "type": "Address Bar",
+                "explanation": "If the URL contains a 'web' word in the URL then return 0, else 1."
+            },
+            "account-count": {
+                "title": "Account Word",
+                "type": "Address Bar",
+                "explanation": "If the URL contains a 'account' word in the URL then return 0, else 1."
             },
             "pcemptylinks": {
                 "title": "PC Empty Links",
@@ -252,28 +282,39 @@
             "zerolink": {
                 "title": "Zero Link",
                 "type": "HTML/DOM Structure",
-                "explanation": "If the URL page has no links in the HTML body, true; otherwise, false."
+                "explanation": "If the URL page has no links in the HTML body, return 1; otherwise, return 0."
             },
             "ext-favicon": {
                 "title": "External Favicon",
                 "type": "HTML/DOM Structure",
-                "explanation": "If the favicon URL is from a different domain than the submitted URL, true; otherwise, false."
+                "explanation": "If the favicon URL is from a different domain than the submitted URL, return 1; otherwise, return 0."
+            },
+            "submit-to-email": {
+                "title": "Submit to Email",
+                "type": "HTML/DOM Structure",
+                "explanation": "If the html page contains email elements then return 1, else 0"
             },
             "sfh": {
                 "title": "SFH",
                 "type": "HTML/DOM Structure",
-                "explanation": "SFHs (server-side form handlers) that contain an empty string or lead to different domain sites from the submitted URL should false; otherwise, true.",
+                "explanation": "SFHs (server-side form handlers) that contain an empty string or lead to different domain sites from the submitted URL should return 1; otherwise, return 0.",
                 "note": "Note: SFH stands for server-side form handler, which is the URL specified in the `action` attribute of an HTML form. This URL determines where the form data will be submitted for processing when a user fills out and submits the form."
             },
             "redirection": {
                 "title": "Redirection",
                 "type": "Abnormal",
-                "explanation": "If clicking the submitted URL results in a redirection to another URL, false; otherwise, true. For example, clicking www.eabc1255.com and being redirected to www.eabc5255.com."
+                "explanation": "If clicking the submitted URL results in a redirection to another URL, return 1; otherwise, return 0.",
+                "note": "For example, clicking www.eabc1255.com and being redirected to www.eabc5255.com."
+            },
+            "domainage": {
+                "title": "Domain Age",
+                "type": "Domain",
+                "explanation": "Calculate the difference between expiration time and creation time, if the domain age is less than 6 months then return 1, else return 0"
             },
             "domainend": {
                 "title": "Domain End",
                 "type": "Domain",
-                "explanation": "Calculate the difference in days between the current date and the expiration date (registration length). If the difference is less than or equal to one year, false; otherwise, true."
+                "explanation": "Calculate the difference in days between the current date and the expiration date (registration length). If the difference is less than or equal to one year, return 1; otherwise, return 0."
             }
         }
     },

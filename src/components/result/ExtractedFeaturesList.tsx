@@ -24,12 +24,15 @@ function ExtractedFeaturesList({ features }: ExtractedFeaturesListProps) {
       type: "Address Bar",
       explanation: t("www.explanation"),
       note: "",
-      value:
-        features.www != null
-          ? !features.www
-            ? t_common("true")
-            : t_common("false")
-          : null,
+      value: features.www,
+    },
+    {
+      name: "subdomain",
+      title: t("subdomain.title"),
+      type: "Address Bar",
+      explanation: t("subdomain.explanation"),
+      note: "",
+      value: features.subDomain,
     },
     {
       name: "https",
@@ -37,12 +40,7 @@ function ExtractedFeaturesList({ features }: ExtractedFeaturesListProps) {
       type: "Address Bar",
       explanation: t("https.explanation"),
       note: "",
-      value:
-        features.https != null
-          ? !features.https
-            ? t_common("true")
-            : t_common("false")
-          : null,
+      value: features.https,
     },
     {
       name: "shortUrl",
@@ -50,24 +48,15 @@ function ExtractedFeaturesList({ features }: ExtractedFeaturesListProps) {
       type: "Address Bar",
       explanation: t("short-url.explanation"),
       note: "",
-      value:
-        features.shortUrl != null
-          ? !features.shortUrl
-            ? t_common("true")
-            : t_common("false")
-          : null,
+      value: features.shortUrl,
     },
     {
-      name: "ip",
-      title: t("ip.title"),
+      name: "at-count",
+      title: t("at-count.title"),
       type: "Address Bar",
-      explanation: t("ip.explanation"),
-      value:
-        features.ip != null
-          ? !features.ip
-            ? t_common("true")
-            : t_common("false")
-          : null,
+      explanation: t("at-count.explanation"),
+      note: "",
+      value: features.atCount,
     },
     {
       name: "dash-count",
@@ -118,30 +107,59 @@ function ExtractedFeaturesList({ features }: ExtractedFeaturesListProps) {
       value: features.digitCount,
     },
     {
+      name: "log-count",
+      title: t("log-count.title"),
+      type: "Address Bar",
+      explanation: t("log-count.explanation"),
+      note: "",
+      value: features.hasLogWord,
+    },
+    {
+      name: "pay-count",
+      title: t("pay-count.title"),
+      type: "Address Bar",
+      explanation: t("pay-count.explanation"),
+      note: "",
+      value: features.hasPayWord,
+    },
+    {
+      name: "web-count",
+      title: t("web-count.title"),
+      type: "Address Bar",
+      explanation: t("web-count.explanation"),
+      note: "",
+      value: features.hasWebWord,
+    },
+    {
+      name: "account-count",
+      title: t("account-count.title"),
+      type: "Address Bar",
+      explanation: t("account-count.explanation"),
+      note: "",
+      value: features.hasAccountWord,
+    },
+
+    {
       name: "pcemptylinks",
       title: t("pcemptylinks.title"),
       type: "HTML/DOM Structure",
       explanation: t("pcemptylinks.explanation"),
-      note: "An empty link is a hyperlink that does not lead to a different web page. When clicked, it typically results in staying on the current page or displaying a blank page. This can occur when the link's URL is missing or invalid.",
-      value: features.pcEmptylink
-        ? `${Math.round(features.pcEmptylink)}%`
-        : null,
+      value: features.pcEmptylink,
     },
     {
       name: "pcextlinks",
       title: t("pcextlinks.title"),
       type: "HTML/DOM Structure",
       explanation: t("pcextlinks.explanation"),
-      note: "Note : An external link is a hyperlink that directs users from one website to a different website with a different domain. When clicked, the link takes the user away from the current site and navigates them to a new site.",
-      value: features.pcExtlink ? `${Math.round(features.pcExtlink)}%` : null,
+      value: features.pcExtlink,
     },
     {
       name: "pcrequrl",
       title: t("pcrequrl.title"),
       type: "HTML/DOM Structure",
       explanation: t("pcrequrl.explanation"),
-      note: "Note: An external resource URL refers to the web address of a resource, such as images, audio files, or embedded content, that is hosted on a different domain from the main or submitted URL.",
-      value: features.pcRequrl ? `${Math.round(features.pcRequrl)}%` : null,
+      note: t("pcrequrl.note"),
+      value: features.pcRequrl,
     },
     {
       name: "zerolink",
@@ -149,12 +167,7 @@ function ExtractedFeaturesList({ features }: ExtractedFeaturesListProps) {
       type: "HTML/DOM Structure",
       explanation: t("zerolink.explanation"),
       note: "",
-      value:
-        features.zerolink != null
-          ? !features.zerolink
-            ? t_common("true")
-            : t_common("false")
-          : null,
+      value: features.zerolink,
     },
     {
       name: "extFavicon",
@@ -162,25 +175,22 @@ function ExtractedFeaturesList({ features }: ExtractedFeaturesListProps) {
       type: "HTML/DOM Structure",
       explanation: t("ext-favicon.explanation"),
       note: "",
-      value:
-        features.extFavicon != null
-          ? !features.extFavicon
-            ? t_common("true")
-            : t_common("false")
-          : null,
+      value: features.extFavicon,
     },
     {
       name: "sfh",
       title: t("sfh.title"),
       type: "HTML/DOM Structure",
       explanation: t("sfh.explanation"),
-      note: "Note: SFH stands for server-side form handler, which is the URL specified in the `action` attribute of an HTML form. This URL determines where the form data will be submitted for processing when a user fills out and submits the form.",
-      value:
-        features.sfh != null
-          ? !features.sfh
-            ? t_common("true")
-            : t_common("false")
-          : null,
+      note: t("sfh.note"),
+      value: features.sfh,
+    },
+    {
+      name: "submit to email",
+      title: t("submit-to-email.title"),
+      type: "HTML/DOM Structure",
+      explanation: t("submit-to-email.explanation"),
+      value: features.submitToEmail,
     },
     {
       name: "redirection",
@@ -188,12 +198,15 @@ function ExtractedFeaturesList({ features }: ExtractedFeaturesListProps) {
       type: "Abnormal",
       explanation: t("redirection.explanation"),
       note: "",
-      value:
-        features.redirection != null
-          ? !features.redirection
-            ? t_common("true")
-            : t_common("false")
-          : null,
+      value: features.redirection,
+    },
+    {
+      name: "domainage",
+      title: t("domainage.title"),
+      type: "Domain",
+      explanation: t("domainage.explanation"),
+      note: "",
+      value: features.domainAge,
     },
     {
       name: "domainend",
@@ -201,12 +214,7 @@ function ExtractedFeaturesList({ features }: ExtractedFeaturesListProps) {
       type: "Domain",
       explanation: t("domainend.explanation"),
       note: "",
-      value:
-        features.domainEnd != null
-          ? !features.domainEnd
-            ? t_common("true")
-            : t_common("false")
-          : null,
+      value: features.domainEnd,
     },
   ];
 
@@ -261,7 +269,7 @@ function ExtractedFeaturesList({ features }: ExtractedFeaturesListProps) {
             <div
               className={`flex items-center justify-center shrink-0 w-14 bg-gray-100 dark:bg-gray-900 rounded`}
             >
-              {item.value ?? "-"}
+              {item.value === null || item.value === -1 ? "-" : item.value}
             </div>
           </div>
         ))}

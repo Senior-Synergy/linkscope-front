@@ -42,22 +42,29 @@ export interface FeatureBase {
   feature_id: number;
   domainlength: number | null;
   www: boolean | null;
+  subdomain: boolean | null;
   https: boolean | null;
   short_url: boolean | null;
-  ip: boolean | null;
+  at_count: number | null;
   dash_count: number | null;
   equal_count: number | null;
   dot_count: number | null;
   underscore_count: number | null;
   slash_count: number | null;
   digit_count: number | null;
+  log_count: number | null;
+  pay_count: number | null;
+  web_count: number | null;
+  account_count: number | null;
   pc_emptylink: number | null;
   pc_extlink: number | null;
   pc_requrl: number | null;
   zerolink: boolean | null;
   ext_favicon: boolean | null;
+  submit2Email: boolean | null;
   sfh: boolean | null;
   redirection: boolean | null;
+  domainage: boolean | null;
   domainend: boolean | null;
 
   // ---------------------------------

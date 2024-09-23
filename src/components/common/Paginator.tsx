@@ -34,7 +34,7 @@ function Paginator({ totalCount, pageSize }: PaginatorProps) {
         className={`flex justify-center items-center h-12 w-12 rounded-l-lg border transition-colors 
                   ${
                     currentPage == 1
-                      ? "bg-gray-100 dark:bg-gray-900 text-gray-300 dark:text-gray-700"
+                      ? "bg-gray-200 dark:bg-gray-900 text-gray-300 dark:text-gray-700"
                       : "bg-primary hover:bg-primary-600 text-white"
                   }`}
         onClick={() => {
@@ -45,7 +45,7 @@ function Paginator({ totalCount, pageSize }: PaginatorProps) {
       >
         <FaChevronLeft />
       </button>
-      <div className="flex items-center px-4 h-12 border-y bg-gray-50 dark:bg-gray-950">
+      <div className="flex items-center px-4 h-12 border border-x-0 bg-gray-50 dark:bg-gray-950">
         {currentPage} / {maxPage}
       </div>
       <button
@@ -53,7 +53,7 @@ function Paginator({ totalCount, pageSize }: PaginatorProps) {
         className={`flex justify-center items-center h-12 w-12 rounded-r-lg border transition-colors 
                   ${
                     currentPage == maxPage
-                      ? "bg-gray-100 dark:bg-gray-900 text-gray-300 dark:text-gray-700"
+                      ? "bg-gray-200 dark:bg-gray-900 text-gray-300 dark:text-gray-700"
                       : "bg-primary hover:bg-primary-600 text-white"
                   }`}
         onClick={() => {

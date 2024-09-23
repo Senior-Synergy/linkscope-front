@@ -54,7 +54,7 @@ function VerdictDisplay({ hideHint, phishProb, hasSoup }: VerdictDisplayProps) {
                 ${verdictValue == "UNKNOWN" && "bg-gray-500"}`}
     >
       <p className="text-white text-sm font-normal">{verdict}</p>
-      {verdictValue == "UNKNOWN" && !hideHint && (
+      {/* {verdictValue == "UNKNOWN" && !hideHint && (
         <div className="group/item relative">
           <FaCircleQuestion className="cursor-pointer ml-1" />
           <div className="absolute left-0 top-6 p-4 w-52 md:w-80 rounded-lg shadow-lg opacity-0 group-hover/item:opacity-100 pointer-events-none transition-opacity bg-white dark:bg-black border">
@@ -62,7 +62,7 @@ function VerdictDisplay({ hideHint, phishProb, hasSoup }: VerdictDisplayProps) {
             the provided URL.
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 }

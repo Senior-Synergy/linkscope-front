@@ -38,6 +38,8 @@ async function ScanResultPage({
 
   if (!result) return notFound();
 
+  console.log(result);
+
   const verdictValue = calculateVerdict(
     result.phishProb,
     result.hasSoup ?? false
@@ -76,7 +78,10 @@ async function ScanResultPage({
   const modelResultItems = [
     {
       title: t_result("info-box.phish-prob.title"),
-      value: `${Math.round(result.phishProb * 100)}%`,
+      value:
+        verdictValue == "UNKNOWN"
+          ? `-`
+          : `${Math.round(result.phishProb * 100)}%`,
       hint: t_result("info-box.phish-prob.desc"),
     },
     {
@@ -190,7 +195,7 @@ async function ScanResultPage({
           </p> */}
         </div>
 
-        <ul className="flex flex-wrap gap-4 mt-4">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
           {modelResultItems.map((item, index) => (
             <li key={index} className="flex-auto">
               <InfoBox title={item.title} value={item.value} hint={item.hint} />

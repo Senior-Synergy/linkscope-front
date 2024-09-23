@@ -219,6 +219,9 @@ export function getResult(resultId: number) {
     .get<ResultExtendedResponse>(`/v3/result/${resultId}`)
     .then((res) => {
       const data = mapResultExtendedResponse(res.data);
+
+      console.log(res.data);
+
       return data;
     })
     .catch((e) => {
@@ -311,22 +314,29 @@ function mapFeatureBase(feature: FeatureBase): FeatureCommon {
     featureId: feature.feature_id,
     domainLength: feature.domainlength,
     www: feature.www,
+    subDomain: feature.subdomain,
     https: feature.https,
     shortUrl: feature.short_url,
-    ip: feature.ip,
+    atCount: feature.at_count,
     dashCount: feature.dash_count,
     equalCount: feature.equal_count,
     dotCount: feature.dot_count,
     underscoreCount: feature.underscore_count,
     slashCount: feature.slash_count,
     digitCount: feature.digit_count,
+    hasLogWord: feature.log_count,
+    hasPayWord: feature.pay_count,
+    hasWebWord: feature.web_count,
+    hasAccountWord: feature.account_count,
     pcEmptylink: feature.pc_emptylink,
     pcExtlink: feature.pc_extlink,
     pcRequrl: feature.pc_requrl,
     zerolink: feature.zerolink,
     extFavicon: feature.ext_favicon,
+    submitToEmail: feature.submit2Email,
     sfh: feature.sfh,
     redirection: feature.redirection,
+    domainAge: feature.domainage,
     domainEnd: feature.domainend,
     shorttenUrl: feature.shortten_url,
     ipInUrl: feature.ip_in_url,
