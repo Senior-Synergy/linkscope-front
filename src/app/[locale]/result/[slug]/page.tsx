@@ -38,8 +38,6 @@ async function ScanResultPage({
 
   if (!result) return notFound();
 
-  console.log(result);
-
   const verdictValue = calculateVerdict(
     result.phishProb,
     result.hasSoup ?? false

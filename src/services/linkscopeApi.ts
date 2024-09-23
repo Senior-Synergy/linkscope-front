@@ -220,8 +220,6 @@ export function getResult(resultId: number) {
     .then((res) => {
       const data = mapResultExtendedResponse(res.data);
 
-      console.log(res.data);
-
       return data;
     })
     .catch((e) => {

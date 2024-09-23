@@ -11,6 +11,11 @@ const featureData = [
       "If the URL has 'www' as the subdomain, then return 0; otherwise, return 1.",
   },
   {
+    featureName: "subdomain",
+    featureType: "Address Bar based",
+    explanation: "If the URL has more than 1 subdomain then return 1, else 0.",
+  },
+  {
     featureName: "https",
     featureType: "Address Bar based",
     explanation:
@@ -22,10 +27,9 @@ const featureData = [
     explanation: "If the URL is a short URL, return 1; otherwise, return 0.",
   },
   {
-    featureName: "ip",
+    featureName: "@",
     featureType: "Address Bar based",
-    explanation:
-      "If the URL contains an 'IP address', return 1; otherwise, return 0.",
+    explanation: "Count the ‘@' characters in the URL.",
   },
   {
     featureName: "-",
@@ -55,24 +59,49 @@ const featureData = [
   {
     featureName: "digit",
     featureType: "Address Bar based",
-    explanation: "Count the digit (0-9) characters in the URL..",
+    explanation: "Count the digit (0-9) characters in the URL.",
+  },
+  {
+    featureName: "log",
+    featureType: "Address Bar based",
+    explanation:
+      "If the URL contains a 'log' word in the URL then return 0, else 1.",
+  },
+  {
+    featureName: "pay",
+    featureType: "Address Bar based",
+    explanation:
+      "If the URL contains a 'pay' word in the URL then return 0, else 1.",
+  },
+  {
+    featureName: "web",
+    featureType: "Address Bar based",
+    explanation:
+      "If the URL contains a 'web' word in the URL then return 0, else 1.",
+  },
+  {
+    featureName: "account",
+    featureType: "Address Bar based",
+    explanation:
+      "If the URL contains an 'account' word in the URL then return 0, else 1.",
   },
   {
     featureName: "pcemptylinks",
     featureType: "HTML/DOM Structure based",
-    explanation: "Percentage of empty links. (See note for definition)",
+    explanation:
+      "Percentage of empty links. An empty link does not lead to a different page.",
   },
   {
     featureName: "pcextlinks",
     featureType: "HTML/DOM Structure based",
     explanation:
-      "Percentage of external links that direct you to another site with a different domain from the submitted URL. (See note for definition)",
+      "Percentage of external links that direct you to another site with a different domain.",
   },
   {
     featureName: "pcrequrl",
     featureType: "HTML/DOM Structure based",
     explanation:
-      "Percentage of external resource URLs. (See note for definition)",
+      "Percentage of external resource URLs hosted on a different domain.",
   },
   {
     featureName: "zerolink",
@@ -87,10 +116,16 @@ const featureData = [
       "If the favicon URL is from a different domain than the submitted URL, return 1; otherwise, return 0.",
   },
   {
+    featureName: "submit2Email",
+    featureType: "HTML/DOM Structure based",
+    explanation:
+      'If the HTML page contains "\\b(mail()|mailto:?)\\b" then return 1, else 0.',
+  },
+  {
     featureName: "sfh",
     featureType: "HTML/DOM Structure based",
     explanation:
-      "SFHs (server-side form handlers) that contain an empty string or lead to different domain sites from the submitted URL should return 1; otherwise, return 0.",
+      "SFHs that contain an empty string or lead to different domain sites from the submitted URL should return 1; otherwise, return 0.",
   },
   {
     featureName: "redirection",
@@ -99,10 +134,16 @@ const featureData = [
       "If clicking the submitted URL results in a redirection to another URL, return 1; otherwise, return 0.",
   },
   {
+    featureName: "domainage",
+    featureType: "Domain Based",
+    explanation:
+      "If the domain age is less than 6 months, return 1; otherwise, return 0.",
+  },
+  {
     featureName: "domainend",
     featureType: "Domain Based",
     explanation:
-      "Calculate the difference in days between the current date and the expiration date (registration length). If the difference is less than or equal to one year, return 1; otherwise, return 0.",
+      "If the difference in days between the current date and expiration date is less than or equal to one year, return 1; otherwise, return 0.",
   },
 ];
 
@@ -121,7 +162,9 @@ function FeatureTable() {
           {/* Feature rows */}
           {featureData.map((feature, index) => (
             <tr key={index}>
-              <td className="px-4 py-2 bg-white dark:bg-black">{feature.featureName}</td>
+              <td className="px-4 py-2 bg-white dark:bg-black">
+                {feature.featureName}
+              </td>
               <td className="px-4 py-2 bg-gray-50 dark:bg-gray-950 text-center">
                 {feature.featureType}
               </td>

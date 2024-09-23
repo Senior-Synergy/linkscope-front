@@ -36,7 +36,11 @@ const docsContent = {
   },
 };
 
-function DocumentationPage({ params: { locale } }: { params: { locale: string } }) {
+function DocumentationPage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
   unstable_setRequestLocale(locale);
 
   const t = useTranslations("Index");
@@ -207,6 +211,41 @@ function DocumentationPage({ params: { locale } }: { params: { locale: string } 
 
           <section id="model-result" className="mt-8">
             <h2 className="text-xl font-semibold">Model Results</h2>
+            <p className="mt-4">
+              In this study, we developed a phishing URL detection model and
+              evaluated its performance across key metrics, achieving highly
+              promising results. The model's overall accuracy was 95.07%
+            </p>
+            <h3 className="mt-4">Precision, Recall, and F1-Score</h3>
+            <p className="mt-4">
+              To further assess the model's reliability, we considered
+              additional performance metrics:
+            </p>
+            <ul className="mt-4">
+              <li className="mt-4">
+                <strong>Precision:</strong> The model achieved a precision of
+                96.00%, meaning that of all the URLs flagged as phishing, 96%
+                were actual phishing URLs. A high precision score is essential
+                in this context, as it reduces false positives, ensuring that
+                legitimate URLs are not misclassified as phishing.
+              </li>
+              <li className="mt-4">
+                <strong>Recall:</strong> The recall was measured at 94.05%,
+                indicating the model's ability to detect most phishing URLs
+                correctly. High recall ensures that phishing attacks are not
+                missed, which is critical for minimizing the risk of undetected
+                security threats.
+              </li>
+              <li className="mt-4">
+                <strong>F1-Score:</strong> The F1-score, which balances
+                precision and recall, was 95.07%, demonstrating that the model
+                maintains a strong balance between minimizing false positives
+                and false negatives. This metric highlights the overall
+                reliability of the model in a real-world application where both
+                accuracy and coverage are important.
+              </li>
+            </ul>
+
             <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
               <li className="flex-auto">
                 <div className="font-bold flex items-center justify-center p-2 rounded-t-lg bg-gray-50 dark:bg-gray-950 text-gray-700  dark:text-gray-200 border">
@@ -233,10 +272,10 @@ function DocumentationPage({ params: { locale } }: { params: { locale: string } 
                 </div>
               </li>
               <li className="flex-auto">
-                <div className="font-bold flex items-center justify-center p-2 rounded-t-lg bg-gray-100 dark:bg-gray-800 text-gray-700  dark:text-gray-200 border">
+                <div className="font-bold flex items-center justify-center p-2 rounded-t-lg bg-gray-50 dark:bg-gray-950 text-gray-700  dark:text-gray-200 border">
                   F1-Score
                 </div>
-                <div className="text-4xl text-center p-8 border border-t-0 rounded-b-lg">
+                <div className="text-4xl text-center p-8 border border-t-0 rounded-b-lg bg-white dark:bg-black">
                   {f1Score}%
                 </div>
               </li>
@@ -251,6 +290,28 @@ function DocumentationPage({ params: { locale } }: { params: { locale: string } 
             </h2>
             <div className="mt-4">
               <FeatureTable />
+            </div>
+          </section>
+
+          <hr className="m-8" />
+
+          <section id="feature-table" className="mt-8">
+            <h2 className="text-xl font-semibold">Feature Importance</h2>
+
+            <p className="mt-4">
+              The success of this model is largely due to its careful selection
+              and weighting of relevant features. In phishing URL detection, the
+              following features proved to be most influential:
+            </p>
+
+            <div className="mt-4">
+              <Image
+                src="/images/feature-importance.png"
+                alt="url-structure"
+                width={500}
+                height={100}
+                className="border rounded-xl mx-auto my-4 bg-white"
+              />
             </div>
           </section>
         </article>
